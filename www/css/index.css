@@ -1,0 +1,237 @@
+
+.tribe img
+{
+width: 100%;
+
+}
+.tribe
+{
+background: #b80941 !important;
+padding: 0px !important;
+}
+#first
+{
+padding-top: 10% !important;
+
+
+}
+.centering {
+  float:none;
+  margin:0 auto;
+}
+div.ui-input-text
+{
+width: 80%;
+border-radius: 0px;
+margin-left: 10px !important;
+
+}
+.foot a
+{
+color: white !important;
+}
+#Logo {
+   
+    margin: 1em auto 0;
+    width: 75%;
+}
+
+.bpink
+{
+background: #b80941 !important;
+color: white !important;
+
+}
+.pink_u
+{
+color: #b80941 !important;
+text-decoration: underline;
+}
+.modal
+{
+overflow: hidden !important;
+}
+#t2,#t3
+{
+margin-top: 100px;
+}
+.know
+{
+
+margin-left: 50px;
+margin-top: 15px;
+margin-right: 14px;
+}
+.tskip
+{
+font-size: 17px;
+line-height: 4.3;
+}
+.cancel1
+{
+color: #b80941 !important;
+font-size: 16px !important;
+line-height: 4.3;
+text-decoration: underline;
+font-weight: normal;
+}
+.t1_modal
+{
+background: url(../img/t1.png);
+background-size: 100% 100%;
+height: 222px;
+background-color: none !important;
+width: 316px;
+
+}
+
+
+.t2_modal
+{
+background: url(../img/t2.png);
+background-size: 100% 100%;
+height: 157px;
+background-color: none !important;
+width: 316px;
+
+}
+
+#t5 .modal-dialog
+{
+
+float: right;
+}
+.t3_modal
+{
+background: url(../img/t3.png);
+background-size: 100% 100%;
+height: 155px;
+background-color: none !important;
+width: 313px;
+
+}
+
+.t4_modal
+{
+background: url(../img/t4.png);
+background-size: 100% 100%;
+height: 228px;
+background-color: none !important;
+width: 313px;
+
+}
+
+
+.t5_modal
+{
+background: url(../img/t5.png);
+background-size: 100% 100%;
+height: 168px;
+background-color: none !important;
+width: 317px;
+
+}
+
+
+.t6_modal
+{
+background: url(../img/t6.png);
+background-size: 100% 100%;
+height: 246px;
+background-color: none !important;
+width: 318px;
+
+}
+.points
+{
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: solid 2px #9d9fa2;
+min-width: 70px;
+text-align: right;
+margin-top: 5px;
+color: #b80941;
+padding-right: 4px;
+
+}
+
+.ui-page { -webkit-backface-visibility: hidden; }
+.pink
+{
+color: rgb(184, 9, 65) !important;
+}
+
+.more p
+	{
+	font-size: 18px !important;
+	color: #9e9fa3 !important;font-style: italic
+	
+	}
+		@font-face {
+    font-family: 'futura';
+    src: url('futura.ttf');
+	}
+ h1
+	{
+	font-family: futura ;
+	}
+	.marg
+	{
+	margin-bottom: 20px !important;
+	margin-top: 20px !important;
+	}
+	
+	.foot *. .foot2 *
+	{
+	color: #ededed;
+	font-size: 18px !important;
+	}
+	.foot a,.foot2 a
+	{
+	padding: 10px;
+top: 4px;
+position: relative;
+	}
+	
+	.fixed_foot
+	{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	}
+ .foot
+	{
+	
+	background: url(../img/footer.png) !important;
+	background-size: 100% 100%  !important;
+	height: 30px !important;
+	}
+	
+	.foot2
+	{
+	
+	background: url(../img/footer2.png) !important;
+	background-size: 100% 100%  !important;
+	height: 30px !important;
+	}
+	
+	.like_modal
+	{
+	font-weight: bold;
+	padding-top: 20px;
+	background: url(../img/like_modal.png);
+	background-size: 100% 100%;
+	height: 367px;
+background-color: none !important;
+width: 349px;
+	}
+
+		
+		.tags
+		{
+		margin-top: 168px;
+border: solid 2px #898989;
+width: 220px;
+margin-left: 20px
+		}
