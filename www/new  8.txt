@@ -37,13 +37,10 @@
 
 
 		<div  id="first" class="row text-center first ui-btn  ui-corner-all bnone ">
-		<img class="img-responsive" src="img/Arena_Logo.png" style="margin: auto" />
+		<img class="img-responsive" src="img/Discover_Logo.png" style="margin: auto" />
+		<center>arena logo :)</center>
 		</div>
-		<div class="row">
-		<p class="text-center"><a href="gender.html" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/login.png" /></a></p>
-		
-		</div>
-		
+		<p class="text-center"><a href="gender.html" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/begin.png" /></a></p>
 		<!--<p><a href="#popup" role="button" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
 	</div><!-- /content -->
 
@@ -53,44 +50,9 @@
        
         <script type="text/javascript" src="phonegap.js"></script>
 		        <script type="text/javascript" src="js/jquery.js"></script>
-						        <script type="text/javascript" src="js/face.js"></script>
-
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
- <script type="text/javascript">
- $(function()
- {
-   //Config Plugin
-    var config = {
-        app_id      : '493708454047333',
-        secret      : '3595cbac64cd4951ec2a60a2a406d7e5',
-        scope       : 'publish_stream,email',
-        host        : 'http://matchdrobe.com/', //App Domain ( Facebook Developer ).
-        onLogin     : _onLogin,
-        onLogout    : _onLogout
-    };
-    
-    //Login Facebook
-    $(document).FaceGap(config);
-    //Logout Facebook
-    //$(document).FaceGap('logout');
-    
-    //Callback Login
-    function _onLogin( event ){     
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('data > '+event.data); //Object response (id, name, email, etc);
-        alert('token > '+event.token); // token user login
-        alert('message > '+event.message);  
-    }
-    
-    //Callback Logout
-    function _onLogout( event ){
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('message > '+event.message);
-    }   
- 
- });
- </script>
+
       <!--  <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
