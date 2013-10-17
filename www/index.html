@@ -83,6 +83,11 @@
         alert('message > '+event.message);  
     }
     
+	 window.plugins.childBrowser.onLocationChange = function(locationLink){
+    if (locationLink.indexOf('matchdrobe.com') > 0) {
+                window.plugins.childBrowser.close();
+              }
+      }
     //Callback Logout
     function _onLogout( event ){
         alert('status > '+event.status); // 1 - success, 0 - error
