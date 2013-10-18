@@ -40,7 +40,7 @@
 		<img class="img-responsive" src="img/Arena_Logo.png" style="margin: auto" />
 		</div>
 		<div class="row">
-		<p class="text-center"><a href="gender.html" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/login.png" /></a></p>
+		<p class="text-center"><a href="gender.html" id="login" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/login.png" /></a></p>
 		
 		</div>
 		
@@ -57,57 +57,67 @@
 
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
-		<script>
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {  
-    
-    //Config Plugin
-    var config = {
-   secret      : '3595cbac64cd4951ec2a60a2a406d7e5',
-        scope       : 'publish_stream,email',
-        scope       : 'publish_stream,email',
-        host        : 'http://matchdrobe.com', //App Domain ( Facebook Developer ).
-        onLogin     : _onLogin,
-        onLogout    : _onLogout
-    };
-    
-    //Login Facebook
-    $(document).FaceGap(config);
-    //Logout Facebook
-    //$(document).FaceGap('logout');
-    
-    //Callback Login
-    function _onLogin( event ){     
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('data > '+event.data); //Object response (id, name, email, etc);
-        alert('token > '+event.token); // token user login
-        alert('message > '+event.message);  
-    }
-    
-    //Callback Logout
-    function _onLogout( event ){
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('message > '+event.message);
-    }   
-}
+		<script>// Settings
+FacebookInAppBrowser.settings.appId = '493708454047333';
+FacebookInAppBrowser.settings.redirectUrl = 'http://matchdrobe.com';
+FacebookInAppBrowser.settings.permissions = 'email';
 
-  //Function callback response
-    function _callback( event ){
-        alert('_callback status > '+event.status);
-        alert('_callback data > '+event.data);
-        alert('_callback message > '+event.message);
-    }
-    
-    //Config Object FB API
-    var _fb = {
-        path    :   '/me/friends',
-        method  :   'GET',
-        params  :   { limit : 5 },
-        cb  :   _callback //Function callback response
+// Login(accessToken will be stored trough localStorage in 'accessToken');
+var loginSuccessCallback = function() {
+        alert('Login successful');
+        console.log(window.localStorage.getItem('accessToken'));
+    },
+    loginUnknowErrorCallback = function() {
+        alert('Do you want to try again?');
+    },
+    userIdCallback = function() {
+        // after the login is finished the getInfo() function is called in order to store the user id
+        // if you want to do something with the user id right after we have it, use this third callback
+        console.log(window.localStorage.getItem('uid'));
     };
-    
-    //Get FB API
-    $(document).FaceGap('fb_api', _fb); 
+
+FacebookInAppBrowser.login(loginSuccessCallback, loginUnknowErrorCallback, userIdCallback);
+
+// Invite friends
+FacebookInAppBrowser.invite('Get to know my app!', function(response) {
+    if(response) {
+        alert('success');
+    }
+});
+
+// Same logic of callbacks
+FacebookInAppBrowser.getInfo(function(response) {
+    if(response) {
+        var name = response.name,
+            id = response.id,
+            gender = response.gender;
+
+        // check the response object to see all available data like email, first name, last name, etc
+        console.log(response);
+    }
+});
+
+FacebookInAppBrowser.getPermissions(function(permissions) {
+    if(permissions) {
+        console.log(permissions.publish_actions, permissions);
+    }
+});
+
+// Logout
+FacebookInAppBrowser.logout(function() {
+    alert('bye');
+});
+
+$('#login').click(function() {
+alert();
+    FacebookInAppBrowser.login(loginSuccessCallback, loginUnknowErrorCallback, userIdCallback);
+});
+
+$('#bye').click(function() {
+    FacebookInAppBrowser.logout(callback);
+});
+
+
 </script>
  
       <!--  <script type="text/javascript" src="js/index.js"></script>

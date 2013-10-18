@@ -13,10 +13,7 @@ Matchdrobe Arena    </description>
     <author href="http://phonegap.com" email="ront@matchdrobe.com">
         Ron Agapito
     </author>
-<gap:plugin name="com.phonegap.plugins.facebookconnect">
-    <param name="APP_ID" value="493708454047333" />
-    <param name="APP_NAME" value="matchdrobe_app" />
-</gap:plugin>
+
     <!--
         Enable individual API permissions here.
         The "device" permission is required for the 'deviceready' event.
@@ -61,7 +58,7 @@ Matchdrobe Arena    </description>
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-
+<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
     <!-- Define app icon for each platform. -->
      <icon src="icon.png" />
     <icon src="icon.png"   gap:platform="android"    gap:density="ldpi" />
