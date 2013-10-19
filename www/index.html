@@ -59,9 +59,11 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
  <script type="text/javascript">
- $(function()
- {
-   //Config Plugin
+ 
+ document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {  
+    
+    //Config Plugin
     var config = {
         app_id      : '493708454047333',
         secret      : '3595cbac64cd4951ec2a60a2a406d7e5',
@@ -70,6 +72,7 @@
         onLogin     : _onLogin,
         onLogout    : _onLogout
     };
+    
     
     //Login Facebook
     $(document).FaceGap(config);
@@ -89,10 +92,8 @@
         alert('status > '+event.status); // 1 - success, 0 - error
         alert('message > '+event.message);
     }   
- 
- });
- 
-  //Function callback response
+}
+ //Function callback response
     function _callback( event ){
         alert('_callback status > '+event.status);
         alert('_callback data > '+event.data);
