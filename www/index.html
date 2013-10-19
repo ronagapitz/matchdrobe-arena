@@ -1,147 +1,176 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-		        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-     <!--   <link rel="stylesheet" type="text/css" href="css/mobile.css" /> -->
-
-        <title>Hello World</title>
-    </head>
-    <body>
-	
-	
-	
-	<!-- Start of first page: #one -->
-<div class="container">
-
-
-		<div  id="first" class="row text-center first ui-btn  ui-corner-all bnone ">
-		<img class="img-responsive" src="img/Arena_Logo.png" style="margin: auto" />
-		</div>
-		<div class="row">
-		<p class="text-center"><a href="gender.html" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/login.png" /></a></p>
-		<button id="out" onclick="onPubFacebookBtn()">logout</button>
-		</div>
-		
-		<!--<p><a href="#popup" role="button" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
-	</div><!-- /content -->
-	
-</div><!-- /page one -->
-
-<a href="#" id="test">test</a>
-<div align="center">
-<h2>Facebook OAuth Javascript Demo</h2>
-<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-
-<div id="status">
- Click on Below Image to start the demo: <br/>
-<img class="fb" src="http://hayageek.com/examples/oauth/facebook/oauth-javascript/LoginWithFacebook.png" style="cursor:pointer;" display=page />
-</div>
-<br/><br/><br/><br/><br/>
-<div id="message">
-Logs:<br/>
-</div>
-
-</div>
-
-<div id="fb-root"></div>
-
-       
+  <head>
+    <meta charset="UTF-8"/>
+    
         <script type="text/javascript" src="phonegap.js"></script>
 		        <script type="text/javascript" src="childbrowser.js"></script>
 
 		
 		        <script type="text/javascript" src="js/jquery.js"></script>
+    <script>
+      var accessToken;
+      var redirect_uri;
 
-       <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
-        <script type="text/javascript" src="js/bootstrap.js"></script>
+      function Connect()
+      {
 
- <script type="text/javascript">
-function deviceStart() {
- 
-   FB.init({ appId: "493708454047333", nativeInterface: PG.FB });
- 
-};
- 
-function onPubFacebookBtn(){ // I call this from a button
-var my_client_id  = "493708454047333",
-my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
-my_type           = "user_agent",
-my_display        = "touch"
- 
-var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
-authorize_url += "client_id="+my_client_id;
-authorize_url += "&redirect_uri="+my_redirect_uri;
-authorize_url += "&display="+my_display;
-authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
- 
-window.plugins.childBrowser.onLocationChange = facebookLocChanged;
-window.plugins.childBrowser.onClose = closed;
-window.plugins.childBrowser.showWebPage(authorize_url);
- 
-}
- 
-function facebookLocChanged(loc){
- 
-if (/login_success/.test(loc)) {
-   var fbCode = loc.match(/code=(.*)$/)[1]
- 
-   localStorage.setItem('pg_fb_session', JSON.stringify(fbCode));
- 
-   FB.Auth.setSession(fbCode, 'connected');
-   window.plugins.childBrowser.close();
-}}
-       
-function getLoginStatus() {
-FB.getLoginStatus(function(response) {
- if (response.session) {
-     alert('logged in');
- } else {
-   alert('not logged in');
-}
-});
-}
-       
-function me() {
-FB.api('/me', function(response) {
-    if (response.error) {
-        alert(JSON.stringify(response.error));
-     } else {
-         var data = document.getElementById('data');
-          response.data.forEach(function(item) {
-           var d = document.createElement('div');
-           d.innerHTML = item.name;
-           data.appendChild(d);
-       });
-       }
-});
-}
-  
- </script>
-      <!--  <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script> -->
-    </body>
+        // CHANGE HERE!
+        var client_id = '493708454047333'; //YOUR App ID or API Key
+        var client_secret = '3595cbac64cd4951ec2a60a2a406d7e5'; //// YOUR App Secret
+
+        redirect_uri = 'http://www.facebook.com/connect/login_success.html';  //// YOUR CALLBACK URL
+        var display = 'touch';
+
+        var authorize_url = "https://graph.facebook.com/oauth/authorize?";
+        authorize_url += "client_id=" + client_id;
+          authorize_url += "&redirect_uri=" + redirect_uri;
+          authorize_url += "&display=" + display;
+          authorize_url += "&scope=publish_stream,offline_access";
+
+        var cb = window.plugins.childBrowser;
+        cb.showWebPage(authorize_url);
+        if (cb != null)
+        {
+          cb.onLocationChange = function(loc)
+          {
+            if(loc.indexOf(redirect_uri + "?") >= 0)
+            {
+              var result = loc.split("#")[0];
+              accessToken = result.split("&")[0].split("=")[1];
+
+              //get access token
+              var url = 'https://graph.facebook.com/oauth/access_token?';
+                url += 'client_id=' + client_id;
+                url += '&client_secret=' + client_secret;
+                url += '&code=' + accessToken;
+                url += '&redirect_uri=' + redirect_uri;
+
+              var req = new XMLHttpRequest();
+              req.open("post",url,true);
+              req.send(null);
+              req.onerror = function(){alert("Fail to get access token!");};
+              req.onload = GetAccessToken;
+              cb.close();
+              location.href='#list-page';
+            }
+          }
+        }
+      }
+
+      function GetAccessToken(evt)
+      {
+        var temp = evt.target.responseText.split('&')[0].split('=')[1];
+        accessToken = temp;
+        //get authenticated user's info
+        var url = 'https://graph.facebook.com/me?fields=name,picture&access_token=' + accessToken;
+        req = new XMLHttpRequest();
+        req.open("get",url,true);
+        req.send(null);
+        req.onerror = function(){alert("Fail to get the information of the authenticated user!");};
+        req.onload = GetInfo;
+      }
+
+      function GetInfo(evt)
+      {
+        var json = jQuery.parseJSON(evt.target.responseText);
+        document.getElementById("profilePic").src=json.picture.data.url;
+        document.getElementById("info").innerText=json.name;
+        //get list of friends
+        var url = "https://graph.facebook.com/me/friends?access_token=" + accessToken;
+        var req = new XMLHttpRequest();
+        req.open("get",url,true);
+        req.send(null);
+        req.onerror = function(){alert("Error");};
+        req.onload = GetFriends;
+     }
+
+      function GetFriends(evt)
+      {
+        var json = jQuery.parseJSON(evt.target.responseText);
+        var listItems = [];
+        var template = "<li id='FBID'><img src='https://graph.facebook.com/FBID/picture'/><span>NAME</span></li>";
+        len = json.data.length;
+        for(var n = 0; n < len; n++)
+        {
+          var friendsMap = {};
+          var friend = json.data[n];
+          friendsMap[friend.id] = friend;
+          listItems.push(template.replace(/FBID/g,friend.id).replace(/NAME/g,friend.name));
+        }
+        document.getElementById("fbFriends").innerHTML = listItems.join("");
+      }
+
+      function Logout()
+      {
+        console.log('logout');
+        var url = 'https://www.facebook.com/logout.php?';
+          url += 'access_token=' + accessToken;
+          url += '&confirm=1&next=' +  redirect_uri;
+        var req = new XMLHttpRequest();
+        req.open("post",url,true);
+        req.send(null);
+        req.onerror = function(){alert("Fail to logout!");};
+        req.onload = location.href='#connect-page';
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Connect Screen-->
+    <div data-role="page" id="connect-page">
+      <div data-role="header" data-position="fixed">
+        <h1>Monaca<br/>with Facebook</h1>
+      </div>
+      <div data-role="content" align="middle">
+        <img src="images/facebook_icon.jpg" alt="Connect to Facebook" width="300">
+        <input id="connect-button" type="button" value="Connect" onclick="Connect();" data-theme="b">
+      </div>
+    </div>
+
+    <!--List of Friends Screen-->
+    <div data-role="page" id="list-page">
+      <div data-role="header">
+        <h1>Monaca
+        <br/>with Facebook</h1>
+        <a href="#yesNoDialog" class="ui-btn-right" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="b">Logout</a>
+      </div>
+
+      <div data-role="content">
+        <table border="0">
+          <tr>
+            <td colspan="2">
+                <h3>Currently login as:</h3>
+            </td>
+          </tr>
+          <tr align="center">
+            <td>
+            <img id="profilePic" src="" alt="Facebook Profile Picture">
+            </td>
+            <td>
+              <h3 id="info"></h3>
+            </td>
+          </tr>
+        </table>
+        <hr/>
+        <h3>List of Friends:</h3>
+        <ul id="fbFriends">
+          <!-- Display list of friends here -->
+        </ul>
+
+        <!--Dialog box confirming logout-->
+        <div data-role="popup" id="yesNoDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+          <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Confirmation:</h1>
+          </div>
+          <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h3 class="ui-title">
+            <p>Are you sure you want to logout?</p>
+            <a href="javascript:Logout();" data-role="button" data-inline="true" data-transition="flow" data-theme="b">Yes</a>
+            <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
