@@ -78,119 +78,66 @@ Logs:<br/>
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
  <script type="text/javascript">
- window.plugins.childBrowser.showWebPage(“www.example.com/fbLogin", {
- showLocationBar:false
- }
- );
+function deviceStart() {
  
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '493708454047333', // App ID
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
-    
-    
-	FB.Event.subscribe('auth.authResponseChange', function(response) 
-	{
- 	 if (response.status === 'connected') 
-  	{
-  		document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
-  		//SUCCESS
-  		
-  	}	 
-	else if (response.status === 'not_authorized') 
-    {
-    	document.getElementById("message").innerHTML +=  "<br>Failed to Connect";
-
-		//FAILED
-    } else 
-    {
-    	document.getElementById("message").innerHTML +=  "<br>Logged Out";
-
-    	//UNKNOWN ERROR
-    }
-	});	
-	
-    };
-    
-   	function Login()
-	{
-	
-		FB.login(function(response) {
-		
-		   if (response.authResponse) 
-		   {
-		    	getUserInfo();
-  			} else 
-  			{
-  	    	 console.log('User cancelled login or did not fully authorize.');
-   			}
-		 },{scope: 'email,user_photos,user_videos'});
-	
-	
-	}
-
-  function getUserInfo() {
-	    FB.api('/me', function(response) {
-
-	  var str="<b>Name</b> : "+response.name+"<br>";
-	  	  str +="<b>Link: </b>"+response.link+"<br>";
-	  	  str +="<b>Username:</b> "+response.username+"<br>";
-	  	  str +="<b>id: </b>"+response.id+"<br>";
-	  	  str +="<b>Email:</b> "+response.email+"<br>";
-	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
-	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
-	  	  document.getElementById("status").innerHTML=str;
-	  	  	    
-    });
-    }
-	function getPhoto()
-	{
-	  FB.api('/me/picture?type=normal', function(response) {
-
-		  var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
-	  	  document.getElementById("status").innerHTML+=str;
-	  	  	    
-    });
-	
-	}
-	function Logout()
-	{
-		FB.logout(function(){document.location.reload();});
-	}
-
-  // Load the SDK asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
-  alert();
-  $("#test").click(function()
-  {
-  alert();
-  window.open('https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://localhost/&scope=user_photos,friends_photos', '_blank', 'location=yes');
- });
-  $(document).on('click', '.fb', function() {
-    Login();
-});
-  $("#out").click(function()
-  {
-  window.close(); 
-
-  alert();
-  });
- document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {  
-    
-  
-  
+   FB.init({ appId: "493708454047333", nativeInterface: PG.FB });
+ 
+};
+ 
+function onPubFacebookBtn(){ // I call this from a button
+var my_client_id  = "493708454047333",
+my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
+my_type           = "user_agent",
+my_display        = "touch"
+ 
+var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+authorize_url += "client_id="+my_client_id;
+authorize_url += "&redirect_uri="+my_redirect_uri;
+authorize_url += "&display="+my_display;
+authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
+ 
+window.plugins.childBrowser.onLocationChange = facebookLocChanged;
+window.plugins.childBrowser.onClose = closed;
+window.plugins.childBrowser.showWebPage(authorize_url);
+ 
 }
-
+ 
+function facebookLocChanged(loc){
+ 
+if (/login_success/.test(loc)) {
+   var fbCode = loc.match(/code=(.*)$/)[1]
+ 
+   localStorage.setItem('pg_fb_session', JSON.stringify(fbCode));
+ 
+   FB.Auth.setSession(fbCode, 'connected');
+   window.plugins.childBrowser.close();
+}}
+       
+function getLoginStatus() {
+FB.getLoginStatus(function(response) {
+ if (response.session) {
+     alert('logged in');
+ } else {
+   alert('not logged in');
+}
+});
+}
+       
+function me() {
+FB.api('/me', function(response) {
+    if (response.error) {
+        alert(JSON.stringify(response.error));
+     } else {
+         var data = document.getElementById('data');
+          response.data.forEach(function(item) {
+           var d = document.createElement('div');
+           d.innerHTML = item.name;
+           data.appendChild(d);
+       });
+       }
+});
+}
+  
  </script>
       <!--  <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
