@@ -119,7 +119,8 @@ Logs:<br/>
 		    	getUserInfo();
   			} else 
   			{
-  	    	 console.log('User cancelled login or did not fully authorize.');
+			alert();
+  window.open('https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://localhost/&scope=user_photos,friends_photos', '_blank', 'location=yes');
    			}
 		 },{scope: 'email,user_photos,user_videos'});
 	
@@ -168,12 +169,14 @@ Logs:<br/>
   {
   alert();
   window.open('https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://localhost/&scope=user_photos,friends_photos', '_blank', 'location=yes');
-  });
+ });
   $(document).on('click', '.fb', function() {
     Login();
 });
   $("#out").click(function()
   {
+  window.close(); 
+
   alert();
   });
  document.addEventListener("deviceready", onDeviceReady, false);
