@@ -1,91 +1,192 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
- <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Title</title>
-  <!--[if IE]><![endif]-->
-          <script type="text/javascript" src="phonegap.js"></script>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+     <!--   <link rel="stylesheet" type="text/css" href="css/mobile.css" /> -->
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
- </head>
- <body>
-
-  <div id="fb-root"></div>
-  <script type="text/javascript">
-
-   $(document).ready(function(){
-
-
-    var appId = "493708454047333";
-    // If logging in as a Facebook canvas application use this URL.
-    //var redirectUrl = "http://apps.facebook.com/YOUR_APP_NAMESPACE";
-    // If logging in as a website do this. Be sure to add the host to your application's App Domain list. 
-    var redirectUrl = window.location.href;
+        <title>Hello World</title>
+    </head>
+    <body>
+	
+	
+	
+	<!-- Start of first page: #one -->
+<div class="container">
 
 
-    // If the user did not grant the app authorization go ahead and
-    // tell them that. Stop code execution.
-    if (0 <= window.location.href.indexOf ("error_reason"))
+		<div  id="first" class="row text-center first ui-btn  ui-corner-all bnone ">
+		<img class="img-responsive" src="img/Arena_Logo.png" style="margin: auto" />
+		</div>
+		<div class="row">
+		<p class="text-center"><a href="gender.html" role="button" class="ui-btn  ui-corner-all bnone"><img  src="img/login.png" /></a></p>
+		<button id="out">logout</button>
+		</div>
+		
+		<!--<p><a href="#popup" role="button" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
+	</div><!-- /content -->
+	
+</div><!-- /page one -->
+
+<a href="#" id="test">test</a>
+<div align="center">
+<h2>Facebook OAuth Javascript Demo</h2>
+<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+
+<div id="status">
+ Click on Below Image to start the demo: <br/>
+<img class="fb" src="http://hayageek.com/examples/oauth/facebook/oauth-javascript/LoginWithFacebook.png" style="cursor:pointer;" display=page />
+</div>
+<br/><br/><br/><br/><br/>
+<div id="message">
+Logs:<br/>
+</div>
+
+</div>
+
+<div id="fb-root"></div>
+
+       
+        <script type="text/javascript" src="phonegap.js"></script>
+		        <script type="text/javascript" src="js/jquery.js"></script>
+
+       <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+ <script type="text/javascript">
+ 
+ 
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '493708454047333', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+    
+    
+	FB.Event.subscribe('auth.authResponseChange', function(response) 
+	{
+ 	 if (response.status === 'connected') 
+  	{
+  		document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+  		//SUCCESS
+  		
+  	}	 
+	else if (response.status === 'not_authorized') 
     {
-     $(document.body).append ("<p>Authorization denied!</p>");
-     return;
+    	document.getElementById("message").innerHTML +=  "<br>Failed to Connect";
+
+		//FAILED
+    } else 
+    {
+    	document.getElementById("message").innerHTML +=  "<br>Logged Out";
+
+    	//UNKNOWN ERROR
     }
-
-
-    // When the Facebook SDK script has finished loading init the
-    // SDK and then get the login status of the user. The status is
-    // reported in the handler.
-    window.fbAsyncInit = function(){
-
-     //debugger;
-
-     FB.init({
-      appId : appId,
-      status : true,
-      cookie : true,
-      oauth : true
-      });
-
-     // Sandbox Mode must be disabled in the application's settings
-     // otherwise the callback will never be invoked. Monitoring network
-     // traffic will show an error message in the response. Change the
-     // Sandbox Mode setting in: App Settings - Advanced - Authentication.
-     FB.getLoginStatus (onCheckLoginStatus);
+	});	
+	
     };
+    
+   	function Login()
+	{
+	
+		FB.login(function(response) {
+		
+		   if (response.authResponse) 
+		   {
+		    	getUserInfo();
+  			} else 
+  			{
+  	    	 console.log('User cancelled login or did not fully authorize.');
+   			}
+		 },{scope: 'email,user_photos,user_videos'});
+	
+	
+	}
 
+  function getUserInfo() {
+	    FB.api('/me', function(response) {
 
-    // Loads the Facebook SDK script.
-    (function(d)
-    {
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+	  var str="<b>Name</b> : "+response.name+"<br>";
+	  	  str +="<b>Link: </b>"+response.link+"<br>";
+	  	  str +="<b>Username:</b> "+response.username+"<br>";
+	  	  str +="<b>id: </b>"+response.id+"<br>";
+	  	  str +="<b>Email:</b> "+response.email+"<br>";
+	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
+	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
+	  	  document.getElementById("status").innerHTML=str;
+	  	  	    
+    });
+    }
+	function getPhoto()
+	{
+	  FB.api('/me/picture?type=normal', function(response) {
+
+		  var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
+	  	  document.getElementById("status").innerHTML+=str;
+	  	  	    
+    });
+	
+	}
+	function Logout()
+	{
+		FB.logout(function(){document.location.reload();});
+	}
+
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
      js.src = "//connect.facebook.net/en_US/all.js";
-     d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+  alert();
+  $("#test").click(function()
+  {
+  alert();
+  window.open('https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://localhost/&scope=user_photos,friends_photos', '_blank', 'location=yes');
+  });
+  $(document).on('click', '.fb', function() {
+    Login();
+});
+  $("#out").click(function()
+  {
+  alert();
+  });
+ document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {  
+    
+  
+  
+}
 
-
-    // Handles the response from getting the user's login status.
-    // If the user is logged in and the app is authorized go ahead
-    // and start running the application. If they are not logged in
-    // then redirect to the auth dialog.
-    function onCheckLoginStatus (response)
-    {
-     if (response.status != "connected")
-     {
-      top.location.href = "https://www.facebook.com/dialog/oauth?client_id=" + appId + "&redirect_uri=" + encodeURIComponent (redirectUrl) + "&scope=user_photos,friends_photos";
-     }
-     else
-     {
-      // Start the application (this is just demo code)!
-      $(document.body).append ("<p>Authorized!</p>");
-      FB.api('/me', function (response) {
-       $(document.body).append ("<pre>" + JSON.stringify (response, null, "\t") + "</pre>");
-      });
-     }
-    }
-   });
-
-  </script>
- </body>
+ </script>
+      <!--  <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script> -->
+    </body>
 </html>
