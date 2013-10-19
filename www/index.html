@@ -1,148 +1,111 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8"/>
+    <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
 
-        <script type="text/javascript" src="phonegap.js"></script>
-		        <script type="text/javascript" src="childbrowser.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 
-		
-		        <script type="text/javascript" src="js/jquery.js"></script>
-				
-						        <script type="text/javascript" src="js/mobile.js"></script>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 
-    <script>
-	
-	 // Load the SDK asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
-    function deviceStart() {
+    <title>PhoneGap - ChildBrowser</title>
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
+    
+    	<script type="text/javascript">
+			// provide our own console if it does not exist, huge dev aid!
+			if(typeof window.console == "undefined")
+			{
+			window.console = {log:function(str){window.external.Notify(str);}};
+			}
+			
+			// output any errors to console log, created above.
+			window.onerror=function(e)
+			{
+				console.log("window.onerror ::" + JSON.stringify(e));
+			};
+			
+			console.log("Installed console ! ");
+	</script>
+    
+    
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>      
+    <script type="text/javascript" charset="utf-8" src="ChildBrowser.js"></script>    
+      
+<script type="text/javascript" charset="utf-8">
 
-   FB.init({ appId: "493708454047333", nativeInterface: PG.FB });
+  var childBrowser;
 
-};
-$(function()
-{
-deviceStart()
-});
+  function onDeviceReady(e)
+  {
+      childBrowser = ChildBrowser.install();
+
+  }
+
+  function openAppHub()
+  {
+      if(childBrowser != null)
+      {
+        childBrowser.onLocationChange = function(loc){locChanged(loc); };
+        childBrowser.onClose = function(){onCloseBrowser()};
+        childBrowser.onOpenExternal = function(){onOpenExternal();};
+        childBrowser.showWebPage("http://create.msdn.com");
+        
+      }
+  }
+
+  function onCloseBrowser()
+  {
+    console.log("onCloseBrowser");
+  }
+  
+  function locChanged(loc)
+  {
+    console.log("locChanged = " + loc);
+  }
+  
+  function onOpenExternal()
+  {
+    console.log("onOpenExternal In index.html onOpenExternal");
+  }
+
+  function loadFacebook()
+  {
+    var client_id = "91320880376";
+    var redir_url = "http://www.facebook.com/connect/login_success.html";
+
+    // var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+    // authorize_url += "client_id=" + client_id;
+    // authorize_url += "&redirect_uri=" + redir_url;
+    // authorize_url += "&display="+ "touch";
+    // authorize_url += "&type=user_agent";
+
+    // var test = "http://m.facebook.com/login.php?app_id=91320880376&cancel=http%3A%2F%2Fwww.facebook.com%2Fconnect%2Flogin_success.html%3Ferror_reason%3Duser_denied%26error%3Daccess_denied%26error_description%3DThe%2Buser%2Bdenied%2Byour%2Brequest.&fbconnect=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fpermissions.request%3F_path%3Dpermissions.request%26app_id%3D91320880376%26redirect_uri%3Dhttp%253A%252F%252Fwww.facebook.com%252Fconnect%252Flogin_success.html%26display%3Dtouch%26type%3Duser_agent%26fbconnect%3D1%26from_login%3D1&rcount=1&_rdr";
+
+    var test2 = "https://www.facebook.com/dialog/oauth?client_id=91320880376&redirect_uri=http://www.facebook.com/connect/login_success.html";
+
+  window.plugins.childBrowser.showWebPage(test2);
+  }
 
 
-function onPubFacebookBtn(){ // I call this from a button
-var my_client_id  = "493708454047333",
-my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
-my_type           = "user_agent",
-my_display        = "touch"
 
-var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
-authorize_url += "client_id="+my_client_id;
-authorize_url += "&redirect_uri="+my_redirect_uri;
-authorize_url += "&display="+my_display;
-authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
+  /**
+  * Function called when page has finished loading.
+  */
+  function init() 
+  {
+    document.addEventListener("deviceready",onDeviceReady, false);
+  }
 
-window.plugins.childBrowser.onLocationChange = facebookLocChanged;
-window.plugins.childBrowser.onClose = closed;
-window.plugins.childBrowser.showWebPage(authorize_url);
+</script>
 
-}
 
-function facebookLocChanged(loc){
-
-if (/login_success/.test(loc)) { 
-   var fbCode = loc.match(/code=(.*)$/)[1]
-
-   localStorage.setItem('pg_fb_session', JSON.stringify(fbCode));
-
-   FB.Auth.setSession(fbCode, 'connected');
-   window.plugins.childBrowser.close();
-}}
-	
-function getLoginStatus() {
-FB.getLoginStatus(function(response) {
- if (response.session) {
-     alert('logged in');
- } else {
-   alert('not logged in');
-}
-});
-}
-	
-function me() {
-FB.api('/me', function(response) {
-    if (response.error) {
-        alert(JSON.stringify(response.error));
-     } else {
-         var data = document.getElementById('data');
-          response.data.forEach(function(item) {
-           var d = document.createElement('div');
-           d.innerHTML = item.name;
-           data.appendChild(d);
-       });
-       }
-});
-}
-    </script>
   </head>
 
-  <body>
-    <!--Connect Screen-->
-    <div data-role="page" id="connect-page">
-      <div data-role="header" data-position="fixed">
-        <h1>Monaca<br/>with Facebook</h1>
-      </div>
-      <div data-role="content" align="middle">
-        <img src="images/facebook_icon.jpg" alt="Connect to Facebook" width="300">
-        <input id="connect-button" type="button" value="Connect" onclick="onPubFacebookBtn();" data-theme="b">
-      </div>
-    </div>
+  <body onLoad="init();" id="stage" class="theme">
 
-    <!--List of Friends Screen-->
-    <div data-role="page" id="list-page">
-      <div data-role="header">
-        <h1>Monaca
-        <br/>with Facebook</h1>
-        <a href="#yesNoDialog" class="ui-btn-right" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="b">Logout</a>
-      </div>
+    <div class="btn large" onclick="openAppHub();">Open AppHub</div>
 
-      <div data-role="content">
-        <table border="0">
-          <tr>
-            <td colspan="2">
-                <h3>Currently login as:</h3>
-            </td>
-          </tr>
-          <tr align="center">
-            <td>
-            <img id="profilePic" src="" alt="Facebook Profile Picture">
-            </td>
-            <td>
-              <h3 id="info"></h3>
-            </td>
-          </tr>
-        </table>
-        <hr/>
-        <h3>List of Friends:</h3>
-        <ul id="fbFriends">
-          <!-- Display list of friends here -->
-        </ul>
+    <div class="btn large" onclick="loadFacebook();">Open Facebook</div>
 
-        <!--Dialog box confirming logout-->
-        <div data-role="popup" id="yesNoDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
-          <div data-role="header" data-theme="a" class="ui-corner-top">
-            <h1>Confirmation:</h1>
-          </div>
-          <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-            <h3 class="ui-title">
-            <p>Are you sure you want to logout?</p>
-            <a href="javascript:Logout();" data-role="button" data-inline="true" data-transition="flow" data-theme="b">Yes</a>
-            <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">No</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a href="index.html" class="backBtn">Back</a>
   </body>
-</html>
+</html>      
