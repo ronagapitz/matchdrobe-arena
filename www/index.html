@@ -50,75 +50,130 @@
 	
 </div><!-- /page one -->
 
+
+<div align="center">
+<h2>Facebook OAuth Javascript Demo</h2>
+
+<div id="status">
+ Click on Below Image to start the demo: <br/>
+<img src="http://hayageek.com/examples/oauth/facebook/oauth-javascript/LoginWithFacebook.png" style="cursor:pointer;" onclick="Login()"/>
+</div>
+<br/><br/><br/><br/><br/>
+<div id="message">
+Logs:<br/>
+</div>
+
+</div>
+
+<div id="fb-root"></div>
+
        
         <script type="text/javascript" src="phonegap.js"></script>
 		        <script type="text/javascript" src="js/jquery.js"></script>
-						        <script type="text/javascript" src="js/face.js"></script>
 
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
  <script type="text/javascript">
  
+ 
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '493708454047333', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+    
+    
+	FB.Event.subscribe('auth.authResponseChange', function(response) 
+	{
+ 	 if (response.status === 'connected') 
+  	{
+  		document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+  		//SUCCESS
+  		
+  	}	 
+	else if (response.status === 'not_authorized') 
+    {
+    	document.getElementById("message").innerHTML +=  "<br>Failed to Connect";
+
+		//FAILED
+    } else 
+    {
+    	document.getElementById("message").innerHTML +=  "<br>Logged Out";
+
+    	//UNKNOWN ERROR
+    }
+	});	
+	
+    };
+    
+   	function Login()
+	{
+	
+		FB.login(function(response) {
+		   if (response.authResponse) 
+		   {
+		    	getUserInfo();
+  			} else 
+  			{
+  	    	 console.log('User cancelled login or did not fully authorize.');
+   			}
+		 },{scope: 'email,user_photos,user_videos'});
+	
+	
+	}
+
+  function getUserInfo() {
+	    FB.api('/me', function(response) {
+
+	  var str="<b>Name</b> : "+response.name+"<br>";
+	  	  str +="<b>Link: </b>"+response.link+"<br>";
+	  	  str +="<b>Username:</b> "+response.username+"<br>";
+	  	  str +="<b>id: </b>"+response.id+"<br>";
+	  	  str +="<b>Email:</b> "+response.email+"<br>";
+	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
+	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
+	  	  document.getElementById("status").innerHTML=str;
+	  	  	    
+    });
+    }
+	function getPhoto()
+	{
+	  FB.api('/me/picture?type=normal', function(response) {
+
+		  var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
+	  	  document.getElementById("status").innerHTML+=str;
+	  	  	    
+    });
+	
+	}
+	function Logout()
+	{
+		FB.logout(function(){document.location.reload();});
+	}
+
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+  alert();
+  $("#out").click(function()
+  {
+  alert();
+  });
  document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {  
     
-    //Config Plugin
-    var config = {
-        app_id      : '493708454047333',
-        secret      : '3595cbac64cd4951ec2a60a2a406d7e5',
-        scope       : 'publish_stream,email',
-        host        : 'http://www.facebook.com', //App Domain ( Facebook Developer ).
-        onLogin     : _onLogin,
-        onLogout    : _onLogout
-    };
-    
-    
-    //Login Facebook
-    $(document).FaceGap(config);
-    //Logout Facebook
   
-    //Callback Login
-    function _onLogin( event ){     
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('data > '+event.data); //Object response (id, name, email, etc);
-        alert('token > '+event.token); // token user login
-        alert('message > '+event.message);  
-    }
-    
-    //Callback Logout
-    function _onLogout( event ){
-        alert('status > '+event.status); // 1 - success, 0 - error
-        alert('message > '+event.message);
-    }   
+  
 }
- //Function callback response
-    function _callback( event ){
-        alert('_callback status > '+event.status);
-        alert('_callback data > '+event.data);
-        alert('_callback message > '+event.message);
-    }
-    
-    //Config Object FB API
-    var _fb = {
-        path    :   '/me/friends',
-        method  :   'GET',
-        params  :   { limit : 5 },
-        cb  :   _callback //Function callback response
-    };
-	
-	$(function()
-	{
-	 $("#out").click(function()
-   {
-       alert();
 
-   $(document).FaceGap('logout');
-	});
-	});
-    
-    //Get FB API
-    $(document).FaceGap('fb_api', _fb); 
  </script>
       <!--  <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
