@@ -69,13 +69,19 @@ Logs:<br/>
 
        
         <script type="text/javascript" src="phonegap.js"></script>
+		        <script type="text/javascript" src="childbrowser.js"></script>
+
+		
 		        <script type="text/javascript" src="js/jquery.js"></script>
 
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
  <script type="text/javascript">
- 
+ window.plugins.childBrowser.showWebPage(“www.example.com/fbLogin", {
+ showLocationBar:false
+ }
+ );
  
   window.fbAsyncInit = function() {
     FB.init({
@@ -119,8 +125,7 @@ Logs:<br/>
 		    	getUserInfo();
   			} else 
   			{
-			alert();
-  window.open('https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://localhost/&scope=user_photos,friends_photos', '_blank', 'location=yes');
+  	    	 console.log('User cancelled login or did not fully authorize.');
    			}
 		 },{scope: 'email,user_photos,user_videos'});
 	
