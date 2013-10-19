@@ -77,11 +77,7 @@ function onDeviceReady() {
     //Login Facebook
     $(document).FaceGap(config);
     //Logout Facebook
-   $("#out").click(function()
-   {
-   $(document).FaceGap('logout');
-    alert();
-	});
+  
     //Callback Login
     function _onLogin( event ){     
         alert('status > '+event.status); // 1 - success, 0 - error
@@ -110,6 +106,16 @@ function onDeviceReady() {
         params  :   { limit : 5 },
         cb  :   _callback //Function callback response
     };
+	
+	$(function()
+	{
+	 $("#out").click(function()
+   {
+       alert();
+
+   $(document).FaceGap('logout');
+	});
+	});
     
     //Get FB API
     $(document).FaceGap('fb_api', _fb); 
