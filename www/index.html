@@ -4,29 +4,172 @@
     <meta charset="UTF-8"/>
 
         <script type="text/javascript" src="phonegap.js"></script>
-		        <script type="text/javascript" src="childbrowser.js"></script>
 
 		
 		        <script type="text/javascript" src="js/jquery.js"></script>
 				
-						        <script type="text/javascript" src="js/mobile.js"></script>
 
     <script>
-$(function() { alert();
-       var my_client_id  = "493708454047333",
-my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
-my_type           = "user_agent",
-my_display        = "touch";
+$(function() { 
 
-    client_id={app-id}
-   &redirect_uri={redirect-uri}
-var authorize_url  = "https://www.facebook.com/dialog/oauth?";
-authorize_url += "client_id="+my_client_id;
-authorize_url += "&redirect_uri="+my_redirect_uri;
-authorize_url += "&display="+my_display;
-authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
-window.open("http://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://www.facebook.com/connect/login_success.html&display=touch&scope=publish_stream,user_photos,email,user_online_presence,offline_access",
-                                     '_self', 'location=yes');
+      authCode = null;
+        childWindow = null;
+
+        // setup our Facebook credentials, and callback URL to monitor
+        facebookOptions = {
+                clientId: '493708454047333',
+                clientSecret: '3595cbac64cd4951ec2a60a2a406d7e5',
+                redirectUri: 'http://www.facebook.com/connect/login_success.html'
+        };
+
+		startOAuth();
+		
+		function startOAuth() {
+        // open the authorzation url
+        var url = 'https://www.facebook.com/dialog/oauth?client_id=' + facebookOptions.clientId + '&redirect_uri=' + facebookOptions.redirectUri + '&scope=publish_stream,read_stream';
+        childWindow = window.open(url, '_blank');
+
+        // evaluate the url every second, when facebook redirects to our callback url, the following if statements gets fired
+        window.int = self.setInterval(function() {
+                var currentURL = childWindow.window.location.href;
+                var callbackURL = facebookOptions.redirectUri;
+                var inCallback = currentURL.indexOf(callbackURL);
+
+                // location has changed to our callback url, parse the oauth code
+                if(inCallback == 0) {
+				alert();
+
+                        // stop the interval from checking for url changes        
+                        window.clearInterval(int)
+
+                        // parse the oauth code
+                        var code = childWindow.window.location.search;
+                        code = code.split('code=');
+                        code = code[1];
+                        window.authCode = code;
+
+                        // close the childWindow
+                        childWindow.close();
+window.close();
+                        setTimeout(function() {
+                                getAccessToken();
+                        }, 2000);
+                }
+        }, 2000);
+}
+
+
+/**
+ *  echange the oauth code, from an access token
+ */
+function getAccessToken() {
+        toast('Fetching access token...');
+        var url = 'https://graph.facebook.com/oauth/access_token?client_id=' + facebookOptions.clientId + '&redirect_uri=' + facebookOptions.redirectUri + '&client_secret=' + facebookOptions.clientSecret + '&code=' + authCode;
+
+        $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data) {
+                        var response = data;
+
+                        // parse 'access_token' from the response
+                        var response = response.split('&');
+                        var theAccessToken = response[0].split('=');
+                        window.accessToken = theAccessToken[1];
+
+                        // get authenticated users' info/name
+                        getUserInfo();
+                },
+
+                error: function(data) {
+                        alert('Error getting access_token: ' + data.responseText);
+                        return false;
+                }
+        });
+}
+
+
+/**
+ *  get users info (we're grabbing their full name for this sample)
+ */
+function getUserInfo() {
+        var url = 'https://graph.facebook.com/me?access_token=' + accessToken;
+
+        $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                success: function(data) {
+                        bb.pushScreen('connected.html', 'connected');
+                        window.userName = data.name;
+                },
+
+                error: function(data) {
+                        alert('Error getting users info: ' + data.responseText);
+                        return false;
+                }
+        });
+}
+
+
+/**
+ *  get authenticated user's feed
+ */
+function getFeed() {
+
+        toast('Refreshing feed...');
+
+        $('#content p').remove();
+        var url = 'https://graph.facebook.com/me/feed?access_token=' + accessToken;
+
+        $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                success: function(data) {
+                        var feed = data.data;
+
+                        // show the last 10 items from the users news feed
+                        // note: there are several objects that could be posted in a news feed. for simplicity
+                        // we're only showing objects with a 'story' attribute
+                        for(var i = 0; $('#content p').size() < 10; i++) {
+                                if(typeof feed[i].message !== 'undefined') {
+                                        $('#content').append('<p>' + feed[i].message + '</p>');
+                                }
+                        }
+                },
+
+                error: function(data) {
+                        alert('Error loading news feed: ' + data.responseText);
+                        return false;
+                }
+        });
+}
+
+
+/**
+ *  post to authenticated user's feed
+ */
+function postToFeed() {
+        var randomNum = Math.round(Math.random() * 999 + 1);
+        var status = 'Test (' + randomNum + ') of the Facebook OAuth sample for BlackBerry 10 by @chadtatro! (http://twitter.com/chadtatro) http://bit.ly/106Blwv';
+        var url = 'https://graph.facebook.com/me/feed?message=' + status + '&access_token=' + accessToken;
+
+        $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: 'json',
+                success: function(data) {
+                        getFeed();
+                },
+
+                error: function(data) {
+                        alert('Error updating status: ' + data.responseText);
+                        return false;
+                }
+        });
+}
+
     });
    
 
