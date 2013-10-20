@@ -1,181 +1,105 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
   <head>
-        <!-- Change this if you want to allow scaling -->
-    <meta name="viewport" content="width=default-width; user-scalable=no" />
+    <meta charset="UTF-8"/>
 
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="phonegap.js"></script>
+		        <script type="text/javascript" src="childbrowser.js"></script>
 
-    <title>FBConnectBrowser</title>
-        
-        <!-- iPad/iPhone specific css below, add after your main css >
-        <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />                
-        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />                
-        -->
-        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <script type="text/javascript" charset="utf-8" src="ChildBrowser.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/face.js"></script>
-        <style>
-        
-* {
-        -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-        /*-webkit-text-size-adjust: none; *//* prevent webkit from resizing text to fit */
-        -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-        -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
-        
-        margin:0;
-        padding:0;
-} 
-                
-        body
-        {
-                background-color:#3B5998;
-                color:#FFF;
-                font-family: Helvetica, Verdana;
-                margin-bottom:20px;
-        }
-        
-        #loading
-        {
-                z-index:1;
-                width:100%;
-                top:200px;
-                position:absolute;
-                text-align:center;
-        }
-        
-        #gbWrap
-        {
-                overflow:hidden;
-                position:absolute;
-                top:60px;
-                bottom:0px;
-        }
-        
-        .view
-        {
-                width:320px;
-                float:left;
-                clear:none;
-                
-        }
-        
-        
-        #fbFriends li
-        {
-                list-style:none;
+		
+		        <script type="text/javascript" src="js/jquery.js"></script>
+				
+						        <script type="text/javascript" src="js/mobile.js"></script>
 
-                height:56px;
-                background:-webkit-gradient(
-                        linear,
-                        left top,
-                        left bottom,
-                        color-stop(0, rgba(0,0,0,0.1)),
-                        color-stop(1, rgba(128,128,128,0.1))
-                )
-        }
-        
-        #fbFriends li:active
-        {
-                background-color:rgba(255,255,255,0.5);        
-        }
-        
-        #fbFriends li img
-        {
-                margin:2px 12px;
-                min-height:48px;
-                min-width:48px;s
-        }
-        
-        #fbFriends li span
-        {
-                position:relative;
-                top:-12px;
-        }
-        
-        #details
-        {
-                position:absolute;
-                left:320px;
-                height:100%;
-        }
+    <script>
 
-                
-        </style>
-        
-    <script type="text/javascript" charset="utf-8">
+var app = {
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener(
+            'deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() { alert();
+       var my_client_id  = "493708454047333",
+my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
+my_type           = "user_agent",
+my_display        = "touch"
 
+var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+authorize_url += "client_id="+my_client_id;
+authorize_url += "&redirect_uri="+my_redirect_uri;
+authorize_url += "&display="+my_display;
+authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
+child = window.plugins.childBrowser;
+child.showWebPage(authorize_url, { showLocationBar: true }); 
 
-        // If you want to prevent dragging, uncomment this section
-        /*
-        function preventBehavior(e) 
-        { 
-      e.preventDefault(); 
-    };
-        document.addEventListener("touchmove", preventBehavior, false);
-        */
-        
-        var client_id = "493708454047333";
-        var redir_url = "http://www.facebook.com/connect/login_success.html";
-        var friendsMap = {};
-        
-        function onBodyLoad()
-        {
-                document.addEventListener("deviceready",onDeviceReady,false);                
-        }
+    },
+    takePicture: function() {
+        // ...
+    }
+};
+   
 
-        
-        /* When this function is called, PhoneGap has been initialized and is ready to roll */
-        function onDeviceReady()
-        {
-                // do your thing!
-                var fb = FBConnect.install();
-                fb.connect(client_id,redir_url,"touch");
-                fb.onConnect = onFBConnected;
-        }
-        
-        function onFBConnected()
-        {
-                document.getElementById("loading").innerHTML = "Connected! Getting your friends ...";
-                var req = window.plugins.fbConnect.getFriends();
-                req.onload = onGotFriends;
-        }
-        
-        function onGotFriends(evt)
-        {
-                document.getElementById("loading").style.visibility = "hidden";
-                 
-                var json = JSON.parse(evt.target.responseText);
-                
-                
-                var listItems = [];
-                var template = "<li id='FBID' onclick='showUser(\"FBID\")'><img src='https://graph.facebook.com/FBID/picture'/><span>NAME</span></li>";
-                for(var n = 0, len = json.data.length; n < len; n++)
-                {
-                        var friend = json.data[n];
-                        friendsMap[friend.id] = friend;
-                        listItems.push(template.replace(/FBID/g,friend.id).replace(/NAME/g,friend.name));
-                }
-                document.getElementById("fbFriends").innerHTML = listItems.join("");
-        }
-        
-        function showUser(id)
-        {
-                // TODO: Do something with user id ...
-                alert(friendsMap[id].name);
-        }
-        
-        
-    
     </script>
   </head>
-  <body onload="onBodyLoad()">
-        <h3 id="loading">Loading ...</h3>
 
+  <body>
+    <!--Connect Screen-->
+    <div data-role="page" id="connect-page">
+      <div data-role="header" data-position="fixed">
+        <h1>Monaca<br/>with Facebook</h1>
+      </div>
+      <div data-role="content" align="middle">
+        <img src="images/facebook_icon.jpg" alt="Connect to Facebook" width="300">
+        <input id="connect-button" type="button" value="Connect" onclick="onPubFacebookBtn();" data-theme="b">
+      </div>
+    </div>
+
+    <!--List of Friends Screen-->
+    <div data-role="page" id="list-page">
+      <div data-role="header">
+        <h1>Monaca
+        <br/>with Facebook</h1>
+        <a href="#yesNoDialog" class="ui-btn-right" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="b">Logout</a>
+      </div>
+
+      <div data-role="content">
+        <table border="0">
+          <tr>
+            <td colspan="2">
+                <h3>Currently login as:</h3>
+            </td>
+          </tr>
+          <tr align="center">
+            <td>
+            <img id="profilePic" src="" alt="Facebook Profile Picture">
+            </td>
+            <td>
+              <h3 id="info"></h3>
+            </td>
+          </tr>
+        </table>
+        <hr/>
+        <h3>List of Friends:</h3>
         <ul id="fbFriends">
-                <!-- Placeholder for later -->
+          <!-- Display list of friends here -->
         </ul>
 
-
+        <!--Dialog box confirming logout-->
+        <div data-role="popup" id="yesNoDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+          <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Confirmation:</h1>
+          </div>
+          <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h3 class="ui-title">
+            <p>Are you sure you want to logout?</p>
+            <a href="javascript:Logout();" data-role="button" data-inline="true" data-transition="flow" data-theme="b">Yes</a>
+            <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
