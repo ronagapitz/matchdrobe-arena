@@ -1,385 +1,157 @@
-var DEBUG_MODE = false;
+// This sample is using jso.js from https://github.com/andreassolberg/jso
 
-var selectedMealIndex = -1;
-var selectedPlaceIndex = -1;
-var selectedPlaceID = null;
-var nearbyPlaces = null;
-var myFriends = null;
-var currentlySelectedPlaceElement = null;
-var selectedFriends = {};
+var deviceready = function() {
 
-// DATA
-
-var meals = [
-	{
-		"id" : "cheeseburger",
-		"title" : "Cheeseburger",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/cheeseburger.html"
-	},
-	{
-		"id" : "chinese",
-		"title" : "Chinese",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/chinese.html"
-	},
-	{
-		"id" : "french",
-		"title" : "French",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/french.html"
-	},
-	{
-		"id" : "hotdog",
-		"title" : "Hot Dog",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/hotdog.html"
-	},
-	{
-		"id" : "indian",
-		"title" : "Indian",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/indian.html"
-	},
-	{
-		"id" : "italian",
-		"title" : "Italian",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/italian.html"
-	},
-	{
-		"id" : "pizza",
-		"title" : "Pizza",
-		"url" : "http://whispering-ravine-4547.herokuapp.com/pizza.html"
-	},
-];
-
-// DOCUMENT-READY FUNCTIONS
-$(function () {
-
-          // Click handlers
-
-          // Logout click handler
-          $("#logout").click(function() {
-            FB.logout(
-              function (response) {
-                window.location.reload();
-              }
-              );
-            return false;
-          });
-
-          // Announce click handler
-          $("#announce").click(function() {
-            publishOGAction(null);
-          });
-
-          // Meal selection click handler
-          $('#meal-list').on('click', 'li', function() {
-            selectedMealIndex = $(this).index();
-            console.log("Link in meal listview clicked... " + selectedMealIndex);
-            displaySelectedMeal();
-          });
-
-          $('#detail-meal-select').click(function() {
-            //console.log("Meal selected");
-            $('#announce').removeClass('ui-disabled');
-            $('#select-meal').html(meals[selectedMealIndex].title);
-          });
-
-          // Place selection click handler
-          $('#places-list').on('click', 'li', function() {
-            var selectionId = $(this).attr('data-name');
-            console.log("Selected place " + selectionId);
-
-            var selectionStatus = $(this).attr('data-icon');
-            if (selectionStatus == "false") {
-              // De-select any previously selected place
-              if (currentlySelectedPlaceElement) {
-                currentlySelectedPlaceElement.buttonMarkup({ icon: false });
-              }
-              // Place has been selected.
-              $(this).buttonMarkup({ icon: "check" });            
-              // Set the selected place info
-              selectedPlaceID = selectionId;
-              selectedPlaceIndex = $(this).index();
-              $('#select-location').html(nearbyPlaces[selectedPlaceIndex].name);
-              // Set the currently selected place element
-              currentlySelectedPlaceElement = $(this);
-            } else {
-              // Previously selected place has been deselected
-              $(this).buttonMarkup({ icon: false });
-              // Reset the selected place info
-              selectedPlaceID = null;
-              selectedPlaceIndex = -1;
-              $('#select-location').html("Select one");
-            } 
-          });
-
-          // Friend selection click handler
-          $('#friends-list').on('click', 'li', function() {
-            var selectionId = $(this).attr('data-name');
-            console.log("Selected friend " + selectionId);
-            var selectedIndex = $(this).index();
-            var selectionStatus = $(this).attr('data-icon');
-            if (selectionStatus == "false") {
-              // Friend has been selected.
-              $(this).buttonMarkup({ icon: "check" });
-              // Add to friend ID to selectedFriends associative array
-              selectedFriends[selectionId] = myFriends[selectedIndex].name;
-            } else {
-              // Previously selected friend has been deselected
-              $(this).buttonMarkup({ icon: false });
-              // Remove the friend id
-              delete selectedFriends[selectionId];
-            } 
-            var friendNameArray = [];
-            for (var friendId in selectedFriends) {
-              if (selectedFriends.hasOwnProperty(friendId)) {
-                friendNameArray.push(selectedFriends[friendId]);
-              }
-            }
-
-            if (friendNameArray.length > 2) {
-              var otherFriends = friendNameArray.length - 1;
-              $('#select-friends').html(friendNameArray[0] + " and " + otherFriends + " others");
-            } else if (friendNameArray.length == 2) {
-              $('#select-friends').html(friendNameArray[0] + " and " + friendNameArray[1]);
-            } else if (friendNameArray.length == 1) {
-              $('#select-friends').html(friendNameArray[0]);
-            } else {
-              $('#select-friends').html("Select friends");
-            }
-            
-            console.log("Current select friends list: " + selectedFriends);
-          });
-
-  });
+    var debug = true,
+        cmdLogin = document.getElementById("cmdLogin"),
+        cmdWipe = document.getElementById("cmdWipe"),
+        cmdPost = document.getElementById("cmdPost"),
+     cmdGetFeed = document.getElementById("cmdGetFeed"),
+        cmdDelete = document.getElementById("cmdDelete"),
+        cmdClearLog = document.getElementById("cmdClearLog"),
+        inAppBrowserRef;
     
-$( document ).delegate("#meals", "pageinit", function() {
-  displayMealList();
-});
-
-$('body').bind('hideOpenMenus', function(){
-    $("ul:jqmData(role='menu')").find('li > ul').hide();
-}); 
-var menuHandler = function(e) {
-    $('body').trigger('hideOpenMenus');
-    $(this).find('li > ul').show();
-    e.stopPropagation();
-};
-$("ul:jqmData(role='menu') li > ul li").click(function(e) {
-   $('body').trigger('hideOpenMenus');
-e.stopPropagation();
-});
-$('body').delegate("ul:jqmData(role='menu')",'click',menuHandler);
-$('body').click(function(e){
-   $('body').trigger('hideOpenMenus');
-});
-
-// AUTHENTICATION
-
-// Handle status changes
-function handleStatusChange(response) {
-  if (response.authResponse) {
-    console.log(response);
-    window.location.hash = '#menu';
-    updateUserInfo(response);
-  } else {
-    console.log(response);
-    window.location.hash = '#login';
-  }
-}
-
-function promptLogin() {
-  FB.login(null, {scope: 'email'});
-}
-
-function updateUserInfo(response) {
-  FB.api('/me', 
-    {fields:"name,first_name,picture"},
-    function(response) {
-      console.log(response);
-      var output = '';
-      output += '<img src="' + response.picture.data.url + '" width="25" height="25"></img>';
-      output += ' ' + response.first_name;
-      $('#user-identity').html(output);
-  });
-}
-
-
-// GRAPH API (OPEN GRAPH)
-function handleOGSuccess() {
-	console.log("[handleOGSuccess] done.");
-  showPublishConfirmation();
-
-  // Clear out selections
-  selectedMealIndex = -1;
-  selectedPlaceIndex = -1;
-  selectedPlaceID = null;
-  currentlySelectedPlaceElement = null;
-  selectedFriends = {};
-  // Reset the placeholders
-  $('#select-meal').html("Select one");
-  $('#select-location').html("Select one");
-  $('#select-friends').html("Select friends");
-  // Disable the announce button
-  $('#announce').addClass('ui-disabled');
-
-}
-
-function handleGenericError(e) {
-	console.log("Error ..."+JSON.stringify(e));
-}
-
-function handlePublishOGError(e) {
-	console.log("Error publishing ..."+JSON.stringify(e));
-	var errorCode = e.code;
-	console.log("Error code ..."+errorCode);
-	if (errorCode == "200") {
-		// Request publish actions, probably missing piece here
-		reauthorizeForPublishPermissions();
-	}
-}
-
-function reauthorizeForPublishPermissions() {
-	console.log("[reauthorizeForPublishPermissions] asking for additional permissions.");
-	// If successful, try publishing action again
-	// else, just show error
-	FB.login(
-		function (response) {
-			if (!response || response.error) {
-				handleGenericError(response.error);
-			} else {
-				publishOGAction(response);
-			}
-		}, {scope:'publish_actions'}
-	);
-}
-
-function publishOGAction(response) {
-	var errorHandler = null;
-	// Handle if we came in via a reauth.
-	// Also avoid loops, set generic error
-	// handler if already reauthed.
-	if (!response || response.error) {
-		errorHandler = handlePublishOGError;
-	} else {
-		errorHandler = handleGenericError;
-	}
-	console.log("Publishing action...");
-	var params = {
-		"meal" : meals[selectedMealIndex].url
-	};
-	if (selectedPlaceID) {
-		params.place = selectedPlaceID;
-	}
-	var friendIDArrays = [];
-	for (var friendId in selectedFriends) {
-		if (selectedFriends.hasOwnProperty(friendId)) {
-			friendIDArrays.push(friendId);
-		}
-	}
-	if (friendIDArrays.length > 0) {
-		params.tags = friendIDArrays.join();
-	}
-	console.log("Publish params " + JSON.stringify(params));
-	FB.api("/me/cordova:eat",
-    	"POST",
-    	params,
-    	function (response) {
-    		console.log(response);
-    		if (!response || response.error) {
-    			errorHandler(response.error);
-    		} else {
-    			handleOGSuccess(response);
-    		}
-    	}
-	);
-}
-
-function showPublishConfirmation() {
-  $("#confirmation").append("<p>Publish successful</p>");
-  // Fade out the message
-  $("#confirmation").fadeOut(3000, function() {
-    $("#confirmation").html("");
-    $("#confirmation").show();
-  });
-}
-
-// DATA FETCH AND DISPLAY
-
-// Meals
-function displayMealList() {
-  // Meal list
-  console.log("[displayMealList] displaying meal list.");
-	var tmpl = $("#meal_list_tmpl").html();
-	var output = Mustache.to_html(tmpl, meals);
-	$("#meal-list").html(output).listview('refresh');
-}
-
-function displaySelectedMeal() {
-  console.log("[displaySelectedMeal] displaying selected meal.");
-  var meal = meals[selectedMealIndex];
-  // Set up meal display
-	var tmpl = $("#selected_meal_tmpl").html();
-	var output = Mustache.to_html(tmpl, meal);
-	$("#selected_meal").html(output);
-}
-
-// Nearby Places
-function getNearby() {
-  // Check for and use cached data
-  if (nearbyPlaces)
-    return;
-
-  console.log("[getNearby] get nearby data.");
-
-  // First use browser's geolocation API to obtain location
-  navigator.geolocation.getCurrentPosition(function(location) {
-    //curLocation = location;
-    console.log(location);
-
-    // Use graph API to search nearby places
-    var path = '/search?type=place&q=restaurant&center=' + location.coords.latitude + ',' + location.coords.longitude + '&distance=1000&fields=id,name,picture';
-    
-    FB.api(path, function(response) {
-    	if (!response || response.error) {
-    		console.log("Error fetching nearby place data.");
-    	} else {
-    		nearbyPlaces = response.data;
-    		console.log(nearbyPlaces);
-    		displayPlaces(nearbyPlaces);
-    	}
+    jso_registerRedirectHandler(function(url) {
+        inAppBrowserRef = window.open(url, "_blank");
+        inAppBrowserRef.addEventListener('loadstop', function(e){LocationChange(e.url)}, false);
     });
-  });
+
+    /*
+* Register a handler that detects redirects and
+* lets JSO to detect incomming OAuth responses and deal with the content.
+*/
+    
+    function LocationChange(url){
+        outputlog("in location change");
+        url = decodeURIComponent(url);
+        outputlog("Checking location: " + url);
+
+        jso_checkfortoken('facebook', url, function() {
+            outputlog("Closing InAppBrowser, because a valid response was detected.");
+            inAppBrowserRef.close();
+        });
+    };
+
+    /*
+* Configure the OAuth providers to use.
+*/
+    jso_configure({
+        "facebook": {
+            client_id: "537761576263898",
+            redirect_uri: "http://www.facebook.com/connect/login_success.html",
+            authorization: "https://www.facebook.com/dialog/oauth",
+            presenttoken: "qs"
+        }
+    }, {"debug": debug});
+    
+    // jso_dump displays a list of cached tokens using outputlog if debugging is enabled.
+    jso_dump();
+    
+    cmdClearLog.addEventListener("click", function() {
+        outputclear();
+    });
+    
+    cmdDelete.addEventListener("click", function() {
+outputlog("delete permissions");
+       
+        $.oajax({
+            type: "DELETE",
+            url: "https://graph.facebook.com/me/permissions",
+            jso_provider: "facebook",
+            jso_allowia: true,
+            dataType: 'json',
+            success: function(data) {
+                outputlog("Delete response (facebook):");
+                outputlog(data);
+            },
+            error: function(e) {
+                outputlog(e);
+            }
+        });
+
+        outputlog("wipe tokens");
+       jso_wipe();
+    });
+    
+    cmdLogin.addEventListener("click", function() {
+        // For debugging purposes you can wipe existing cached tokens...
+        jso_ensureTokens({
+                "facebook": ["read_stream", "publish_stream"]
+            });
+    });
+    
+    cmdWipe.addEventListener("click", function() {
+        // For debugging purposes you can wipe existing cached tokens...
+        
+        outputlog("wipe tokens");
+        jso_wipe();
+    });
+    
+    cmdGetFeed.addEventListener("click", function() {
+        outputlog("Loading home feed...");
+        // Perform the protected OAuth calls.
+        $.oajax({
+            url: "https://graph.facebook.com/me/home",
+            jso_provider: "facebook",
+            jso_scopes: ["read_stream", "publish_stream"],
+            jso_allowia: true,
+            dataType: 'json',
+            success: function(data) {
+                var i, l, item;
+                outputlog("Response (facebook):");
+                //outputlog(data.data);
+                try {
+                    for ( i = 0, l = data.data.length; i < l; i++) {
+                        item = data.data[i];
+                        outputlog("\n");
+                        outputlog(item.story || [item.from.name,":\n", item.message].join("") );
+                    }
+                }
+                catch (e) {
+                    outputlog(e);
+                }
+            }
+        });
+    });
+
+    cmdPost.addEventListener("click", function() {
+        outputlog("Post to wall...");
+        // Perform the protected OAuth calls.
+        $.oajax({
+            type: "POST",
+            url: "https://graph.facebook.com/me/feed",
+            jso_provider: "facebook",
+            jso_scopes: ["read_stream", "publish_stream"],
+            jso_allowia: true,
+            dataType: 'json',
+            data: {
+                message: "WOW with my Icenium mobile application I can post to my Facebook wall!",
+                link: "http://icenium.com/?utm_source=facebook&utm_medium=post&utm_campaign=sampleapp",
+                picture: "http://www.icenium.com/iceniumImages/features-main-images/how-it-works.png"
+            },
+            success: function(data) {
+                outputlog("Post response (facebook):");
+                outputlog(data);
+            },
+            error: function(e) {
+                outputlog(e);
+            }
+        });
+    });
+};
+
+function  outputlog(m) {
+    var resultsField = document.getElementById("result");
+    resultsField.innerText += typeof m === 'string' ? m : JSON.stringify(m);
+    resultsField.innerText += '\n';
 }
 
-function displayPlaces(places) {
-  // Places list
-  console.log("[displayPlaces] displaying nearby list.");
-	var tmpl = $("#places_list_tmpl").html();
-	var output = Mustache.to_html(tmpl, places);
-	$("#places-list").html(output).listview('refresh');
+function outputclear(){
+    var resultsField = document.getElementById("result");
+    resultsField.innerText = "";
 }
 
-// Friends
-function getFriends() {
-  // Check for and use cached data
-  if (myFriends)
-    return;
+document.addEventListener('deviceready', this.deviceready, false);
 
-  console.log("[getFriends] get friend data.");
-  // Use the Graph API to get friends
-  FB.api('/me/friends', { fields: 'name, picture', limit: '50' }, function(response) {
-  	if (!response || response.error) {
-  		console.log("Error fetching friend data.");
-  	} else {
-  		myFriends = response.data;
-  		console.log(myFriends);
-  		displayFriends(myFriends);
-  	}
-  });
-}
-
-function displayFriends(friends) {
-  // Friends list
-  console.log("[displayFriends] displaying friend list.");
-	var tmpl = $("#friends_list_tmpl").html();
-	var output = Mustache.to_html(tmpl, friends);
-	$("#friends-list").html(output).listview('refresh');
-}
+//Activate :active state
+document.addEventListener("touchstart", function() {}, false);

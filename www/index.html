@@ -1,236 +1,37 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8"/>
-
-        <script type="text/javascript" src="phonegap.js"></script>
-
-		
-		        <script type="text/javascript" src="js/jquery.js"></script>
-				
-
-    <script>
-$(function() { 
-
-      authCode = null;
-        childWindow = null;
-
-        // setup our Facebook credentials, and callback URL to monitor
-        facebookOptions = {
-                clientId: '493708454047333',
-                clientSecret: '3595cbac64cd4951ec2a60a2a406d7e5',
-                redirectUri: 'http://www.facebook.com/connect/login_success.html'
-        };
-
-		startOAuth();
-		
-		function startOAuth() {
-        // open the authorzation url
-        var url = 'https://www.facebook.com/dialog/oauth?client_id=' + facebookOptions.clientId + '&redirect_uri=' + facebookOptions.redirectUri + '&scope=publish_stream,read_stream';
-        childWindow = window.open(url, '_blank');
-
-        // evaluate the url every second, when facebook redirects to our callback url, the following if statements gets fired
-        window.int = self.setInterval(function() {
-                var currentURL = childWindow.window.location.href;
-                var callbackURL = facebookOptions.redirectUri;
-                var inCallback = currentURL.indexOf(callbackURL);
-
-                // location has changed to our callback url, parse the oauth code
-                if(inCallback == 0) {
-				alert();
-
-                        // stop the interval from checking for url changes        
-                        window.clearInterval(int)
-
-                        // parse the oauth code
-                        var code = childWindow.window.location.search;
-                        code = code.split('code=');
-                        code = code[1];
-                        window.authCode = code;
-
-                        // close the childWindow
-                        childWindow.close();
-window.close();
-                        setTimeout(function() {
-                                getAccessToken();
-                        }, 2000);
-                }
-        }, 2000);
-}
-
-
-/**
- *  echange the oauth code, from an access token
- */
-function getAccessToken() {
-        toast('Fetching access token...');
-        var url = 'https://graph.facebook.com/oauth/access_token?client_id=' + facebookOptions.clientId + '&redirect_uri=' + facebookOptions.redirectUri + '&client_secret=' + facebookOptions.clientSecret + '&code=' + authCode;
-
-        $.ajax({
-                type: 'GET',
-                url: url,
-                success: function(data) {
-                        var response = data;
-
-                        // parse 'access_token' from the response
-                        var response = response.split('&');
-                        var theAccessToken = response[0].split('=');
-                        window.accessToken = theAccessToken[1];
-
-                        // get authenticated users' info/name
-                        getUserInfo();
-                },
-
-                error: function(data) {
-                        alert('Error getting access_token: ' + data.responseText);
-                        return false;
-                }
-        });
-}
-
-
-/**
- *  get users info (we're grabbing their full name for this sample)
- */
-function getUserInfo() {
-        var url = 'https://graph.facebook.com/me?access_token=' + accessToken;
-
-        $.ajax({
-                type: 'GET',
-                url: url,
-                dataType: 'json',
-                success: function(data) {
-                        bb.pushScreen('connected.html', 'connected');
-                        window.userName = data.name;
-                },
-
-                error: function(data) {
-                        alert('Error getting users info: ' + data.responseText);
-                        return false;
-                }
-        });
-}
-
-
-/**
- *  get authenticated user's feed
- */
-function getFeed() {
-
-        toast('Refreshing feed...');
-
-        $('#content p').remove();
-        var url = 'https://graph.facebook.com/me/feed?access_token=' + accessToken;
-
-        $.ajax({
-                type: 'GET',
-                url: url,
-                dataType: 'json',
-                success: function(data) {
-                        var feed = data.data;
-
-                        // show the last 10 items from the users news feed
-                        // note: there are several objects that could be posted in a news feed. for simplicity
-                        // we're only showing objects with a 'story' attribute
-                        for(var i = 0; $('#content p').size() < 10; i++) {
-                                if(typeof feed[i].message !== 'undefined') {
-                                        $('#content').append('<p>' + feed[i].message + '</p>');
-                                }
-                        }
-                },
-
-                error: function(data) {
-                        alert('Error loading news feed: ' + data.responseText);
-                        return false;
-                }
-        });
-}
-
-
-/**
- *  post to authenticated user's feed
- */
-function postToFeed() {
-        var randomNum = Math.round(Math.random() * 999 + 1);
-        var status = 'Test (' + randomNum + ') of the Facebook OAuth sample for BlackBerry 10 by @chadtatro! (http://twitter.com/chadtatro) http://bit.ly/106Blwv';
-        var url = 'https://graph.facebook.com/me/feed?message=' + status + '&access_token=' + accessToken;
-
-        $.ajax({
-                type: 'POST',
-                url: url,
-                dataType: 'json',
-                success: function(data) {
-                        getFeed();
-                },
-
-                error: function(data) {
-                        alert('Error updating status: ' + data.responseText);
-                        return false;
-                }
-        });
-}
-
-    });
-   
-
-    </script>
-  </head>
-
-  <body>
-    <!--Connect Screen-->
-    <div data-role="page" id="connect-page">
-      <div data-role="header" data-position="fixed">
-        <h1>Monaca<br/>with Facebook</h1>
-      </div>
-      <div data-role="content" align="middle">
-        <img src="images/facebook_icon.jpg" alt="Connect to Facebook" width="300">
-        <input id="connect-button" type="button" value="Connect" onclick="onPubFacebookBtn();" data-theme="b">
-      </div>
-    </div>
-
-    <!--List of Friends Screen-->
-    <div data-role="page" id="list-page">
-      <div data-role="header">
-        <h1>Monaca
-        <br/>with Facebook</h1>
-        <a href="#yesNoDialog" class="ui-btn-right" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="b">Logout</a>
-      </div>
-
-      <div data-role="content">
-        <table border="0">
-          <tr>
-            <td colspan="2">
-                <h3>Currently login as:</h3>
-            </td>
-          </tr>
-          <tr align="center">
-            <td>
-            <img id="profilePic" src="" alt="Facebook Profile Picture">
-            </td>
-            <td>
-              <h3 id="info"></h3>
-            </td>
-          </tr>
-        </table>
-        <hr/>
-        <h3>List of Friends:</h3>
-        <ul id="fbFriends">
-          <!-- Display list of friends here -->
-        </ul>
-
-        <!--Dialog box confirming logout-->
-        <div data-role="popup" id="yesNoDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
-          <div data-role="header" data-theme="a" class="ui-corner-top">
-            <h1>Confirmation:</h1>
-          </div>
-          <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-            <h3 class="ui-title">
-            <p>Are you sure you want to logout?</p>
-            <a href="javascript:Logout();" data-role="button" data-inline="true" data-transition="flow" data-theme="b">Yes</a>
-            <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">No</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+	<head>
+		<title>File Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta charset="utf-8">
+		<link href="styles/main.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<header class="header"> 
+			<h1>Facebook Sample</h1>
+		</header>
+        <div class="content">
+            <div class="action-area ch55">
+                <button class="button dh" id="cmdLogin">Login</button>
+                <button class="button dh" id="cmdWipe">Wipe tokens</button>
+                <button class="button dh" id="cmdPost">Post</button>
+                <button class="button dh" id="cmdGetFeed">Get feed</button>
+                <button class="button dh" id="cmdDelete">Revoke permissions</button>
+                <button class="button dh" id="cmdClearLog">Clear log</button>
+			</div>
+			<div class="result-area ch40">
+                <div class="results">
+                    <div id="result" class="desc"></div>
+                </div>
+                <div class="separator"></div>
+            </div> 
+		</div>
+		<footer class="footer">
+			<div>Cordova API Samples</div>
+		</footer>
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jso.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+	</body>
 </html>
