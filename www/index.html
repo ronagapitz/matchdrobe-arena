@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
 
         <script type="text/javascript" src="phonegap.js"></script>
-		        <script type="text/javascript" src="childbrowser.js"></script>
+		        <script type="text/javascript" src="ChildBrowser.js"></script>
 
 		
 		        <script type="text/javascript" src="js/jquery.js"></script>
@@ -12,20 +12,11 @@
 						        <script type="text/javascript" src="js/mobile.js"></script>
 
     <script>
-
-var app = {
-    initialize: function() {
-        this.bindEvents();
-    },
-    bindEvents: function() {
-        document.addEventListener(
-            'deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() { alert();
+$(function() { alert();
        var my_client_id  = "493708454047333",
 my_redirect_uri   = "http://www.facebook.com/connect/login_success.html",
 my_type           = "user_agent",
-my_display        = "touch"
+my_display        = "touch";
 
 var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
 authorize_url += "client_id="+my_client_id;
@@ -35,11 +26,7 @@ authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,o
 child = window.plugins.childBrowser;
 child.showWebPage(authorize_url, { showLocationBar: true }); 
 
-    },
-    takePicture: function() {
-        // ...
-    }
-};
+    });
    
 
     </script>
