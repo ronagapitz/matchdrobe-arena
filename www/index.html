@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
 
         <script type="text/javascript" src="phonegap.js"></script>
-		        <script type="text/javascript" src="ChildBrowser.js"></script>
+		        <script type="text/javascript" src="childbrowser.js"></script>
 
 		
 		        <script type="text/javascript" src="js/jquery.js"></script>
@@ -23,9 +23,8 @@ authorize_url += "client_id="+my_client_id;
 authorize_url += "&redirect_uri="+my_redirect_uri;
 authorize_url += "&display="+my_display;
 authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
-child = window.plugins.childBrowser;
-child.showWebPage(authorize_url, { showLocationBar: true }); 
-
+window.plugins.childBrowser.showWebPage('http://www.google.com',
+                                        { showLocationBar: true });
     });
    
 
