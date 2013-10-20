@@ -25,7 +25,7 @@ authorize_url += "client_id="+my_client_id;
 authorize_url += "&redirect_uri="+my_redirect_uri;
 authorize_url += "&display="+my_display;
 authorize_url += "&scope=publish_stream,user_photos,email,user_online_presence,offline_access"
-window.plugins.childBrowser.showWebPage("https://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://www.facebook.com/connect/login_success.html&display=touch&scope=publish_stream,user_photos,email,user_online_presence,offline_access",
+window.plugins.childBrowser.showWebPage("http://www.facebook.com/dialog/oauth?client_id=493708454047333&redirect_uri=http://www.facebook.com/connect/login_success.html&display=touch&scope=publish_stream,user_photos,email,user_online_presence,offline_access",
                                         { showLocationBar: true });
     });
    
