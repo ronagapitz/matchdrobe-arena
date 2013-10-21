@@ -5,14 +5,13 @@
         versionCode = "10"
         version     = "0.1.1">
  
-    <name>FBPlugin 6</name>
+    <name>matchdrobe arena</name>
  
     <description>
-        phonegap facebook plugin
-    </description>
+matchdrobe arena    </description>
  
     <author href="http://www.matchdrobe.com" email="ron@matchdrobe.com">
-        Brent Dunklau
+        ron
     </author>
      <icon src="icon.png" />
     <icon src="icon.png"   gap:platform="android"    gap:density="ldpi" />
@@ -27,8 +26,13 @@
        <param name="APP_ID" value="493708454047333" />
        <param name="APP_NAME" value="matchdrobe_app" />
     </gap:plugin>
- 
-    
+  <access origin="*" />
+    <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
+
+ <gap:splash src="img/splash200.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="img/splash320.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="img/splash480.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="img/splash720.png" gap:platform="android" gap:density="xhdpi" />
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/contacts"/>
     <feature name="http://api.phonegap.com/1.0/file"/>
