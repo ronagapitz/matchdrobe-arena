@@ -1,0 +1,137 @@
+.center
+{
+margin: auto
+}
+.logo
+{
+margin-top: 13%;
+
+}
+.login
+{
+
+margin-top: 5%;
+}
+.tribe .ron
+{
+width: 100%;
+background: #b80941;
+
+
+}
+.tribe img
+{
+width: 100%;
+
+}
+.tribe
+{
+margin-bottom: 3%;
+
+}
+.choose_style
+{
+
+color: #b80941;
+
+}
+.footer img
+{
+
+}
+.s_f
+{
+
+
+}
+.container
+{
+padding-bottom: 50px;
+}
+.footer_arena
+{
+background: url(../img/arena_s.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+.footer_looks
+{
+background: url(../img/looks_s.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+.footer_hof
+{
+background: url(../img/hof_s.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+.fleft
+{
+float: left;
+
+}
+.nopad
+{
+
+padding: 0px !Important;
+}
+
+.gray
+{
+color: #a6a6a6;
+
+}
+.bd
+{
+border-bottom: solid 1px #a6a6a6;
+
+}
+
+p
+{
+font-weight: normal ;
+font-size: 16px;
+
+}
+.bold
+{
+font-weight: bold !Important;
+
+}
+.pink_b
+{
+border: solid 5px #b80941;
+}
+.pinkb
+{
+background: #b80941;
+}
+.black
+{
+color: #303030;
+}
+.nega
+{
+margin-top: -2%;
+}
+
+ul.horizontal-slide {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+ul.horizontal-slide li[class*="col"] {
+    display: inline-block;
+    float: none;
+}
+
+ul.horizontal-slide li[class*="col"]:first-child {
+    margin-left: 0;
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.littlebluebird.phonegap.facebook"
+        id          = "com.matchdrobe.arena"
         versionCode = "10"
         version     = "0.1.1">
  
@@ -11,15 +11,21 @@
         phonegap facebook plugin
     </description>
  
-    <author href="http://www.littlebluebird.com" email="bdunklau@yahoo.com">
+    <author href="http://www.matchdrobe.com" email="ron@matchdrobe.com">
         Brent Dunklau
     </author>
-    
+     <icon src="icon.png" />
+    <icon src="icon.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="icon.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="icon.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="icon.png"  gap:platform="android"    gap:density="xhdpi" />
+	  <icon src="icon.png"     gap:platform="blackberry" />
+    <icon src="icon.png"     gap:platform="blackberry" gap:state="hover"/>
     <preference name="phonegap-version" value="2.9.0" />
     
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
-       <param name="APP_ID" value="470700906355954" />
-       <param name="APP_NAME" value="Brent1" />
+       <param name="APP_ID" value="493708454047333" />
+       <param name="APP_NAME" value="matchdrobe_app" />
     </gap:plugin>
  
     
