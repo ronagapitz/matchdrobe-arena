@@ -86,11 +86,11 @@ console.log("friendId's: "+friendIDs);
                      function(response) {
                        if (response.session) {
                          //alert('logged in');
-						  document.location.href = '../arena.html';
+						  document.location.href = '../f_style_tribe.html';
 
                        } 
                        else {
-                         alert('not logged in');
+						  document.location.href = '../f_style_tribe.html';
                        }
                        document.getElementById('data').innerHTML = JSON.stringify(response);
                      }, { scope: "email" }
