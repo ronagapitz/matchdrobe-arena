@@ -80,7 +80,16 @@ console.log("friendId's: "+friendIDs);
 			
 			
 			
-			
+			if(localStorage.fb_id != null)
+
+
+{
+
+
+						  document.location.href = 'f_style_tribe.html';
+
+}
+	
             
             function login() {
                 FB.login(
