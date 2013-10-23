@@ -19,6 +19,12 @@ background: #b80941;
 
 
 }
+.m_logo
+{
+width: 44%;
+max-width: 318px !important;
+
+}
 .tribe img
 {
 width: 100%;
@@ -31,10 +37,21 @@ margin-bottom: 3%;
 }
 .choose_style
 {
-
+margin-top: 0px !important;
+font-size : 4vmin;
 color: #b80941;
+background: white;
+paddding-bottom: 10px;
 
 }
+
+	@media screen and (min-width: 700px) {
+				.res_con
+				{
+				margin-top: 12% !important;
+				
+				}
+			}
 .footer img
 {
 
@@ -118,7 +135,19 @@ color: #303030;
 {
 margin-top: -2%;
 }
+.logo_start
+{
 
+width: 82%;
+max-width: 635px !important;
+
+}
+.login_start
+{
+max-width: 488px !important;
+width: 63%;
+
+}
 ul.horizontal-slide {
     margin: 0;
     padding: 0;
@@ -134,4 +163,18 @@ ul.horizontal-slide li[class*="col"] {
 
 ul.horizontal-slide li[class*="col"]:first-child {
     margin-left: 0;
+}
+
+
+/* for modal */
+img:hover
+{
+
+opacity: .7 !important;
+}
+
+.modal-dialog
+{
+
+width: auto !important;
 }

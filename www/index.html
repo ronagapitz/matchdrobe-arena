@@ -11,13 +11,13 @@
     </head>
 <body>
 <div class="container text-center logo">
-<div class="row"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center" /></div></div>
-<div class="row login"><div class="col-xs-12"><a href="#" onclick="login()"><img src ="img/login.png" class="img-responsive center" /></a></div></div>
+<div class="row"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center logo_start" /></div></div>
+<div class="row login"><div class="col-xs-12"><a href="#" onclick="login()"><img src ="img/login.png" class="img-responsive login_start center" /></a></div></div>
 
 
 </div>
-<button onclick="login()">Login</button>
-<button onclick="me()">Me</button>
+<!--<button onclick="login()">Login</button> 
+<button onclick="me()">Me</button> -->
 <!--<button onclick="getSession()">Get session</button>
 <button onclick="getLoginStatus()">Get login</button>
 <button onclick="logout()">Logout</button>
@@ -43,7 +43,15 @@
 	
         $(function()
 		localStorage.userid = 'asas';
+if(localStorage.fb_id != null)
 
+
+{
+
+
+						  document.location.href = 'f_style_tribe.html';
+
+}
 		{
 		$("#fb_login").click(function()
 		{

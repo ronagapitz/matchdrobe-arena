@@ -26,6 +26,7 @@ alert("session: " + JSON.stringify(FB.getSession()));
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
+								  
                                   alert('logged in');
                                   } else {
                                   alert('not logged in');
@@ -86,6 +87,9 @@ console.log("friendId's: "+friendIDs);
                      function(response) {
                        if (response.session) {
                          //alert('logged in');
+						 var fbId = response.authResponse.userId;
+						 localStorage.fb_id = fbId;
+
 						  document.location.href = 'f_style_tribe.html';
 
                        } 

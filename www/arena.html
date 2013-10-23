@@ -35,7 +35,7 @@
 	
 	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-      <div class="modal-content like_modal col-xl-8">
+      <div class="modal-content like_modal col-xs-10">
 	  <div class="row"> <!-- profgile photo -->
 	  <div class="col-xs-3"><img class="img-responsive fb_photo" src="img/summer.jpg"></div>
 	  
@@ -161,28 +161,38 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 <script>
 $(function()
 {
-$("#tag").focus();
-var pt = 0;
+if(localStorage.fb_id != null)
 
-$(".points").text(pt);
-$(".confirm").click(function()
+
 {
-pt++;
-$(".points").text(pt);
 
 
-		
-		
-		//tags only
+						  document.location.href = 'f_style_tribe.html';
 
+}
  var array_tag = [];
-	$('#tag').val('').focus();
+
+$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+
+	$("div.cont").on("click", "a.arena_img", 
+	function(){
+$id = $(this).attr("data-id");
+$(".like_modal").load("http://matchdrobe.com/app/arena/arena_popup_tags.php?id="+$id,function()
+{
+$("input#tag").focus().focus();
+
+});
+ 
+	 
+	
+	});  
 	$(document).on('click','.ctag',function()
 	{
 	$(this).remove();
 	
 	});
-	    $('#tag').keypress(function(event) {
+	
+	 $( document ).on('keypress','#tag',function(event) {
         if (event.keyCode == 32) {
            $('#add_tag').prepend('<div class="ctag">'+$('#tag').val()+' <span>x</span></div>');
 		 
@@ -191,15 +201,22 @@ $(".points").text(pt);
         }
     });
 
-	
-	$('.top_tags').click(function()
+	$(document).on("click",".confirm",function()
 	{
+	$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+
+	});
+	
+	$(document).on('click','.top_tags',function()
+	{
+	 array_tag.push( $(this).text() );
 	$(this).css({'background':'#b80941','color': 'white'});
 
 	
 	
 	
 	});
+
 
 //tags
 });
