@@ -98,7 +98,7 @@ console.log("friendId's: "+friendIDs);
                          //alert('logged in');
 						 var fbId = response.authResponse.userId;
 						 localStorage.fb_id = fbId;
-alert(fbId);
+alert(localStorage.fb_id);
 						  document.location.href = 'f_style_tribe.html';
 
                        } 
@@ -152,7 +152,7 @@ FB.ui(params, function(obj) { console.log(obj);});
                                     //  alert('Device is ready! Make sure you set your app_id below this alert.');
                                       FB.init({ appId: '408729362586583', nativeInterface: CDV.FB, useCachedDialogs: false });
                                       //document.getElementById('data').innerHTML = "";
-                                      } catch (e) {
+                                      } catch (e) {  
                                      // alert(e);
                                       }
                                       }, false); 
