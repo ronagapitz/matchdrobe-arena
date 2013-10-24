@@ -40,8 +40,8 @@ matchdrobe arena    </description>
     <preference name="phonegap-version" value="2.9.0" />
     
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
-       <param name="APP_ID" value="493708454047333" />
-       <param name="APP_NAME" value="matchdrobe_app" />
+       <param name="APP_ID" value="408729362586583" />
+       <param name="APP_NAME" value="matchdrobe" />
     </gap:plugin>
   <access origin="*" />
     <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
