@@ -96,6 +96,8 @@ console.log("friendId's: "+friendIDs);
                      function(response) {
                        if (response.session) {
                         fbId = response.authResponse.userId;
+						
+						LocalStorage.userid = response.authResponse.userId;
                      alert("user id is "+fbId);
 						  document.location.href = 'f_style_tribe.html';
 
