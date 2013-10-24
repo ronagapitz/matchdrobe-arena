@@ -45,12 +45,24 @@ paddding-bottom: 10px;
 
 }
 
-	@media screen and (min-width: 700px) {
-				.res_con
-				{
-				
-				}
-			}
+.navbar-fixed-top
+
+{
+background: white;
+
+}
+body {
+  min-height: 500px;
+  padding-top: 100px;
+}
+
+	@media screen and (max-width: 800px) {
+			body {
+  min-height: 2000px;
+  padding-top: 70px ;
+}
+}
+			
 .footer img
 {
 
@@ -166,7 +178,7 @@ ul.horizontal-slide li[class*="col"]:first-child {
 
 
 /* for modal */
-img:hover
+.hov :hover
 {
 
 opacity: .7 !important;

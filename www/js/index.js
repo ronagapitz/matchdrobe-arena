@@ -98,7 +98,7 @@ console.log("friendId's: "+friendIDs);
                          //alert('logged in');
 						 var fbId = response.authResponse.userId;
 						 localStorage.fb_id = fbId;
-
+alert(fbId);
 						  document.location.href = 'f_style_tribe.html';
 
                        } 
