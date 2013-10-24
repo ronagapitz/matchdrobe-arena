@@ -150,8 +150,8 @@ FB.ui(params, function(obj) { console.log(obj);});
             document.addEventListener('deviceready', function() {
                                       try {
                                     //  alert('Device is ready! Make sure you set your app_id below this alert.');
-                                      FB.init({ appId: '470700906355954', nativeInterface: CDV.FB, useCachedDialogs: false });
-                                      document.getElementById('data').innerHTML = "";
+                                      FB.init({ appId: '493708454047333', nativeInterface: CDV.FB, useCachedDialogs: false });
+                                      //document.getElementById('data').innerHTML = "";
                                       } catch (e) {
                                      // alert(e);
                                       }
