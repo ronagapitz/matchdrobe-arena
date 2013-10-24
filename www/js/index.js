@@ -95,15 +95,13 @@ console.log("friendId's: "+friendIDs);
                 FB.login(
                      function(response) {
                        if (response.session) {
-                         //alert('logged in');
-						 var fbId = response.authResponse.userId;
-						 localStorage.fb_id = fbId;
-alert(localStorage.fb_id);
+                        fbId = response.authResponse.userId;
+                     alert("user id is "+fbId);
 						  document.location.href = 'f_style_tribe.html';
 
                        } 
                        else {
-						  document.location.href = 'f_style_tribe.html';
+						 // document.location.href = 'f_style_tribe.html';
                        }
                        document.getElementById('data').innerHTML = JSON.stringify(response);
                      }, { scope: "email" }
