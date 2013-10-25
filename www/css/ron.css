@@ -55,8 +55,8 @@ background: white !important;
 	}
 	#parent_tag
 	{
- width: 230px;
- height: 190px;
+	width: 80%;
+ min-height: 190px;
  border: solid 1px #b8b8b8;
 	}
 	.ctag

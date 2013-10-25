@@ -52,13 +52,12 @@ background: white;
 
 }
 body {
-  min-height: 500px;
   padding-top: 100px;
 }
 
 	@media screen and (max-width: 800px) {
 			body {
-  min-height: 2000px;
+  
   padding-top: 70px ;
 }
 }
@@ -159,23 +158,28 @@ max-width: 488px !important;
 width: 63%;
 
 }
-ul.horizontal-slide {
+body.horizontal-slide {
     margin: 0;
     padding: 0;
     width: 100%;
+	padding-top: 100px;
     white-space: nowrap;
     overflow-x: auto;
 }
 
-ul.horizontal-slide li[class*="col"] {
+body.horizontal-slide li[class*="col"] {
     display: inline-block;
     float: none;
 }
 
-ul.horizontal-slide li[class*="col"]:first-child {
+body.horizontal-slide li[class*="col"]:first-child {
     margin-left: 0;
 }
+.like_modal
+{
+overflow: hidden !Important;
 
+}
 
 /* for modal */
 .hov :hover

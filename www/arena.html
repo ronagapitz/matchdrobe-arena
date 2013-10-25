@@ -35,7 +35,7 @@
 	
 	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-      <div class="modal-content like_modal col-xs-10">
+      <div class="modal-content like_modal col-xs-12">
 	  <div class="row"> <!-- profgile photo -->
 	  <div class="col-xs-3"><img class="img-responsive fb_photo" src="img/summer.jpg"></div>
 	  
@@ -58,11 +58,11 @@
         </div>
 		
 		-->
-        <div class="modal-body" >
+        <div class="modal-body col-xs-10" >
 		<br/>
       <p class="bold black">Choose your tags or add new ones.<br/>
 Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
-<div id="parent_tag">
+<div id="parent_tag"    >
 <div class="tops">
 <div class="top_tags">Preppy</div>
 <div class="top_tags">Dress</div>
@@ -76,9 +76,9 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 
 </div>
 </div><br/> <br/>
-		  
+		  <div class="row">
 		  <a class="pull-left" href=# data-dismiss="modal" id="cancel"><img class="img-responsive" src="img/b_back.png" /></a>  		  <a  href=#  class="confirm"  data-dismiss="modal"><img src="img/confirm.png" /></a>
-
+</div>
 		  
         </div>
       
@@ -90,20 +90,35 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 <div class="container">
 
 <div class="row text-center style  navbar-fixed-top" data-position="fixed" style=" height: 100px;background: white;">
-<div class="col-xs-12 text-center">	<a href="f_style_tribe.html"   data-rel="back">
+<div class="col-xs-12 text-center">
+
+		<div class="col-xs-2" style="padding: 0px;">
+	<a href="f_style_tribe.html"   data-rel="back">
 	<img class="img-responsive pull-left "  src="img/back.png" data-transition="slide" /></a></div>
 			<div class="col-xs-8 text-center"><img class="img-responsive center" src="img/matchdrobe.png" /></div>
 
 		<div class="points  col-xs-2">
-		10
+		0
 		</div>
-		
+		</div>
 		</div>
  		<div class="row  pair ">
 	
 		
-		<div class="cont text-center  " style="margin-top: 90px">
-	
+		<div class="cont text-center  " >
+		<div class="col-xs-6 nopad">
+		<a href="#myModal" role="button" data-toggle="modal" data-id="10758">
+				<img class="img-responsive pull-right" src="img/v1.jpg" />
+				</a>
+
+				</div>
+				<div class="col-xs-6 nopad">
+				<a href="#myModal" role="button" data-toggle="modal" data-id="10758">
+								<img class="img-responsive pull-left" src="img/v2.jpg" />
+								</a>
+
+
+				</div>
 				<a href=# style=" position:absolute;
         left:0;
         right:0;
@@ -149,7 +164,16 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 <script>
 $(function()
 {
+if(localStorage.pts != null)
 
+
+{
+
+$(".points").text(localStorage.pts);
+
+					//	  document.location.href = 'f_style_tribe.html';
+
+}
  var array_tag = [];
 
 $(".pair .cont").load("http://matchdrobe.com/app/arena/");
@@ -183,6 +207,28 @@ $("input#tag").focus().focus();
 
 	$(document).on("click",".confirm",function()
 	{
+	if(localStorage.pts == null)
+
+
+{
+localStorage.pts =  parseInt(array_tag.length);
+
+$(".points").text(localStorage.pts);
+
+					//	  document.location.href = 'f_style_tribe.html';
+
+}
+
+else
+{
+localStorage.pts = parseInt(localStorage.pts) + parseInt(array_tag.length);
+
+$(".points").text(localStorage.pts);
+
+
+}
+array_tag = [];
+
 	$(".pair .cont").load("http://matchdrobe.com/app/arena/");
 
 	});

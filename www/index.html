@@ -12,7 +12,7 @@
 <body>
 <div class="container text-center logo">
 <div class="row"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center logo_start" /></div></div>
-<div class="row login"><div class="col-xs-12"><a href="#" onclick="login()"><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div></div>
+<div class="row login"><div class="col-xs-12"><a href="f_style_tribe.html" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div></div>
 
 
 </div>
@@ -41,8 +41,10 @@
 
     <script>
 
-	alert(localStorage.userid +'bla');
+	//alert(localStorage.userid +'bla');
 	
+localStorage.userid = device.uuid;
+	$.post("http://matchdrobe.com/app/register_app.php",{'device_id': device.uuid });
 
 	if(localStorage.fb_id != null)
 
@@ -50,7 +52,7 @@
 {
 
 
-						  document.location.href = 'f_style_tribe.html';
+					//	  document.location.href = 'f_style_tribe.html';
 
 }
        

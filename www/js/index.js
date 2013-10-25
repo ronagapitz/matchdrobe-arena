@@ -5,18 +5,25 @@
             
             FB.Event.subscribe('auth.login', function(response) {
                           //     alert('auth.login event');
+						  
+						  
+						                          localStorage.fbid = response.authResponse.userId;
+
                                });
             
             FB.Event.subscribe('auth.logout', function(response) {
                             //   alert('auth.logout event');
+							
+													                          localStorage.fbid = '';
+
                                });
             
             FB.Event.subscribe('auth.sessionChange', function(response) {
-                               alert('auth.sessionChange event');
+                            //   alert('auth.sessionChange event');
                                });
             
             FB.Event.subscribe('auth.statusChange', function(response) {
-                               alert('auth.statusChange event');
+                            //   alert('auth.statusChange event');
                                });
             
             /*function getSession() {
@@ -27,9 +34,9 @@ alert("session: " + JSON.stringify(FB.getSession()));
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
 								  
-                                  alert('logged in');
+                                  //alert('logged in');
                                   } else {
-                                  alert('not logged in');
+                                 // alert('not logged in');
                                   }
                                   });
             }
@@ -38,7 +45,7 @@ var fdata;
             function me() {
                 FB.api('/me/friends', { fields: 'id, name, picture' }, function(response) {
                        if (response.error) {
-                       alert(JSON.stringify(response.error));
+                      // alert(JSON.stringify(response.error));
                        } else {
                        var data = document.getElementById('data');
 fdata=response.data;
@@ -64,7 +71,10 @@ console.log("friendId's: "+friendIDs);
             
             function logout() {
                 FB.logout(function(response) {
-                          alert('logged out');
+                        //  alert('logged out');
+						
+												                          localStorage.fbid = '';
+
                           document.getElementById('data').innerHTML = JSON.stringify(response);
                           });
             }
@@ -97,7 +107,7 @@ console.log("friendId's: "+friendIDs);
                        if (response.session) {
                         fbId = response.authResponse.userId;
 						
-						LocalStorage.userid = response.authResponse.userId;
+						localStorage.fbid = response.authResponse.userId;
                      alert("user id is "+fbId);
 						  document.location.href = 'f_style_tribe.html';
 
