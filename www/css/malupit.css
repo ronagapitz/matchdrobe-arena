@@ -45,6 +45,13 @@ paddding-bottom: 10px;
 
 }
 
+.clear{
+    clear: both;
+    /* make sure there is no height set to it */
+    line-height: 0;
+    height: 0;
+    font-size: 0em;
+}
 .navbar-fixed-top
 
 {
