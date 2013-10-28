@@ -147,6 +147,15 @@
 $(function()
 { var $img = '';
 
+
+
+if(localStorage.tribe =="full")
+{
+
+ document.location.href = 'arena.html';
+
+}
+
 $("body").css({'padding-top':$(".res_head").height()});
 
 var tribe = 0;
@@ -157,9 +166,13 @@ $(".gender, .choose_style").fadeIn();
 $($img.id).css({'opacity': '.7'});
 $(".big_style").fadeOut();
 
+alert($img.tid + 's' + localStorage.user_id);
+   $.post("http://matchdrobe.com/app/register_app.php",{'tribe': $img.tid,'user_id':localStorage.user_id});
 tribe++;
 if(tribe == 3)
 {
+
+localStorage.tribe ="full";
  document.location.href = 'arena.html';
 
 }
@@ -178,7 +191,8 @@ $(".tribe img").click(function()
 $( "body" ).scrollTop( 0 );
 
 $img = {src: $(this).attr("data-src"),
-id : "#"+$(this).attr("id")
+id : "#"+$(this).attr("id"),
+tid : $(this).attr("data-id")
 
 
 };
