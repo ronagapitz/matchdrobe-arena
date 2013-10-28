@@ -12,8 +12,37 @@
 <body>
 <div class="container text-center logo">
 <div class="row"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center logo_start" /></div></div>
-<div class="row login"><div class="col-xs-12"><a href="f_style_tribe.html" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div></div>
 
+
+
+
+<div class="row text-center login f1">
+<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-xs-offset-2"><input type="text" id="username" placeholder="username"  required class="form-control" /></p>
+<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-xs-offset-2"><input type="password" id="password" placeholder="password" required  class="form-control" /></p>
+
+
+</div>
+<div class="row "><div class="col-xs-12"><a id="log-in" href="#" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
+
+
+
+
+</div>
+
+
+
+
+<div class="row text-center login f2">
+
+<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-xs-offset-2"><input type="email" id="email" placeholder="email"  required class="form-control" /></p>
+
+<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-xs-offset-2"><input type="text" id="rusername" placeholder="username"  required class="form-control" /></p>
+<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-xs-offset-2"><input type="password" id="rpassword" placeholder="password" required  class="form-control" /></p>
+
+
+</div>
+
+<div class="row "><div class="col-xs-12"><a id="reg" href="#" ><img  src ="img/reg.png" class="hov img-responsive login_start center" /></a></div>
 
 </div>
 <!--<button onclick="login()">Login</button> 
@@ -35,16 +64,75 @@
 	<!-- facebook js sdk -->
 	<script src="facebook-js-sdk.js"></script>
     	<script src="js/jquery.js"></script>
-		    	<script src="js/index.js"></script>
+		   <!-- 	<script src="js/index.js"></script>-->
 
 
 
     <script>
 
-	//alert(localStorage.userid +'bla');
 	
+	$("#log-in").click(function()
+	{
+	$(".f1 input").each(function() {
+   var element = $(this);
+   if (element.val() == "") {
+       alert("required fields");
+	   return false;
+   }
+   else
+   {
+   
+   }
+});
+	});
+   if(localStorage.user_id != null)
+
+
+{
+
+
+					  document.location.href = 'f_style_tribe.html';
+
+}	
+	
+	$("#reg").click(function()
+	{
+	
+		$(".f2 input").each(function() {
+   var element2 = $(this);
+   if (element2.val() == "") {
+       alert("required fields");
+	   return false;
+   }
+   else
+   {
+   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),
+   "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
+   {
+  // alert(e);
+   localStorage.user_id = e;
+   
+   if(localStorage.user_id != null)
+
+
+{
+
+
+					  document.location.href = 'f_style_tribe.html';
+
+}
+  
+   return false;
+   });
+   }
+});
+	});
+	//});
+
+	//alert(localStorage.userid +'bla');
+	/*
 localStorage.userid = device.uuid;
-	$.post("http://matchdrobe.com/app/register_app.php",{'device_id': device.uuid });
+	//$.post("http://matchdrobe.com/app/register_app.php",{'device_id': device.uuid });
 
 	if(localStorage.fb_id != null)
 
@@ -55,7 +143,7 @@ localStorage.userid = device.uuid;
 					//	  document.location.href = 'f_style_tribe.html';
 
 }
-       
+       */
             </script>
         <div id="log"></div>
 </body>

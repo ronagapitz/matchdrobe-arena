@@ -38,7 +38,7 @@ margin-bottom: 3%;
 .choose_style
 {
 margin-top: 0px !important;
-font-size : 4vmin;
+font-size : 3.5vmin;
 color: #b80941;
 background: white;
 paddding-bottom: 10px;
@@ -59,7 +59,7 @@ background: white;
 
 }
 body {
-  padding-top: 100px;
+  padding-top: 115px;
 }
 
 	@media screen and (max-width: 800px) {
@@ -71,11 +71,10 @@ body {
 			
 .footer img
 {
-
 }
 .s_f
 {
-
+padding-top: 0.5%;
 
 }
 .container
@@ -189,7 +188,7 @@ overflow: hidden !Important;
 }
 
 /* for modal */
-.hov :hover
+.hov:hover
 {
 
 opacity: .7 !important;

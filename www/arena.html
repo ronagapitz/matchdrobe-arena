@@ -36,21 +36,8 @@
 	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
       <div class="modal-content like_modal col-xs-12">
-	  <div class="row"> <!-- profgile photo -->
-	  <div class="col-xs-3"><img class="img-responsive fb_photo" src="img/summer.jpg"></div>
-	  
-	  	  <div class="col-xs-7">
-		  <p class="pink ">Summer Ibanez</p>
-		  		  <p > <small class="gray">October 2, 2013 </small></p>
-
-		  </div>
-
-	  </div>
-	  <div class="row  ">
-	  	<div class="col-xs-2 " ></div>  	  <div class="col-xs-10 black nega">
-		<p>	  yay for studio shoot!  Had so much fun with hayley heart <p>
-</div>
-	  </div>
+	 
+	 
 	  <!--
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -58,29 +45,7 @@
         </div>
 		
 		-->
-        <div class="modal-body col-xs-10" >
-		<br/>
-      <p class="bold black">Choose your tags or add new ones.<br/>
-Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
-<div id="parent_tag"    >
-<div class="tops">
-<div class="top_tags">Preppy</div>
-<div class="top_tags">Dress</div>
-<div class="top_tags">LBD</div>
-<div class="top_tags">Floral</div>
-<div class="top_tags">Color Blocking</div>
-</div>
 
-<div id="add_tag">
-<input type="text" id="tag" />
-
-</div>
-</div><br/> <br/>
-		  <div class="row">
-		  <a class="pull-left" href=# data-dismiss="modal" id="cancel"><img class="img-responsive" src="img/b_back.png" /></a>  		  <a  href=#  class="confirm"  data-dismiss="modal"><img src="img/confirm.png" /></a>
-</div>
-		  
-        </div>
       
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -95,7 +60,7 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 		<div class="col-xs-3" style="padding: 0px;">
 	<a href="f_style_tribe.html"   data-rel="back">
 	<img class="img-responsive pull-left "  src="img/back.png" data-transition="slide" /></a></div>
-			<div class="col-xs-6 text-center"><img class="img-responsive center" src="img/matchdrobe.png" /><br/>
+			<div class="col-xs-6 text-center res_head"><img class="img-responsive center" src="img/matchdrobe.png" /><br/>
 			
 			<h2 class="choose_style text-center" style="margin-top: -20px !Important">Which Look is better?</h2>
 </div>
@@ -154,6 +119,8 @@ Earn <span class="pink">1 Style Point </span>for each valid tag.</p>
 <script>
 $(function()
 {
+
+$("body").css({'padding-top':$(".res_head").height()});
 if(localStorage.pts != null)
 
 

@@ -166,3 +166,8 @@ FB.ui(params, function(obj) { console.log(obj);});
                                      // alert(e);
                                       }
                                       }, false); 
+									  
+									  
+									  
+									  
+									
