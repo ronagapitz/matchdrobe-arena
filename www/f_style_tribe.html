@@ -166,7 +166,7 @@ $(".gender, .choose_style").fadeIn();
 $($img.id).css({'opacity': '.7'});
 $(".big_style").fadeOut();
 
-alert($img.tid + 's' + localStorage.user_id);
+//alert($img.tid + 's' + localStorage.user_id);
    $.post("http://matchdrobe.com/app/register_app.php",{'tribe': $img.tid,'user_id':localStorage.user_id});
 tribe++;
 if(tribe == 3)
