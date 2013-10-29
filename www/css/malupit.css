@@ -2,6 +2,16 @@
 {
 margin: auto
 }
+.navbar-fixed-bottom
+{
+background-color: white !important;
+
+}
+.f1,.f2
+{
+display: none;
+
+}
 .logo
 {
 margin-top: 13%;
@@ -91,6 +101,13 @@ background-size: 100% 100%;
 .footer_looks
 {
 background: url(../img/looks_s.png);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+
+}
+.footer_settings
+{
+background: url(../img/settings_s.png);
 background-repeat: no-repeat;
 background-size: 100% 100%;
 
