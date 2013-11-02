@@ -132,6 +132,10 @@
 				
 		</div>
 		
+		
+		
+		
+		<center class="gray more"><span id="span3" class="gray">3</span> More!</center>
 	
 	</div><!-- /content -->
 
@@ -158,18 +162,19 @@ if(localStorage.tribe =="full")
 
 $("body").css({'padding-top':$(".res_head").height()});
 
-var tribe = 0;
+var tribe = 3;
 $(".choose").click(function()
 {
 $( "body" ).scrollTop( 0 );
 $(".gender, .choose_style").fadeIn();
 $($img.id).css({'opacity': '.7'});
 $(".big_style").fadeOut();
-
 //alert($img.tid + 's' + localStorage.user_id);
    $.post("http://matchdrobe.com/app/register_app.php",{'tribe': $img.tid,'user_id':localStorage.user_id});
-tribe++;
-if(tribe == 3)
+tribe--;
+$("#span3").text(tribe);
+
+if(tribe == 0)
 {
 
 localStorage.tribe ="full";

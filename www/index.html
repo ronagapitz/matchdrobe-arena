@@ -17,13 +17,13 @@
 
 
 
-<div class="row text-center login f1">
-<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-sm-offset-2"><input type="text" id="username" placeholder="username"  required class="form-control" /></p>
-<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-sm-offset-2"><input type="password" id="password" placeholder="password" required  class="form-control" /></p>
+<div id="log" class="row text-center login f1">
+<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="text" id="username" placeholder="username"  required class="form-control" /></p>
+<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="password" id="password" placeholder="password" required  class="form-control" /></p>
 
 
 </div>
-<div class="row "><div class="col-xs-12"><a id="log-in" href="#" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
+<div class="row "><div class="col-xs-12"><a id="log-in" href="#f1" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
 
 
 
@@ -32,14 +32,14 @@
 
 
 
-<div class="row "><div class="col-xs-12"><h1>or</h1></div>
+<div  class="row "><div class="col-xs-12"><h1 class="or">or</h1></div></div>
 
-<div class="row text-center login f2">
+<div id="reg1" class="row text-center login f2">
 
-<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-sm-offset-2"><input type="email" id="email" placeholder="email"  required class="form-control" /></p>
+<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="email" id="email" placeholder="email"  required class="form-control" /></p>
 
-<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-sm-offset-2"><input type="text" id="rusername" placeholder="username"  required class="form-control" /></p>
-<p class="col-lg-8 col-xs-8  col-lg-offset-2  col-sm-offset-2"><input type="password" id="rpassword" placeholder="password" required  class="form-control" /></p>
+<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="text" id="rusername" placeholder="username"  required class="form-control" /></p>
+<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="password" id="rpassword" placeholder="password" required  class="form-control" /></p>
 
 
 </div>
@@ -75,11 +75,11 @@
 
     <script>
 
-	
+
 	$("#log-in").click(function()
 	{
-	
 		 $(".f1").slideDown();
+		 $("#log")[0].scrollIntoView();
 	 	 $(".f2").slideUp();
      if($("#username").val() == '' ||  $("#password").val() == '')
 	 {
@@ -120,37 +120,49 @@
 	$("#reg").click(function()
 	{
 	
+
 		 $(".f2").slideDown();
+		 		// $("#reg1")[0].scrollIntoView();
+
 	 	 $(".f1").slideUp();
-		$(".f2 input").each(function() {
-   var element2 = $(this);
-   if (element2.val() == "") {
-      // alert("required fields");
-	   return false;
-   }
-   else
+  if($("#rusername").val() == '' ||  $("#rpassword").val() == ''   ||  $("#email").val() == '')
+	 {
+	 //alert("required fields");
+	return false;
+	 }   
+	    else
    {
    $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),
    "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
    {
-  // alert(e);
-   localStorage.user_id = e;
-   
-   if(localStorage.user_id != null)
-
-
-{
-
-
-					  document.location.href = 'f_style_tribe.html';
-
-}
-  
-   return false;
-   }, "json");
+      
+ 
+  console.log(e.num);
+   if(e.num != 0)
+   {
+      alert("User already exists!");
+					  
    }
-});
-	});
+  if(e.num == 0)
+  {
+   localStorage.user_id = e.uid;
+      alert("Registration Successful");
+
+   					  document.location.href = 'f_style_tribe.html';
+}
+   
+
+  
+  // return false;
+  // return false;
+   }, "json");
+  
+
+  }
+
+   });
+
+	
 	//});
 
 	//alert(localStorage.userid +'bla');

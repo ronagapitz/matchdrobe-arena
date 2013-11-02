@@ -7,6 +7,14 @@ margin: auto
 background-color: white !important;
 
 }
+*
+{
+color: #303030;
+}
+.or
+{
+font-size: 239%;
+}
 .f1,.f2
 {
 display: none;
@@ -29,6 +37,11 @@ background: #b80941;
 
 
 }
+
+*
+{
+font-family: calibri !Important;
+}
 .m_logo
 {
 width: 44%;
@@ -45,10 +58,16 @@ width: 100%;
 margin-bottom: 3%;
 
 }
+
+.more
+{
+font-size : 3.7vw;
+font-style: italic
+}
 .choose_style
 {
 margin-top: 0px !important;
-font-size : 3.5vmin;
+font-size : 4vw;
 color: #b80941;
 background: white;
 paddding-bottom: 10px;
@@ -144,13 +163,28 @@ border-bottom: solid 1px #a6a6a6;
 p
 {
 font-weight: normal ;
-font-size: 16px;
+font-size: 4vw;
 
 }
 .bold
 {
 font-weight: bold !Important;
 
+}
+.top_tags, .ctag
+{
+
+font-size: 4vw !Important;
+
+}
+
+h3, .h3 {
+font-size: 5vw !important;
+}
+.pink ,.gray
+{
+
+font-size: 4vw;
 }
 .pink_b
 {
