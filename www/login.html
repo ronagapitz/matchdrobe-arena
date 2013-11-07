@@ -6,24 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Multi-page template</title>
        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-       <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
+       <link rel="stylesheet" type="text/css" href="css/malupit.css" />
 
     </head>
 <body>
 <div class="container text-center ">
-<div class="row"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center logo_start" /></div></div>
 
 <div class="row "><div class="col-xs-12"><h1>&nbsp </h1></div>
 
 
 
-<div id="log" class="row text-center login f1">
-<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="text" id="username" placeholder="username"  required class="form-control" /></p>
-<p class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 "><input type="password" id="password" placeholder="password" required  class="form-control" /></p>
+<div id="log" class="row text-center login ">
+<div class="row col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="text" id="username" placeholder="username"  required class="form-control" /></div>
+<div  class="row col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="password" id="password" placeholder="password" required  class="form-control" /></div>
 
 
 </div>
-<div class="row "><div class="col-xs-12"><a id="log-in" href="login.html" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
+<div class="row "><div class="col-xs-12"><a id="log-in" href="#f1" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
 
 
 
@@ -45,7 +44,7 @@
 </div>
 
 
-<div class="row "><div class="col-xs-12"><a id="reg" href="register.html" ><img  src ="img/reg.png" class="hov img-responsive login_start center" /></a></div>
+<div class="row "><div class="col-xs-12"><a id="reg" href="#" ><img  src ="img/reg.png" class="hov img-responsive login_start center" /></a></div>
 
 </div>
 
@@ -75,7 +74,7 @@
 
     <script>
 
-/*
+
 	$("#log-in").click(function()
 	{
 		 $(".f1").slideDown();
