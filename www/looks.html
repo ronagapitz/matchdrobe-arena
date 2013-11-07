@@ -24,6 +24,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
 		        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+						              <link rel="stylesheet" type="text/css" href="css/malupit.css" />
+
      <!--   <link rel="stylesheet" type="text/css" href="css/mobile.css" /> -->
 
         <title>Hello World</title>
@@ -31,7 +33,6 @@
     <body>
 	
 		<div class="navbar navbar-fixed-top">
-		<div class="row" style=""><img class="img-responsive center m_logo" src="img/matchdrobe.png" /></div>
 <h2 class="choose_style text-center"> Looks</h2><br/>
 <div class="row text-center"><i  style="top: -24px;
 position: relative;font-size: 3vw;">Items you've liked</i></div>		</div>
@@ -86,12 +87,23 @@ position: relative;font-size: 3vw;">Items you've liked</i></div>		</div>
        
         <script type="text/javascript" src="phonegap.js"></script>
 		        <script type="text/javascript" src="js/jquery.js"></script>
+								  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
+
 <script>
 $(function()
 { var $img = '';
 
+
+
+$(document).on("click",".ron img",function()
+{
+$("#gender").hide("scale");
+$(".big_style").show("scale").removeClass("hide");
+$(".big_img").attr("src",$(this).attr("data-src"));
+});
 $(".gender").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 $("body").css({'padding-top':$(".res_head").height()});
 
@@ -100,7 +112,7 @@ $(".choose").click(function()
 {
 $(".gender, .choose_style").fadeIn();
 $($img.id).css({'opacity': '.7'});
-$(".big_style").fadeOut();
+$(".big_style").hide("scale");
 
 tribe++;
 if(tribe == 5)
@@ -112,9 +124,9 @@ return false;
 });
 $(".back_style").click(function()
 {
-$(".gender, .choose_style").fadeIn();
+$(".gender, .choose_style").show("scale");
 
-$(".big_style").fadeOut();
+$(".big_style").hide("scale");
 
 return false;
 });
@@ -125,8 +137,8 @@ id : "#"+$(this).attr("id")
 
 
 };
-$(".gender, .choose_style").fadeOut();
-$(".big_style").fadeIn().removeClass("hide");
+$(".gender, .choose_style").hide("scale");
+$(".big_style").show("scale").removeClass("hide");
 $(".big_img").attr("src",$img.src);
 //$(this).css({'opacity': '.6'});
 

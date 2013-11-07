@@ -17,25 +17,25 @@ background-color: white !important;
 }
 .fb_photo
 {
-width: 45%;
+width: 55%;
 min-width: 50px;
 max-width: 100px;
 
 }
 .points
 {
-height: 2.2vw;
-font-size: 2.5vw;
+height: 5rem;
+font-size: 4rem;
 line-height: 1;
 
 }
 
 #tag
 {
-height: 5vw;
-width: 14vw !important;
-margin-top: 2vw;
-font-size: 4vw !Important;
+height: 5rem;
+width: 14rem !important;
+margin-top: 2rem;
+font-size: 4rem !Important;
 
 }
 *
@@ -92,13 +92,13 @@ margin-bottom: 3%;
 
 .more
 {
-font-size : 3.7vw;
+font-size : 3.7rem;
 font-style: italic
 }
 .choose_style
 {
 margin-top: 0px !important;
-font-size : 4vw;
+font-size : 3.5rem;
 color: #b80941;
 background: white;
 paddding-bottom: 10px;
@@ -125,7 +125,7 @@ body {
 	@media screen and (max-width: 800px) {
 			body {
   
-  padding-top: 70px ;
+  padding-top: 100px ;
 }
 }
 			
@@ -194,7 +194,7 @@ border-bottom: solid 1px #a6a6a6;
 p
 {
 font-weight: normal ;
-font-size: 3vw;
+font-size: 3rem;
 margin-top: -10px !Important;
 }
 .bold
@@ -205,17 +205,17 @@ font-weight: bold !Important;
 .top_tags, .ctag
 {
 
-font-size: 4vw !Important;
+font-size: 4rem !Important;
 
 }
 
 h3, .h3 {
-font-size: 5vw !important;
+font-size: 4rem !important;
 }
 .pink ,.gray
 {
 
-font-size: 3.5vw;
+font-size: 3.5rem;
 }
 .pink_b
 {

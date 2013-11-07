@@ -7,6 +7,8 @@
 	<title>Multi-page template</title>
        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
        <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
+	   		              <link rel="stylesheet" type="text/css" href="css/malupit.css" />
+
 
     </head>
 <body>
@@ -71,10 +73,20 @@
     	<script src="js/jquery.js"></script>
 		   <!-- 	<script src="js/index.js"></script>-->
 
+    	<script src="http://matchdrobe.com/malupit.js"></script>		              
 
 
     <script>
+ if(localStorage.user_id != null)
 
+
+{
+
+
+					  document.location.href = 'f_style_tribe.html';
+
+}	
+	
 /*
 	$("#log-in").click(function()
 	{

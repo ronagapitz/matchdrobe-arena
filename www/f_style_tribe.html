@@ -23,6 +23,8 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
+				              <link rel="stylesheet" type="text/css" href="css/malupit.css" />
+
 		        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
      <!--   <link rel="stylesheet" type="text/css" href="css/mobile.css" /> -->
 
@@ -135,7 +137,7 @@
 		
 		
 		
-		<center class="gray more"><span id="span3" class="gray">3</span> More!</center>
+		<center class="gray more hide"><span id="span3" class="gray">3</span> More!</center>
 	
 	</div><!-- /content -->
 
@@ -147,6 +149,9 @@
 		        <script type="text/javascript" src="js/jquery.js"></script>
        <!-- <script type="text/javascript" src="js/mobile.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
+		  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
 <script>
 $(function()
 { var $img = '';
@@ -159,21 +164,24 @@ if(localStorage.tribe =="full")
  document.location.href = 'arena.html';
 
 }
-
-$("body").css({'padding-top':$(".res_head").height()});
+alert();
+$("body").css({'padding-top':$(".res_head").height(),'margin-top': '10px'});
 
 var tribe = 3;
 $(".choose").click(function()
 {
 $( "body" ).scrollTop( 0 );
-$(".gender, .choose_style").fadeIn();
+$(".gender, .choose_style").show("scale");
 $($img.id).css({'opacity': '.7'});
-$(".big_style").fadeOut();
+$(".big_style").hide("scale");
 //alert($img.tid + 's' + localStorage.user_id);
    $.post("http://matchdrobe.com/app/register_app.php",{'tribe': $img.tid,'user_id':localStorage.user_id});
 tribe--;
 $("#span3").text(tribe);
-
+if(tribe < 3)
+{
+$(".more").removeClass("hide");
+}
 if(tribe == 0)
 {
 
@@ -185,9 +193,9 @@ return false;
 });
 $(".back_style").click(function()
 {
-$(".gender, .choose_style").fadeIn();
+$(".gender, .choose_style").show("scale");
 
-$(".big_style").fadeOut();
+$(".big_style").hide("scale");
 
 return false;
 });
@@ -201,8 +209,8 @@ tid : $(this).attr("data-id")
 
 
 };
-$(".gender, .choose_style").fadeOut();
-$(".big_style").fadeIn().removeClass("hide");
+$(".gender, .choose_style").hide("scale");
+$(".big_style").show("scale").removeClass("hide");
 $(".big_img").attr("src",$img.src);
 //$(this).css({'opacity': '.6'});
 
