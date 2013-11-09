@@ -121,6 +121,16 @@
 $(function()
 {
 
+
+$(document).on('backbutton',
+     function(e){
+
+         e.preventDefault();
+
+         // do whatever you like here.
+
+});
+
 $("body").css({'padding-top':$(".res_head").height() ,'padding-bottom':$(".navbar-fixed-bottom").height()});
 
 if(localStorage.pts != null)
@@ -139,6 +149,8 @@ $(".pair .cont").load("http://matchdrobe.com/app/arena/");
 
 	$("div.cont").on("click", "a.arena_img", 
 	function(){
+	
+	$(".like_modal").empty();
 $id = $(this).attr("data-id");
 $(".like_modal").load("http://matchdrobe.com/app/arena/arena_popup_tags.php?id="+$id,function()
 {

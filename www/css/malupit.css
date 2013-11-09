@@ -2,8 +2,101 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 margin-right: 0px !important;
 overflow: hidden;
 }
+
+nopad
+{
+
+padding-top: 0px !important;
+
+}
+.noborder
+{
+font-size: 3rem;
+border: none !important;
+height: 80%;
+margin-top: .95%;
+}
+div.email
+{
+background: url(../img/email.png);
+background-size: 100%;
+overflow: hidden;
+min-height: 10px;
+width: 90%;
+min-width:90%;
+max-width: 689px;
+margin: auto;
+}
+
+.regtab img
+{
+
+width: 100%;
+}
+.regtab
+{
+overflow: hidden;
+width: 69%;
+max-width: 527px;
+display: block
+}
+.submit
+{
+margin-top: 20px;
+
+width: 27%;
+position: absolute;
+right: 0px;
+}
+
+div.name
+{
+background: url(../img/name.png);
+background-size: 100%;
+overflow: hidden;
+min-height: 10px;
+width: 90%;
+min-width:90%;
+max-width: 689px;
+margin: auto;
+}
+
+div.password
+{
+background: url(../img/password.png);
+background-size: 100%;
+overflow: hidden;
+min-height: 10px;
+width: 90%;
+min-width:90%;
+max-width: 689px;
+margin: auto;
+}
+
+div.username
+{
+background: url(../img/username.png);
+background-size: 100%;
+overflow: hidden;
+min-height: 10px;
+width: 90%;
+min-width:90%;
+max-width: 689px;
+margin: auto;
+}
+.email  input
+{
+width: 63%;
+float: right;
+}
+
+div.email input
+{
+
+}
 .modal
 {
+
 overflow-y: hidden !important;
 }
 .center
@@ -42,9 +135,8 @@ font-size: 4rem !Important;
 {
 color: #303030;
 }
-.or
-{
-font-size: 239%;
+.or {
+font-size: 3rem;
 }
 .f1,.f2
 {

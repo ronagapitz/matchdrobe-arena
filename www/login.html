@@ -11,23 +11,37 @@
 		              <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
 
     </head>
-<body>
-<div class="container text-center ">
-
-<div class="row "><div class="col-xs-12"><h1>&nbsp </h1></div> </div>	
+<body class="nopad">
+<a href="index.html" class="regtab"><img  src="img/login_tab.png" /></a>
 
 
 
+<div class="container" style="margin-top: 20px;">
+<!--
 <div id="log" class="row text-center login ">
 <div class="col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="text" id="username" placeholder="username"  required class="form-control" /></div>
 </div>
 
+
+
+
+
 <div class="row">
 <div  class=" col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="password" id="password" placeholder="password" required  class="form-control" /></div>
 </div>
+  -->
 
-<div class="row "><div class="col-xs-12"><a id="log-in" href="#f1" ><img  src ="img/login.png" class="hov img-responsive login_start center" /></a></div>
 
+<div class="row">
+<div class="email username col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="text" id="username" required class="noborder" /></div>
+</div>
+
+<div class="row">
+<div class="email password col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="password" id="password"  required class="noborder" /></div>
+</div>
+
+
+<div class="row "><div class="col-xs-12"><a id="log-in" href="#" ><img  src ="img/login_right.png" class="hov submit" /></a></div>
 
 
 
@@ -65,7 +79,16 @@
 
     <script>
 
+	$(document).on('backbutton',
+     function(e){
 
+         e.preventDefault();
+
+         // do whatever you like here.
+
+});
+
+$("div.email").height( ($("div.email").width()) * (.095));
 	$("#log-in").click(function()
 	{
 		 $(".f1").slideDown();
