@@ -9,6 +9,12 @@ nopad
 padding-top: 0px !important;
 
 }
+.arena_tab
+{
+width: 60%;
+max-width: 447px;
+
+}
 .noborder
 {
 font-size: 3rem;
@@ -18,6 +24,7 @@ margin-top: .95%;
 }
 div.email
 {
+visibility: hidden;
 background: url(../img/email.png);
 background-size: 100%;
 overflow: hidden;
@@ -44,7 +51,7 @@ display: block
 {
 margin-top: 20px;
 
-width: 27%;
+width: 40%;
 position: absolute;
 right: 0px;
 }
@@ -115,10 +122,19 @@ min-width: 50px;
 max-width: 100px;
 
 }
+
+
+.skip
+{
+position: absolute;
+right: 0px;
+max-width: 312px;
+width: 40%;
+}
 .points
 {
-height: 5rem;
-font-size: 4rem;
+width: 15%;
+font-size: 3rem;
 line-height: 1;
 
 }
@@ -128,7 +144,38 @@ line-height: 1;
 height: 5rem;
 width: 14rem !important;
 margin-top: 2rem;
-font-size: 4rem !Important;
+font-size: 3rem !Important;
+
+}
+.hof_tab
+{
+width: 60%;
+max-width: 450px;
+margin: auto;
+
+}
+
+li
+{
+
+padding-left: 0px;
+}
+
+
+.hof_toggle
+{
+width: 10%;
+max-width: 76px;
+margin: auto;
+
+}
+
+
+.looks_tab
+{
+width: 100%;
+max-width: 768px;
+margin: auto;
 
 }
 *
@@ -231,7 +278,7 @@ padding-top: 0.5%;
 }
 .container
 {
-padding-bottom: 50px;
+padding-bottom: 100px;
 }
 .footer_arena
 {

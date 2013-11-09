@@ -56,19 +56,10 @@
 <div class="container">
 
 <div class="row text-center style  navbar-fixed-top" data-position="fixed" style=" height: 100px;background: white;">
-<div class="col-xs-12 text-center">
-
-		<div class="col-xs-3" style="padding: 0px;">
-	<a href="f_style_tribe.html"   data-rel="back">
-	</a></div>
-			<div class="col-xs-6 text-center res_head"><img class="img-responsive center" src="img/matchdrobe.png" /><br/>
-			
-			<h2 class="choose_style text-center" style="margin-top: -29px !Important">Which Look is better?</h2>
-</div>
-
-		<div class="points  col-xs-2 pull-right">
+<img src="img/arena_tab.png" class="pull-left arena_tab" />
+		
+		<div class="points   pull-right">
 		0
-		</div>
 		</div>
 		</div>
  		<div class="row  pair ">
@@ -89,7 +80,10 @@
 		
 		</div>
 				
-				
+			
+
+
+<img src="img/skip.png" class="skip hov" />			
 
 	</div><!-- /content -->
 
@@ -121,7 +115,12 @@
 $(function()
 {
 
+$(".skip").click(function()
+{
+	$(".pair .cont").load("http://matchdrobe.com/app/arena/");
 
+
+});
 $(document).on('backbutton',
      function(e){
 
@@ -168,7 +167,7 @@ $("input#tag").focus().focus();
 	});
 	
 	 $( document ).on('keypress','#tag',function(event) {
-        if (event.keyCode == 32) {
+        if (event.keyCode == 32 || event.keyCode == 13 || event.keyCode == 188 || event.keyCode == 9 ) {
            $('#add_tag').prepend('<div class="ctag">'+$('#tag').val()+' <span>x</span></div>');
 		 
 		 array_tag.push( $('#tag').val() );
