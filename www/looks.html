@@ -31,7 +31,11 @@
         <title>Hello World</title>
     </head>
     <body>
-	
+	<div id="pop">
+</div>
+
+	<img  class="popup  center big_img" src="" style="top: 0px" />
+
 		<div class="navbar navbar-fixed-top">
 
 <img src="img/looks_tab.png"  class="looks_tab"/>
@@ -42,19 +46,8 @@
 	<!-- Start of first page: #one -->
 <div class="container" >
 
-<div class="hide big_style row">
-<div class="row" style="margin-bottom: 3%">
-<div class="col-xs-12 ">
 
-<div class="col-xs-2" ><a href="#" class=" back_style"> <img src="img/back.png" /></a></div>
-</div>
-</div>
-<div class="row">
-<div class="col-xs-12">
-<img  class="img-responsive center big_img" src="" />
-</div>
-</div>
-</div>
+
 
  <div id="gender" class="gender">
 	
@@ -97,13 +90,18 @@
 $(function()
 { var $img = '';
 
+$(".big_img").click(function()
+{
+$("#pop,.popup").hide("scale");
 
+});
 
 $(document).on("click",".ron img",function()
 {
-$("#gender").hide("scale");
-$(".big_style").show("scale").removeClass("hide");
-$(".big_img").attr("src",$(this).attr("data-src"));
+$(".big_img").attr("src",$(this).attr("src"));
+$("#pop,.popup").show("scale");
+
+
 });
 $(".gender").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 $("body").css({'padding-top':$(".res_head").height()});
@@ -138,9 +136,10 @@ id : "#"+$(this).attr("id")
 
 
 };
+$(".big_img").attr("src",$img.src);
+
 $(".gender, .choose_style").hide("scale");
 $(".big_style").show("scale").removeClass("hide");
-$(".big_img").attr("src",$img.src);
 //$(this).css({'opacity': '.6'});
 
 })

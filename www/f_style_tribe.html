@@ -31,7 +31,34 @@
         <title>Hello World</title>
     </head>
     <body>
+	<div id="pop">
+
+	</div>
 	
+		<div class=" big_style row popup">
+<div class="row" style="margin-bottom: 3%">
+<div class="col-xs-12 ">
+
+<div class="" ><a href="#" class=" back_style"> <img  class="img-responsive hov" style="width: 22%;max-width: 152px;float: left;"  src="img/back.png" /></a>
+
+<a href="#" class=" choose"> <img  class="img-responsive hov" src="img/choose.png" style="margin-left: -10px;float: left;max-width: 266px;width: 38%" /></a>
+
+</div>
+
+</div>
+</div>
+<!--<div class="col-xs-2"> </div> -->
+
+<div class="row">
+<div class="col-xs-12">
+<img  class="img-responsive center big_img" src="" />
+</div>
+</div>
+</div>
+
+
+
+
 	
 		<div class="navbar navbar-fixed-top">
 		<div class="row" style=""><img class="img-responsive center m_logo" src="img/matchdrobe.png" /></div>
@@ -40,25 +67,7 @@
 	<!-- Start of first page: #one -->
 <div class="container res_con" >
 
-<div class="hide big_style row">
-<div class="row" style="margin-bottom: 3%">
-<div class="col-xs-12 ">
 
-<div class="" ><a href="#" class=" back_style"> <img  class="img-responsive hov" style="width: 22%;max-width: 152px;float: left;"  src="img/back.png" /></a>
-
-<a href="#" class=" choose"> <img  class="img-responsive hov" src="img/choose.png" style="margin-left: -10px;float: left;max-width: 266px;width: 38%" /></a>
-
-
-</div>
-<!--<div class="col-xs-2"> </div> -->
-</div>
-</div>
-<div class="row">
-<div class="col-xs-12">
-<img  class="img-responsive center big_img" src="" />
-</div>
-</div>
-</div>
 
  <div id="gender" class="gender">
 	
@@ -164,16 +173,14 @@ if(localStorage.tribe =="full")
  document.location.href = 'arena.html';
 
 }
-alert();
 $("body").css({'padding-top':$(".res_head").height(),'margin-top': '10px'});
 
 var tribe = 3;
 $(".choose").click(function()
 {
 $( "body" ).scrollTop( 0 );
-$(".gender, .choose_style").show("scale");
+$("#pop,.popup").hide("scale");
 $($img.id).css({'opacity': '.7'});
-$(".big_style").hide("scale");
 //alert($img.tid + 's' + localStorage.user_id);
    $.post("http://matchdrobe.com/app/register_app.php",{'tribe': $img.tid,'user_id':localStorage.user_id});
 tribe--;
@@ -193,9 +200,8 @@ return false;
 });
 $(".back_style").click(function()
 {
-$(".gender, .choose_style").show("scale");
+$("#pop,.popup").hide("scale");
 
-$(".big_style").hide("scale");
 
 return false;
 });
@@ -209,8 +215,8 @@ tid : $(this).attr("data-id")
 
 
 };
-$(".gender, .choose_style").hide("scale");
-$(".big_style").show("scale").removeClass("hide");
+//$(".gender, .choose_style").hide("scale");
+$("#pop,.popup").show("scale").removeClass("hide");
 $(".big_img").attr("src",$img.src);
 //$(this).css({'opacity': '.6'});
 
