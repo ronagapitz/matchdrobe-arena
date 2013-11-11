@@ -287,6 +287,20 @@ body {
 .footer img
 {
 }
+
+#settings_tab
+{
+width: 100%;
+max-width: 768px;
+
+}
+
+#logout:hover , #change_tribe:hover
+{
+background: #b80941;
+color: white;
+
+}
 .s_f
 {
 padding-top: 0.5%;
