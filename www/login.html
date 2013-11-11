@@ -12,6 +12,7 @@
 
     </head>
 <body class="nopad">
+<div class="login_div ">
 <a href="index.html" class="regtab"><img  src="img/login_tab.png" /></a>
 
 
@@ -52,6 +53,7 @@
 
 
 </div>
+</div>
 <!--<button onclick="login()">Login</button> 
 <button onclick="me()">Me</button> -->
 <!--<button onclick="getSession()">Get session</button>
@@ -87,6 +89,9 @@
          // do whatever you like here.
 
 });
+
+
+alert( $( window ).width() / .9 );
 
 $("div.email").height( ($("div.email").width()) * (.095)).css({"visibility":"visible","margin-bottom" : $("div.email").height()+'px'});
 	$("#log-in").click(function()
