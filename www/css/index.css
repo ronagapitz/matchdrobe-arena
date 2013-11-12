@@ -215,15 +215,7 @@ position: relative;
 	height: 30px !important;
 	}
 	
-	.like_modal
-	{
-	font-weight: bold;
-	padding-top: 20px;
-	background: url(../img/like_modal.png);
-	background-size: 100% 100%;
 	
-background-color: none !important;
-	}
 
 		
 		.tags

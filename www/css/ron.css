@@ -44,7 +44,7 @@ background: white !important;
 
 /** tags **/
 
-#tag ,.ui-input-text
+#tag ,input
 	{
 	float: left;
 	box-shadow: none !important;

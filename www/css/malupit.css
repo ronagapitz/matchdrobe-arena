@@ -119,7 +119,7 @@ margin: auto;
 }
 .email  input
 {
-width: 63%;
+width: 63% !important;
 float: right;
 }
 
@@ -139,7 +139,7 @@ margin: auto
 .navbar-fixed-bottom
 {
 background-color: white !important;
-
+visibility: hidden;
 }
 .fb_photo
 {
@@ -156,7 +156,7 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top: 8%
+margin-top:3%
 }
 .points
 {
@@ -291,13 +291,15 @@ background: white;
 
 }
 body {
-  padding-top: 115px;
+
+-webkit-overflow-scrolling: touch;
+ /* padding-top: 115px; */
 }
 
 	@media screen and (max-width: 800px) {
 			body {
   
-  padding-top: 100px ;
+/*  padding-top: 100px ; */
 }
 }
 			
@@ -432,30 +434,162 @@ max-width: 488px !important;
 width: 63%;
 
 }
-body.horizontal-slide {
+
+
+.pink
+{
+color: rgb(184, 9, 65) !important;
+}
+.popup ,#pop
+{
+-webkit-transform: translate3d(0,0,0);
+
+}
+
+.confirm_button
+{
+width: 40%;
+max-width: 325px !important;
+
+
+}
+.pop_back
+
+{
+width: 20%;
+max-width: 164px !important;
+
+
+}
+.navbar-fixed-bottom div
+{
+float: left;
+width: 20%;
+
+}
+.navbar-fixed-bottom
+{
+ position: fixed;
+    bottom: 0;
+    background-color: #f0f;
+   
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+.navbar-fixed-bottom div img
+{
+width: 98%;
+}
+div.horizontal-slide {
     margin: 0;
     padding: 0;
     width: 100%;
-	padding-top: 100px;
     white-space: nowrap;
     overflow-x: auto;
 }
 
-body.horizontal-slide li[class*="col"] {
+div.horizontal-slide li[class*="col"] {
     display: inline-block;
     float: none;
 }
 
-body.horizontal-slide li[class*="col"]:first-child {
+div.horizontal-slide li[class*="col"]:first-child {
     margin-left: 0;
 }
+
+
+	.tags
+		{
+		margin-top: 168px;
+border: solid 2px #898989;
+width: 220px;
+margin-left: 20px
+		}
 .like_modal
-{
+	{
+	font-weight: bold;
+	padding-top: 20px;
+	background: url(../img/like_modal.png);
+	background-size: 90% 100%;
+	
+background-color: none !important;
+top: 10px;
+background-repeat: no-repeat;
 overflow: hidden !Important;
+
+	}
+
+	/*tags */
+	
+#add_tag
+{
+overflow: hidden;
+
+}
+#tag ,input
+	{
+	float: left;
+	box-shadow: none !important;
+	border: none !important;
+	border-style: none !important;
+	width: 100px !important;
+	border-width: 0px !important;
+	}
+	#parent_tag
+	{
+	width: 80%;
+ min-height: 190px;
+ border: solid 1px #b8b8b8;
+	}
+	.ctag
+	{
+	background: #b80941 !important;
+	color: white !important;
+	
+	}
+	.top_tags ,.ctag
+	{
+	float: left;
+	background: #d3d3d3;
+	padding: 5px; margin: 5px;
+	color: black;
+position: relative;
+
+	}
+	.tops
+	{
+	overflow: hidden;
+	 border-bottom: solid 1px #b8b8b8;
+
+	}
+	
+	
+	/* points */
+	
+	.points
+{
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: solid 2px #9d9fa2;
+min-width: 70px;
+text-align: right;
+margin-top: 5px;
+color: #b80941;
+padding-right: 4px;
 
 }
 
 /* for modal */
+
+.tag_content
+{
+
+width: 75%;
+
+}
 .hov:hover
 {
 
