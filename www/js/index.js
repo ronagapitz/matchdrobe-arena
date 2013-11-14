@@ -68,7 +68,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	$(".regtab").on('tap', function(e) {
 	
 			$(".main_page").show("slide");
-			$(".login_div,.register_div").hide('slide');
+			$(".login_div,.register_div").hide();
 			
 			return false;
 
@@ -82,7 +82,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	
 
 	$(".register_div").show("slide");
-		$(".main_page").hide("slide");
+		$(".main_page").hide();
 
 	return false;
 	});
@@ -195,7 +195,7 @@ $(".reg_con").on("tap",function()
 {
 	$(".register_div").hide();
 					$(".tribe_div").show("slide");
-					$(".reg_pop,#pop").hide("slide");
+					$(".reg_pop,#pop").hide();
 
 });
 $("#reg_btn").on('tap',function()
@@ -213,7 +213,7 @@ $("#reg_btn").on('tap',function()
 	 }   
 	    else
    {
-   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),
+   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),'full_name': $("#name").val(),
    "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
    {
       

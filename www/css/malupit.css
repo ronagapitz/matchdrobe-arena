@@ -176,7 +176,7 @@ min-width: 50px;
 max-width: 100px;
 
 }
-.big_img
+.looks_div .big_img
 {
 -webkit-transform: translate3d(0,0,0);
 
@@ -346,10 +346,47 @@ body {
 {
 }
 
+
 #settings_tab
 {
 width: 100%;
 max-width: 768px;
+
+}
+
+
+/**************************profile *********/
+.profile_pic
+{
+float: left;
+width: 20%;
+}
+.profile_desc
+{
+font-size: 2.3rem;
+padding: 10pt;
+width: 100%;
+overflow: hidden;
+
+}
+.profile_pic img
+{
+
+width: 80%;
+margin: auto;
+display: block;
+}
+.profile_name
+{
+font-size: 2.7rem;
+color: #b80941;
+float: left;
+width: 80%;
+}
+.profile_div .arena_tab
+{
+width: 100% !important;
+max-width: 768px !important;
 
 }
 
