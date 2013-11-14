@@ -1,6 +1,7 @@
 $(function()
 {
 
+$(".pair .cont").load("http://matchdrobe.com/app/arena/");
 
 
 /* adjust header height */
@@ -27,6 +28,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	
 
 	$(".login_div").show("slide");
+	$(".submit").effect('slide', { direction: 'left', mode: 'show' });
 		$(".main_page").hide();
 
 	return false;
@@ -66,7 +68,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	$(".regtab").on('tap', function(e) {
 	
 			$(".main_page").show("slide");
-			$(".login_div,.register_div").hide();
+			$(".login_div,.register_div").hide('slide');
 			
 			return false;
 
@@ -80,7 +82,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	
 
 	$(".register_div").show("slide");
-		$(".main_page").hide();
+		$(".main_page").hide("slide");
 
 	return false;
 	});
@@ -188,6 +190,14 @@ $(document).on('backbutton',
 });
 	
 /***************register *****************************/
+
+$(".reg_con").on("tap",function()
+{
+	$(".register_div").hide();
+					$(".tribe_div").show("slide");
+					$(".reg_pop,#pop").hide("slide");
+
+});
 $("#reg_btn").on('tap',function()
 	{
 	
@@ -217,10 +227,14 @@ $("#reg_btn").on('tap',function()
  else
   {
    localStorage.user_id = e.uid;
-      alert("Registration Successful");
+   
+   
+   $(".reg_pop").show("slide");
+   $("#pop").show();
+     // alert("Registration Successful");
 
-   					$(".register_div").hide();
-					$(".tribe_div").show("slide");
+   					//$(".register_div").hide();
+					//$(".tribe_div").show("slide");
 }
    
 
@@ -351,6 +365,18 @@ array_tag = [];
 
 $(".navbar-fixed-bottom div").on("tap",function() {
 url = $(this).attr("data-url");
+if(url == '.hof_div')
+{
+
+
+$("body").addClass("horizontal-slide")
+}
+else
+{
+$("body").removeClass("horizontal-slide")
+
+
+}
 $(".adjust_container").hide();
 
  
@@ -367,6 +393,18 @@ $(url).show("slide");
 });
 
 /*hof**************************/
+$(".hof_toggle").on("tap",function()
+{
+	$(".hof_pop").effect('slide', { direction: 'right', mode: 'show' });
+
+
+});
+$(".hof_pop").on("tap",function()
+{
+	$(this).effect('slide', { direction: 'right', mode: 'hide' });
+
+});
+
 
 $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{hof: 1});
 
@@ -376,15 +414,19 @@ $(".looks_div .gender").load("http://matchdrobe.com/app/arena/arena_functions.ph
 
 $(document).on("tap",".looks_div .ron img",function()
 {
-$(".big_img").attr("src",$(this).attr("src"));
-$("#pop,.big_img").show("scale");
+$(".big_img").attr("src",$(this).attr("src")).show();
+
+$("#pop").show();
 $( "body" ).scrollTop( 0 );
 
 })
 
 $(".big_img").on("tap", function()
 {
-$("#pop,.popup").hide("scale");
+
+$("#pop").hide();
+
+$(".popup").hide();
 });
 
 /*****************settings ******************/

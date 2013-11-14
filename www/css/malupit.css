@@ -22,7 +22,8 @@ top:0
 }
 .popup
 {
-position: absolute;z-index: 3000;
+position: absolute;
+z-index: 3000;
 display: none;
 width: 100%;
 height: auto;
@@ -141,6 +142,33 @@ margin: auto
 background-color: white !important;
 visibility: hidden;
 }
+
+
+/****************hof *****************************/
+.hof_pop
+{
+display: none;
+background: url(../img/hof_pop.png);
+background-repeat: no-repeat;
+position: absolute;
+right: 0;
+z-index: 2000
+
+
+}
+.hof_pop ul
+{
+margin-right: 15px;text-align: right;
+position: absolute;
+top: 0;
+right: 0;
+list-style: none;
+top: 20%;
+font-size: 2.5rem;
+
+}
+
+/************end of hog **********************/
 .fb_photo
 {
 width: 55%;
@@ -148,7 +176,17 @@ min-width: 50px;
 max-width: 100px;
 
 }
+.big_img
+{
+-webkit-transform: translate3d(0,0,0);
 
+height: 100% !important;
+width: auto !important;
+margin: 0 auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  display: none;
+}
 
 .skip
 {
@@ -161,9 +199,9 @@ margin-top:3%
 .points
 {
 width: 15%;
-font-size: 3rem;
+font-size: 2.3rem;
 line-height: 1;
-margin-right: 2%;
+margin-right: 3%;
 
 }
 
@@ -172,7 +210,7 @@ margin-right: 2%;
 height: 5rem;
 width: 14rem !important;
 margin-top: 2rem;
-font-size: 3rem !Important;
+font-size: 2.2rem !Important;
 
 }
 .hof_tab
@@ -192,9 +230,10 @@ padding-left: 0px;
 
 .hof_toggle
 {
-width: 10%;
+width: 13%;
 max-width: 76px;
 margin: auto;
+margin-right: 4%;
 
 }
 
@@ -393,7 +432,7 @@ font-weight: bold !Important;
 .top_tags, .ctag
 {
 
-font-size: 3rem !Important;
+font-size: 2rem !Important;
 
 }
 
@@ -451,6 +490,7 @@ color: rgb(184, 9, 65) !important;
 
 .confirm_button
 {
+margin-bottom: 20px;
 width: 40%;
 max-width: 325px !important;
 
@@ -485,25 +525,55 @@ width: 20%;
 {
 width: 98%;
 }
-div.horizontal-slide {
+.horizontal-slide {
     margin: 0;
     padding: 0;
     width: 100%;
     white-space: nowrap;
     overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
+	
+}
+.reg_con
+{
+width: 40%;float: right;
+margin-bottom: 20px;
+max-width: 280px;
+}
+h1
+{
+font-size: 3rem
 }
 
-div.horizontal-slide li[class*="col"] {
+
+.reg_pop
+{
+background : url(../img/small_pop.png);
+background-size: 100% 100%;
+top: 10%;
+width: 90% !important ;
+display: block;
+min-height: 200px;
+display: none;
+position : absolute;
+z-index: 4000;
+
+}
+
+.horizontal-slide li[class*="col"] {
     display: inline-block;
     float: none;
 }
 
-div.horizontal-slide li[class*="col"]:first-child {
+.horizontal-slide li[class*="col"]:first-child {
     margin-left: 0;
 }
 
+.item_desc
+{
 
+font-size: 2.2rem !important;
+}
 	.tags
 		{
 		margin-top: 168px;
@@ -516,7 +586,7 @@ margin-left: 20px
 	font-weight: bold;
 	padding-top: 20px;
 	background: url(../img/like_modal.png);
-	background-size: 90% 100%;
+	background-size: 100% 100%;
 	
 background-color: none !important;
 top: 10px;
@@ -610,7 +680,15 @@ width: auto !important;
 
 /* smoooth */
 
-img, .login_div * .main_page *, .register_div *, .tribe_div *,.big_style ,.big_style * , .arena_div img, .hof_div img, .profile_div *
+img, .login_div * ,.main_page *, 
+.register_div *, 
+.tribe_div *,
+.big_style ,
+.big_style * ,
+ .arena_div img,
+ .hof_div img,
+ .profile_div *,
+ .hof_pop
 {
 -webkit-transform: translate3d(0,0,0);
 
