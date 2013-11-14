@@ -187,6 +187,53 @@ $(document).on('backbutton',
 
 });
 	
+/***************register *****************************/
+$("#reg_btn").on('tap',function()
+	{
+	
+
+		// $(".f2").slideDown();
+		 		// $("#reg1")[0].scrollIntoView();
+
+	 	// $(".f1").slideUp();
+  if($("#rusername").val() == '' ||  $("#rpassword").val() == ''   ||  $("#email").val() == '')
+	 {
+	 //alert("required fields");
+	return false;
+	 }   
+	    else
+   {
+   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),
+   "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
+   {
+      
+ 
+  console.log(e.num);
+   if(e.num != 0)
+   {
+      alert("User already exists!");
+					  
+   }
+ else
+  {
+   localStorage.user_id = e.uid;
+      alert("Registration Successful");
+
+   					$(".register_div").hide();
+					$(".tribe_div").show("slide");
+}
+   
+
+  
+  // return false;
+  // return false;
+   }, "json");
+  
+
+  }
+
+ // return false;
+   });
 //arena ******************************************************************************************************
 
 

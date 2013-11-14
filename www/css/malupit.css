@@ -409,6 +409,9 @@ font-size: 2.5rem;
 {
 border: solid 5px #b80941;
 }
+
+
+
 .pinkb
 {
 background: #b80941;
@@ -488,6 +491,7 @@ div.horizontal-slide {
     width: 100%;
     white-space: nowrap;
     overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 div.horizontal-slide li[class*="col"] {
@@ -600,4 +604,14 @@ opacity: .7 !important;
 {
 
 width: auto !important;
+}
+
+
+
+/* smoooth */
+
+img, .login_div * .main_page *, .register_div *, .tribe_div *,.big_style ,.big_style * , .arena_div img, .hof_div img, .profile_div *
+{
+-webkit-transform: translate3d(0,0,0);
+
 }
