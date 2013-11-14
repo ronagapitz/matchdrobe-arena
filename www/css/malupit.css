@@ -164,7 +164,7 @@ top: 0;
 right: 0;
 list-style: none;
 top: 20%;
-font-size: 2.5rem;
+font-size: 2rem;
 
 }
 
@@ -178,11 +178,14 @@ max-width: 100px;
 }
 .looks_div .big_img
 {
+/*
 border: 1px solid transparent;
 
 -webkit-transform: translate3d(0,0,0);
 -webkit-backface-visibility: hidden;
 -webkit-transform-style: preserve-3d; 
+
+*/
 height: 100% !important;
 width: auto !important;
 margin: 0 auto !important;
@@ -210,10 +213,10 @@ margin-right: 3%;
 
 #tag
 {
-height: 5rem;
+height: 10rem;
 width: 14rem !important;
 margin-top: 2rem;
-font-size: 2.2rem !Important;
+font-size: 2rem !Important;
 
 }
 .hof_tab
@@ -253,7 +256,7 @@ margin: auto;
 color: #303030;
 }
 .or {
-font-size: 3rem;
+font-size: 2.3rem;
 }
 .f1,.f2
 {
@@ -300,19 +303,18 @@ width: 100%;
 }
 .tribe
 {
-margin-bottom: 3%;
-
+padding: 1%;
 }
 
 .more
 {
-font-size : 3.7rem;
+font-size : 2rem;
 font-style: italic
 }
 .choose_style
 {
 margin-top: 0px !important;
-font-size : 3.5rem;
+font-size : 2rem;
 color: #b80941;
 background: white;
 paddding-bottom: 10px;
@@ -365,7 +367,7 @@ width: 20%;
 }
 .profile_desc
 {
-font-size: 2.3rem;
+font-size: 1.9rem;
 padding: 10pt;
 width: 100%;
 overflow: hidden;
@@ -380,7 +382,7 @@ display: block;
 }
 .profile_name
 {
-font-size: 2.7rem;
+font-size: 2rem;
 color: #b80941;
 float: left;
 width: 80%;
@@ -460,7 +462,7 @@ border-bottom: solid 1px #a6a6a6;
 p
 {
 font-weight: normal ;
-font-size: 3rem;
+font-size: 1.5rem;
 margin-top: -10px !Important;
 }
 .bold
@@ -476,12 +478,12 @@ font-size: 2rem !Important;
 }
 
 h3, .h3 {
-font-size: 2.5rem !important;
+font-size: 1.5rem !important;
 }
 .pink ,.gray
 {
 
-font-size: 2.5rem;
+font-size: 1.5rem;
 }
 .pink_b
 {
@@ -523,11 +525,14 @@ color: rgb(184, 9, 65) !important;
 }
 .popup ,#pop
 {
+/*
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform-style: preserve-3d; 
 -webkit-backface-visibility: hidden;
-border: 1px solid transparent;
 
+
+border: 1px solid transparent;
+*/
 }
 
 .confirm_button
@@ -583,7 +588,7 @@ max-width: 280px;
 }
 h1
 {
-font-size: 3rem
+font-size: 2rem
 }
 
 
@@ -604,6 +609,8 @@ z-index: 4000;
 .horizontal-slide li[class*="col"] {
     display: inline-block;
     float: none;
+	margin: 0px;
+	padding: 0px;
 }
 
 .horizontal-slide li[class*="col"]:first-child {
@@ -613,7 +620,7 @@ z-index: 4000;
 .item_desc
 {
 
-font-size: 2.2rem !important;
+font-size: 2rem !important;
 }
 	.tags
 		{
@@ -717,6 +724,10 @@ opacity: .7 !important;
 width: auto !important;
 }
 
+.img-ron
+{
+width: 100%;
+}
 
 
 /* smoooth 

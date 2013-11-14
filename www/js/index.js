@@ -1,6 +1,12 @@
 $(function()
 {
 
+
+$(".setter").on("tap",function()
+{
+
+$(".profile_setings,.main_profile").toggle();
+})
 $(".pair .cont").load("http://matchdrobe.com/app/arena/");
 
 
@@ -365,6 +371,8 @@ array_tag = [];
 
 $(".navbar-fixed-bottom div").on("tap",function() {
 url = $(this).attr("data-url");
+$( "body" ).scrollTop( 0 );
+
 if(url == '.hof_div')
 {
 
