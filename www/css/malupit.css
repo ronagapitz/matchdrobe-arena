@@ -178,6 +178,8 @@ max-width: 100px;
 }
 .looks_div .big_img
 {
+border: 1px solid transparent;
+
 -webkit-transform: translate3d(0,0,0);
 -webkit-backface-visibility: hidden;
 -webkit-transform-style: preserve-3d; 
@@ -524,6 +526,7 @@ color: rgb(184, 9, 65) !important;
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform-style: preserve-3d; 
 -webkit-backface-visibility: hidden;
+border: 1px solid transparent;
 
 }
 
@@ -716,9 +719,9 @@ width: auto !important;
 
 
 
-/* smoooth */
+/* smoooth 
 
-img, .login_div * ,.main_page *, 
+ .login_div * ,.main_page *, 
 .register_div *, 
 .tribe_div *,
 .big_style ,
@@ -728,8 +731,11 @@ img, .login_div * ,.main_page *,
  .profile_div *,
  .hof_pop
 {
+border: 1px solid transparent;
+
 -webkit-transform: translate3d(0,0,0);
 -webkit-backface-visibility: hidden;
 -webkit-transform-style: preserve-3d; 
 
 }
+*/
