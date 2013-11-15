@@ -617,10 +617,14 @@ z-index: 4000;
     margin-left: 0;
 }
 
+.pdesc
+{
+color: white;
+}
 .item_desc
 {
 
-font-size: 2rem !important;
+font-size: 1.5rem !important;
 }
 	.tags
 		{
@@ -729,7 +733,10 @@ width: auto !important;
 width: 100%;
 }
 
-
+.main_page
+{
+margin-top: 10%;
+}
 /* smoooth 
 
  .login_div * ,.main_page *, 
