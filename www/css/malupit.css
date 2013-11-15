@@ -473,7 +473,7 @@ font-weight: bold !Important;
 .top_tags, .ctag
 {
 
-font-size: 2rem !Important;
+font-size: 1.1rem !Important;
 
 }
 
@@ -661,7 +661,7 @@ overflow: hidden;
 	}
 	#parent_tag
 	{
-	width: 80%;
+	width: 100%;
  min-height: 190px;
  border: solid 1px #b8b8b8;
 	}
