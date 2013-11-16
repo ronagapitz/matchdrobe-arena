@@ -420,7 +420,7 @@ $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{h
 /*looks **********************************/
 $(".looks_div .gender").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 
-$(document).on("tap",".looks_div .ron img",function()
+$(document).on("dblclick",".looks_div .ron img",function()
 {
 $(".big_img").attr("src",$(this).attr("src")).show();
 
