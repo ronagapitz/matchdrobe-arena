@@ -179,13 +179,30 @@ max-width: 100px;
 .looks_div .big_img
 {
 /*
-border: 1px solid transparent;
+ -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+   
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
 
--webkit-transform: translate3d(0,0,0);
--webkit-backface-visibility: hidden;
--webkit-transform-style: preserve-3d; 
-
-*/
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+   
+   
+   */
+   -webkit-transform: translate3d(0, 0, 0);
+   -moz-transform: translate3d(0, 0, 0);
+   -ms-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
+   
+   
 height: 100% !important;
 width: auto !important;
 margin: 0 auto !important;
@@ -526,13 +543,28 @@ color: rgb(184, 9, 65) !important;
 .popup ,#pop
 {
 /*
--webkit-transform: translate3d(0,0,0);
--webkit-transform-style: preserve-3d; 
--webkit-backface-visibility: hidden;
+ -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+   
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
 
-
-border: 1px solid transparent;
-*/
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+   
+   */
+   
+   -webkit-transform: translate3d(0, 0, 0);
+   -moz-transform: translate3d(0, 0, 0);
+   -ms-transform: translate3d(0, 0, 0);
+   transform: translate3d(0, 0, 0);
 }
 
 .confirm_button
@@ -739,7 +771,7 @@ margin-top: 10%;
 }
 
 
- .login_div * ,.main_page *, 
+ .login_div  ,.main_page *, 
 .register_div *, 
 .tribe_div *,
 .big_style ,
@@ -749,6 +781,7 @@ margin-top: 10%;
  .profile_div ,
  .hof_pop,#pop,.popup
 {
+/*
  -webkit-transform: translateZ(0);
    -moz-transform: translateZ(0);
    -ms-transform: translateZ(0);
@@ -765,7 +798,7 @@ margin-top: 10%;
    -ms-perspective: 1000;
    perspective: 1000;
    
-   
+   */
    
    -webkit-transform: translate3d(0, 0, 0);
    -moz-transform: translate3d(0, 0, 0);
