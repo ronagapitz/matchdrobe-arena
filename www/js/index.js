@@ -421,7 +421,7 @@ $(this).hide();
 
 $(document).on("tap",".hof_div .img-ron",function()
 {
-alert($(this).attr("src"))
+//alert($(this).attr("src"))
 $(".big_img2").attr("src",$(this).attr("src")).show();
 $("#pop").show();
 });
@@ -468,7 +468,7 @@ $(".popup").hide();
 
 $("#logout").on("tap",function()
 {
-alert();
+
 localStorage.clear();
 document.location.href = 'index.html';
 
