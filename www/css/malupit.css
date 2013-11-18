@@ -754,13 +754,13 @@ margin-top: 10%;
 
  .login_div ,.main_page , 
 .register_div , 
-.tribe_div *,.tribe_div,
+.tribe_div,
 .big_style,
 .big_style * ,
  .arena_div,
  .hof_div,
  
- .profile_div *,
+ .profile_div ,
  .hof_pop,#pop,.popup
 {
  -webkit-transform: translateZ(0);
