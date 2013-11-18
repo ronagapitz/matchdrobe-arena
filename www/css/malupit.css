@@ -176,7 +176,7 @@ min-width: 50px;
 max-width: 100px;
 
 }
-.looks_div .big_img
+.looks_div .big_img,.big_img2
 {
 /*
 border: 1px solid transparent;
@@ -186,6 +186,7 @@ border: 1px solid transparent;
 -webkit-transform-style: preserve-3d; 
 
 */
+z-index: 4000;
 height: 100% !important;
 width: auto !important;
 margin: 0 auto !important;
@@ -196,11 +197,16 @@ margin: 0 auto !important;
 
 .skip
 {
-position: absolute;
+   
+   
+ z-index:1; /*for some reason we need a z index */
+position: fixed;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top:3%
+margin-top: 3%;
+right: 0px;
+bottom: 20%;
 }
 .points
 {
@@ -221,10 +227,9 @@ font-size: 2rem !Important;
 }
 .hof_tab
 {
-width: 60%;
+width: 50%;
 max-width: 450px;
 margin: auto;
-
 }
 
 li
@@ -617,6 +622,10 @@ z-index: 4000;
     margin-left: 0;
 }
 
+.horizontal-slide li
+{
+margin-right: .6rem !important;
+}
 .pdesc
 {
 color: white;
@@ -735,14 +744,22 @@ width: 100%;
 margin-top: 10%;
 }
 
+#triangle {
+	width: 0;
+	height: 0;
+	border-bottom: 100px solid red;
+	border-left: 100px solid transparent;
+}
+
 
  .login_div ,.main_page , 
 .register_div , 
 .tribe_div *,.tribe_div,
 .big_style,
 .big_style * ,
- .arena_div img,
+ .arena_div,
  .hof_div,
+ 
  .profile_div *,
  .hof_pop,#pop,.popup
 {

@@ -3,8 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
-	<title>Multi-page template</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    	<title>Multi-page template</title>
        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
        <link rel="stylesheet" type="text/css" href="http://matchdrobe.com/malupit.css" />
 	   		              <link rel="stylesheet" type="text/css" href="css/malupit.css" />
@@ -12,6 +13,7 @@
 
     </head>
 <body>
+<img  class="popup  center big_img2" src="" style="top: 0px" />
 
 <div class="hof_pop">
 <img src="img/hof_pop.png" style="visibility: hidden" />
@@ -63,6 +65,7 @@
 <!-- end looks -->
 <!-- begin hof -->
 <div class="hof_div none adjust_container" >
+
 	
 	
 		<div class="row text-center navbar navbar-fixed-top" style="background: white;">
@@ -281,6 +284,7 @@
 <a href="index.html" class="regtab"><img  src="img/reg_tab.png" /></a>
 
 </div>
+<form id="reg_form" action="" >
 
 <div class="container" style="margin-top: 20px;">
 <div class="row">
@@ -290,7 +294,8 @@
 
 
 <div class="row">
-<div class="email col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px"><input type="email" id="email"  required class="noborder" /></div>
+<div class="email col-lg-8 col-xs-12  col-lg-offset-2  col-sm-12 " style="margin-bottom: 10px">
+<input type="email" id="email"  required class="noborder" /></div>
 </div>
 
 <div class="row">
@@ -306,9 +311,11 @@
 
 
 
-<div class="row "><div class="col-xs-12"><a id="reg_btn" href="#" ><img  src ="img/submit.png" class="hov submit" /></a></div>
+<div class="row "><div class="col-xs-12"><button type="submit" id="reg_btn" ><img  src ="img/submit.png" class="hov submit" /></button></div>
 
 </div>
+
+</form>
 
 
 </div>

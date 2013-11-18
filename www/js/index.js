@@ -1,14 +1,51 @@
- document.addEventListener("deviceready", onDeviceReady, false);
-
-    // Cordova is ready
-    //
-    function onDeviceReady() {
-        navigator.splashscreen.hide();
-    }
 
 $(function()
 {
 
+$("#reg_form").submit(function()
+{
+
+
+
+if($("#rusername").val() == '' ||  $("#rpassword").val() == ''   ||  $("#email").val() == '')
+	 {
+	 //alert("required fields");
+	return false;
+	 }   
+	    else
+   {
+   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),'full_name': $("#name").val(),
+   "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
+   {
+      
+ 
+  console.log(e.num);
+   if(e.num != 0)
+   {
+      alert("User already exists!");
+					  
+   }
+ else
+  {
+   localStorage.user_id = e.uid;
+   
+   
+   $(".reg_pop").show("slide");
+   $("#pop").show();
+     // alert("Registration Successful");
+
+   					//$(".register_div").hide();
+					//$(".tribe_div").show("slide");
+}
+   
+
+  
+  // return false;
+  // return false;
+   }, "json");
+   }
+  
+});
 
 $(".setter").on("tap",function()
 {
@@ -64,7 +101,7 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	 if(e.a == 1)
 	 {
 	localStorage.user_id = e.a;
-	alert("Login Successful");
+	//alert("Login Successful");
 					//	  document.location.href = 'f_style_tribe.html';
 
 					$(".login_div").hide();
@@ -220,48 +257,12 @@ $("#reg_btn").on('tap',function()
 		 		// $("#reg1")[0].scrollIntoView();
 
 	 	// $(".f1").slideUp();
-  if($("#rusername").val() == '' ||  $("#rpassword").val() == ''   ||  $("#email").val() == '')
-	 {
-	 //alert("required fields");
-	return false;
-	 }   
-	    else
-   {
-   $.post("http://matchdrobe.com/app/register_app.php",{'registration':'true','email':$("#email").val(),'full_name': $("#name").val(),
-   "user_name": $("#rusername").val(),"password" : $("#rpassword").val()}, function(e)
-   {
-      
- 
-  console.log(e.num);
-   if(e.num != 0)
-   {
-      alert("User already exists!");
-					  
-   }
- else
-  {
-   localStorage.user_id = e.uid;
-   
-   
-   $(".reg_pop").show("slide");
-   $("#pop").show();
-     // alert("Registration Successful");
-
-   					//$(".register_div").hide();
-					//$(".tribe_div").show("slide");
-}
-   
-
-  
-  // return false;
-  // return false;
-   }, "json");
   
 
   }
 
  // return false;
-   });
+   );
 //arena ******************************************************************************************************
 
 
@@ -284,7 +285,7 @@ var $id = '';
 
 $("div.cont").on("tap", "a.arena_img", 
 	function(){
-	
+
 		//$(".like_modal .tag_content").empty();
 $(".fb_photo").attr("src",$(this).attr("data-photo"));
 $(".username").text($(this).attr("data-name"));
@@ -292,13 +293,14 @@ $(".username").text($(this).attr("data-name"));
 $("#pop").show();
 		$(".tag_pop").show("slide");
 $id = $(this).attr("data-id");
-
+$("#tagger").html($(this).next().html());
+/*
 
 $("#tagger").load("http://matchdrobe.com/app/arena/arena_popup_tags.php?id="+$id,function(e)
 {
 $("input#tag").focus().focus();
 
-});
+}); */
  
 	 return false;
 	
@@ -328,6 +330,7 @@ $("input#tag").focus().focus();
 
 	$(document).on("tap",".confirm",function()
 	{
+	
 	
 	$("#pop,.popup").hide("slide");
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
@@ -409,8 +412,24 @@ $(url).show("slide");
 });
 
 /*hof**************************/
+$(document).on("tap",".big_img2",function()
+{
+
+$("#pop").hide();
+$(this).hide();
+});
+
+$(document).on("tap",".hof_div .img-ron",function()
+{
+alert($(this).attr("src"))
+$(".big_img2").attr("src",$(this).attr("src")).show();
+$("#pop").show();
+});
 $(".hof_toggle").on("tap",function()
 {
+
+
+
 	$(".hof_pop").effect('slide', { direction: 'right', mode: 'show' });
 
 
@@ -428,7 +447,7 @@ $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{h
 /*looks **********************************/
 $(".looks_div .gender").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 
-$(document).on("dblclick",".looks_div .ron img",function()
+$(document).on("tap",".looks_div .ron img",function()
 {
 $(".big_img").attr("src",$(this).attr("src")).show();
 
