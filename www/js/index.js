@@ -320,10 +320,10 @@ $("input#tag").focus().focus();
         if ( event.keyCode == 32 || event.keyCode == 13 || event.keyCode == 188 || event.keyCode == 9 ) {
 		if($(this).val() !== "")
 		{
-		           $('#add_tag').prepend('<div class="ctag">'+$('#tag').val()+' <span>x</span></div>');
+		           $('#add_tag').prepend('<div class="ctag">'+$('.tagg').val()+' <span>x</span></div>');
 
-		 array_tag.push( $('#tag').val() );
-		$('#tag').focus().val('');
+		 array_tag.push( $('.tagg').val() );
+		$('.tagg').focus().val('');
 		}
 		
         }
