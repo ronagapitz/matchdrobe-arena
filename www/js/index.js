@@ -44,6 +44,7 @@ if($("#rusername").val() == '' ||  $("#rpassword").val() == ''   ||  $("#email")
   // return false;
    }, "json");
    }
+   return false;
   
 });
 
@@ -315,7 +316,7 @@ $("input#tag").focus().focus();
 	
 	});
 	
-	 $( document ).on('keypress',.tagg',function(event) {
+	 $( document ).on('keypress','.tagg',function(event) {
         if ( event.keyCode == 32 || event.keyCode == 13 || event.keyCode == 188 || event.keyCode == 9 ) {
 		if($(this).val() !== "")
 		{
