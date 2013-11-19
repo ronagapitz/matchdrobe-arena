@@ -168,6 +168,29 @@ font-size: 2rem;
 
 }
 
+
+.loader
+{
+position: absolute;
+margin: 0 auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: -1;
+  bottom: 0;
+}
+
+.tapper
+{
+position: absolute;
+margin: 0 auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999;
+  width: 80%;
+  top: 20%;
+ 
+}
+
 /************end of hog **********************/
 .fb_photo
 {
@@ -193,6 +216,7 @@ margin: 0 auto !important;
   left: 0 !important;
   right: 0 !important;
   display: none;
+  position: fixed
 }
 
 .skip
@@ -583,7 +607,7 @@ width: 98%;
     width: 100%;
     white-space: nowrap;
     overflow-x: auto;
-	
+	overflow-y: hidden; 
 }
 .reg_con
 {

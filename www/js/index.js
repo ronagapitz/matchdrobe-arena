@@ -53,7 +53,7 @@ $(".setter").on("tap",function()
 
 $(".profile_setings,.main_profile").toggle();
 })
-$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
 
 /* adjust header height */
@@ -173,7 +173,7 @@ if(localStorage.tribe =="full")
  
  });
  $(".tribe_div,.main_page").hide();
-$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
 }
 //$("body").css({'padding-top':$(".res_head").height(),'margin-top': '10px'});
@@ -273,11 +273,11 @@ $("#pop").hide();
 $(".popup").hide("slide");
 
 });
-$(".skip").on("tap",function()
+$(document).on("tap",".skip",function()
 {
-	$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
-
+$(".tapper").hide();
 }); 
  
  
@@ -331,7 +331,7 @@ $("input#tag").focus().focus();
 
 	$(document).on("tap",".confirm",function()
 	{
-	
+	$(".tapper").hide();
 	
 	$("#pop,.popup").hide("slide");
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
@@ -361,7 +361,7 @@ $(".points").text(localStorage.pts);
 
 array_tag = [];
 
-	$(".pair .cont").load("http://matchdrobe.com/app/arena/");
+	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
 	});
 
@@ -423,7 +423,7 @@ $(this).hide();
 $(document).on("tap",".hof_div .img-ron",function()
 {
 //alert($(this).attr("src"))
-$(".big_img2").attr("src",$(this).attr("src")).show();
+$(".big_img2").attr("src",$(this).attr("src")).show().css('left',$(this).position().left);
 $("#pop").show();
 });
 $(".hof_toggle").on("tap",function()
