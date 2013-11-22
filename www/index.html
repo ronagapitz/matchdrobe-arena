@@ -13,6 +13,8 @@
 
     </head>
 <body>
+<img src="img/profile_tab.png" class="none setter pull-left arena_tab" />
+
 <img  class="popup  center big_img2" src="" style="top: 0px" />
 
 <div class="hof_pop">
@@ -35,7 +37,6 @@
 
 <!-- begin looks -->
 <div class="looks_div none adjust_container" >
-<center><img  class="popup  center big_img" src="" style="top: 0px" /></center>
 
 		<div class="navbar navbar-fixed-top">
 
@@ -87,14 +88,11 @@
 
 <!-- end hof -->
 <!-- begin profile -->
-<div class="profile_div none adjust_container" >
-<div class="row text-center style  navbar-fixed-top" data-position="fixed" style="background: white;">
-<img src="img/profile_tab.png" class="setter pull-left arena_tab" />
+<div class="profile_div none adjust_container " >
 		
 	
-		</div>
 		
-		<div class="main_profile" style="width: 100%;background:#f3f3f3;overflow:hidden;padding-top:20px">
+		<div class="main_profile none" style="width: 100%;background:#f3f3f3;overflow:hidden;padding-top:20px">
 		<div class="profile_pic">
 		<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/212005_100000098754443_989136615_q.jpg" />
 		</div>
@@ -110,10 +108,8 @@
 
 		</div>
 		
-		</div>
-		</div>
 		
-		</div>
+		
 		<div class="container none profile_setings" style="padding-top: 50px" >
 
 <div class="row"  style="border-top: solid 4px #dcdcdc">
@@ -132,6 +128,48 @@
 </div>
 	
 	</div><!-- /content -->
+
+	<div id="profile_about"  class="profile_pages">
+	
+	<div><img src="img/sample_dp.jpg" id="dp" /></div>
+		<div class="profile_name">
+		
+		</div>
+
+		<p class="profile_desc" contenteditable=true >
+	</p>
+	
+	<p class="pink edit_p">edit profile</p>
+	
+	</div>
+	
+	<div id="profile_about" class="profile_pages">
+	
+	<div class="looks container"></div>
+	</div>
+	
+	
+	<div id="profile_follow" class="profile_pages">
+	
+	<div class="container"><img style="width: 100%" src="img/follower.jpg" id="dp" /></div>
+	
+	</div>
+	<div id="profile_follow" class="profile_pages">
+	
+	<div class="container"><img style="width: 100%" src="img/follower.jpg" id="dp" /></div>
+	
+	</div>
+	
+	
+	
+	
+	<div id="profile_activity" class="profile_pages">
+		<div class="container"><img style="width: 100%" src="img/activity.jpg" id="dp" /></div>
+
+	
+	</div>
+	
+	
 
 
 </div>
@@ -469,8 +507,9 @@
 	<!-- facebook js sdk 
 	<script src="facebook-js-sdk.js"></script>-->
     	<script src="js/jquery.js"></script>
-		    	<script src="js/bootstrap.js"></script>
+		    	<!--<script src="js/bootstrap.js"></script> -->
 
+    	<script src="js/swipe.js"></script>		              
 
 
 
@@ -490,6 +529,17 @@
 </body>
 
 	<div class="navbar-fixed-bottom" >
+	
+	<center id="profile_nav">
+	<img id="1" src="img/profile_nav_h.jpg"  data-text="about" />
+		<img id="2" src="img/profile_nav.jpg"  data-text="looks" />
+	<img id="3" src="img/profile_nav.jpg"  data-text="followers" />
+	<img id="4" src="img/profile_nav.jpg"  data-text="following"  />
+	<img id="5" src="img/profile_nav.jpg"  data-text="activity" /><br/>
+	<span>about</span>
+
+	
+	</center>
   <div id="f1">
  <img src="img/f1.png" class="f_active" />
   <img src="img/f1_h.png" class="none" />

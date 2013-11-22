@@ -1,7 +1,64 @@
 
 $(function()
 {
+function init()
+{
+	$(".profile_name").text(localStorage.full_name);
+				$(".profile_desc").text(localStorage.about);
 
+}
+init();
+/****profile ******************/
+$(".profile_desc").click(function()
+{
+
+});
+$( ".edit_p" ).click(
+  function() {
+   if($(this).text() == 'edit profile')
+   {
+   $(".profile_name").attr('contenteditable','true');
+   
+   $(this).text('save');
+   }
+   else
+   {
+   $(this).text('edit profile');
+   }
+  }
+);
+current = 1;
+ $(".profile_pages").width($(window).width()).swipe( { swipeLeft:function()
+ {
+ if(current < 5)
+ {
+  current +=1;
+
+ $("#profile_nav img").attr("src","img/profile_nav.jpg");
+ $("#"+current).attr("src","img/profile_nav_h.jpg");
+ $("#profile_nav span").text($("#"+current).attr("data-text"));
+ }
+ 
+ $('html, body').animate({scrollLeft: $(this).next().offset().left});
+ }, 
+ swipeRight:function()
+ {
+  if(current > 1)
+{
+  current -=1;
+   $("#profile_nav img").attr("src","img/profile_nav.jpg");
+   
+
+   $("#"+current).attr("src","img/profile_nav_h.jpg");
+ $("#profile_nav span").text($("#"+current).attr("data-text"));
+
+   }
+
+
+ 
+ $('html, body').animate({scrollLeft: $(this).prev().offset().left});
+
+ }, allowPageScroll:"auto"} );
 $("#reg_form").submit(function()
 {
 
@@ -102,6 +159,13 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	 if(e.a == 1)
 	 {
 	localStorage.user_id = e.a;
+		localStorage.full_name = e.full_name;
+				localStorage.about = e.about;
+
+		$(".profile_name").text(localStorage.full_name);
+				$(".profile_desc").text(localStorage.about);
+
+
 	//alert("Login Successful");
 					//	  document.location.href = 'f_style_tribe.html';
 
@@ -384,7 +448,18 @@ array_tag = [];
 $(".navbar-fixed-bottom div").on("tap",function() {
 url = $(this).attr("data-url");
 $( "body" ).scrollTop( 0 );
+if(url == '.profile_div')
+{
 
+$("#profile_nav").show("slide");
+$(".setter").show("slide");
+}
+else
+{
+$(".setter").hide("slide");
+$("#profile_nav").hide("slide");
+
+}
 if(url == '.hof_div')
 {
 
@@ -446,7 +521,7 @@ $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{h
 
 
 /*looks **********************************/
-$(".looks_div .gender").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
+$(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 
 $(document).on("tap",".looks_div .ron img",function()
 {
