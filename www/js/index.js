@@ -451,13 +451,12 @@ $( "body" ).scrollTop( 0 );
 if(url == '.profile_div')
 {
 
-$("#profile_nav").show("slide");
-$(".setter").show("slide");
+$(".setter,#profile_nav").show("slide");
 }
 else
 {
-$(".setter").hide("slide");
-$("#profile_nav").hide("slide");
+$(".setter,#profile_nav").hide("slide");
+//$("#profile_nav").hide("slide");
 
 }
 if(url == '.hof_div')
