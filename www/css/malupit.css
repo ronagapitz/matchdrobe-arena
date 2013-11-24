@@ -473,6 +473,18 @@ width: 500% !important;
 
 
 }
+.feed_tab
+{
+
+width: 100%;
+max-width: 700px;
+}
+
+.activity_item
+{
+float: left;
+
+}
 /*
 [contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
   [contenteditable="true"]:hover { outline: 2px dashed #0090D2; }

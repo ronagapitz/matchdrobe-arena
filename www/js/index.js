@@ -3,6 +3,11 @@ $(function()
 {
 function init()
 {
+
+
+$("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);
+
+
 	$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
 
@@ -398,9 +403,16 @@ $("input#tag").focus().focus();
 	$(".tapper").hide();
 	
 	$("#pop,.popup").hide("slide");
+	sec =$("#fuck").val();
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
-	$.post("http://matchdrobe.com/app/arena/arena_functions.php",{item_1 : $("#h1").val(), item_2: $("#h2").val(),
-	user_id : localStorage.user_id, item_like : $id});
+	$.get("http://matchdrobe.com/app/arena/arena_functions.php",{img_1: $("#h1").attr("data-image"), img_3: sec,item_1 : $("#h1").val(), item_2: $("#h2").val(),
+	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name},function(e)
+	{
+	//alert(e);
+	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);
+
+	
+	});
 	
 	if(localStorage.pts == null)
 
