@@ -10,6 +10,7 @@ $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.
 
 	$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
+		$("#dp").attr("src", localStorage.dp);
 
 }
 init();
@@ -166,6 +167,8 @@ $(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.1
 	localStorage.user_id = e.a;
 		localStorage.full_name = e.full_name;
 				localStorage.about = e.about;
+				localStorage.dp = e.dp;
+		$("#dp").attr("src", localStorage.dp);
 
 		$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
@@ -352,17 +355,30 @@ $(".tapper").hide();
  
  var array_tag = [];
 var $id = '';
+var $img_liked = '';
+
+/* arena to profile */
+
+$(document).on("tap",".fb_photo", function()
+{
+$(".popup,#pop,.arena_div").hide("slide");
+$(".profile_div2").show("slide");
+$("#dp_big").attr("src",$(".fb_photo").attr('src'));
+$(".name_plate").append($(this).attr("data-user"));
+});
 
 $("div.cont").on("tap", "a.arena_img", 
 	function(){
 
 		//$(".like_modal .tag_content").empty();
-$(".fb_photo").attr("src",$(this).attr("data-photo"));
+$(".fb_photo").attr({"src": $(this).attr("data-photo"),"data-user":$(this).attr("data-name")});
 $(".username").text($(this).attr("data-name"));
 	$(".item_desc").text($(this).attr("data-desc"));
 $("#pop").show();
 		$(".tag_pop").show("slide");
 $id = $(this).attr("data-id");
+$img_liked = $(this).attr("data-image");
+
 $("#tagger").html($(this).next().html());
 /*
 
@@ -406,7 +422,7 @@ $("input#tag").focus().focus();
 	sec =$("#fuck").val();
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
 	$.get("http://matchdrobe.com/app/arena/arena_functions.php",{img_1: $("#h1").attr("data-image"), img_3: sec,item_1 : $("#h1").val(), item_2: $("#h2").val(),
-	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name},function(e)
+	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name,img_liked : $img_liked},function(e)
 	{
 	//alert(e);
 	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);

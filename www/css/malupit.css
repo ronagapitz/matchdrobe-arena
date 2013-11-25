@@ -389,8 +389,19 @@ body {
 .footer img
 {
 }
+.name_plate img
 
-
+{
+visibility: hidden;
+}
+.name_plate
+{
+float: left;
+background: url('../img/name_plate.png');
+background-size: 100% 100%;
+width: 60%;
+max-width: 500px;
+}
 #settings_tab
 {
 width: 100%;
@@ -400,8 +411,11 @@ max-width: 768px;
 
 
 /**************************profile *********/
-#dp
+#dp,#dp_big
 {
+
+  border-radius: 100%;
+ 
 max-width: 450px;
 width: 70%;
 margin: auto;
@@ -423,6 +437,7 @@ padding-top: 20px;
 }
 .setter
 {
+width: 100%;
 position: fixed;
 left: 0px;
 top: 0px;
