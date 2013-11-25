@@ -361,6 +361,7 @@ var $img_liked = '';
 
 $(document).on("tap",".fb_photo", function()
 {
+alert();
 $(".popup,#pop,.arena_div").hide("slide");
 $(".profile_div2").show("slide");
 $("#dp_big").attr("src",$(".fb_photo").attr('src'));
