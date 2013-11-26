@@ -385,9 +385,59 @@ body {
 /*  padding-top: 100px ; */
 }
 }
+/* follow */
+
+.f_top
+{
+overflow: hidden;
+
+}
+.f_name
+{
+margin-top: 1rem;
+
+}
+.f_name *
+{
+color: #303030;
+font-weight: bold !important;
+font-size: 1.5rem;
+
+}
+.f_parent
+{
+margin-top: 3rem;
+border-bottom: solid 1px #303030;
+padding-bottom: 2rem;
+}
+.f_looks
+{
+width: 100%;
+overflow: hidden;
+padding-top: 2rem
+}
+
+
+.f_items
+{
+width: 21%;
+float: left;
+overflow: hidden;
+margin-left: 1%;
+
+}
+.f_pic
+{
+float: left;
+margin-right: 2rem;
+}
 			
 .footer img
 {
+}
+.follow
+{
+width: 40%;
 }
 .name_plate img
 
@@ -396,11 +446,15 @@ visibility: hidden;
 }
 .name_plate
 {
+color: white;
+font-size: 2rem;
+line-height: 1.9;
 float: left;
 background: url('../img/name_plate.png');
 background-size: 100% 100%;
 width: 60%;
 max-width: 500px;
+height: 4rem;
 }
 #settings_tab
 {
@@ -480,7 +534,7 @@ text-align: center;
 font-weight: bold;
 
 }
-.profile_div
+.profile_div,.profile_div2
 {
  overflow-x: auto;
 	overflow-y: hidden; 

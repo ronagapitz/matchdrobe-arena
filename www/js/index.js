@@ -338,7 +338,30 @@ $("#reg_btn").on('tap',function()
    );
 //arena ******************************************************************************************************
 
+$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id });
+$(".follow").on("tap",function()
+{
+if($(this).attr("src") == "img/unfollow.jpg")
+{
+$(this).attr("src","img/follow.jpg");
+$.post("http://matchdrobe.com/app/arena/arena_functions.php",{user:$(this).attr("data-id"), unfollower: localStorage.user_id },function(e)
+{
 
+});
+}
+else
+{
+$(this).attr("src","img/unfollow.jpg");
+
+$.post("http://matchdrobe.com/app/arena/arena_functions.php",{user:$(this).attr("data-id"),follower: localStorage.user_id },function(e)
+{
+
+});
+}
+
+$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id });
+
+});
 $(document).on("tap",".pop_back",function()
 {
 $("#pop").hide();
@@ -358,21 +381,35 @@ var $id = '';
 var $img_liked = '';
 
 /* arena to profile */
+$(".name_plate").on("tap",function()
+{
+$("#f3").trigger("tap");
+});
 
 $(document).on("tap","img.fb_photo", function()
 {
-alert();
+$("#profile_nav").show();
+current = 1;
+ $("#profile_nav img").attr("src","img/profile_nav.jpg");
+ $("#1").attr("src","img/profile_nav_h.jpg");
+
 $(".popup,#pop,.arena_div").hide("slide");
 $(".profile_div2").show("slide");
 $("#dp_big").attr("src",$(".fb_photo").attr('src'));
-$(".name_plate").append($(this).attr("data-user"));
+$(".name_plate").text($(this).attr("data-user"));
 });
 
 $("div.cont").on("tap", "a.arena_img", 
 	function(){
-
+$(".follow").attr('data-id',$(this).attr("data-userid"));
 		//$(".like_modal .tag_content").empty();
-$(".fb_photo").attr({"src": $(this).attr("data-photo"),"data-user":$(this).attr("data-name")});
+$(".fb_photo").attr({"src": $(this).attr("data-photo"),"data-user":$(this).attr("data-name"),
+"data-full":$(this).attr("data-full")} );
+
+$(".profile_div2 .profile_name").text($(this).attr("data-full"));
+$(".profile_div2 .profile_desc").text($(this).attr("data-about"));
+
+
 $(".username").text($(this).attr("data-name"));
 	$(".item_desc").text($(this).attr("data-desc"));
 $("#pop").show();
@@ -479,7 +516,9 @@ url = $(this).attr("data-url");
 $( "body" ).scrollTop( 0 );
 if(url == '.profile_div')
 {
-
+current = 1;
+ $("#profile_nav img").attr("src","img/profile_nav.jpg");
+ $("#1").attr("src","img/profile_nav_h.jpg");
 $(".setter,#profile_nav").show("slide");
 }
 else
