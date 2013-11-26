@@ -359,7 +359,7 @@ var $img_liked = '';
 
 /* arena to profile */
 
-$(document).on("tap",".fb_photo", function()
+$(document).on("tap","img.fb_photo", function()
 {
 alert();
 $(".popup,#pop,.arena_div").hide("slide");
