@@ -592,14 +592,13 @@ $(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/aren
 
 $(document).on("tap",".looks_div .ron img",function()
 {
-$(".big_img").attr("src",$(this).attr("src")).show();
-
+$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block');
 $("#pop").show();
 $( "body" ).scrollTop( 0 );
 
 })
 
-$(".big_img").on("tap", function()
+$(".big_img2").on("tap", function()
 {
 
 $("#pop").hide();
