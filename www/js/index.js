@@ -589,10 +589,17 @@ $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{h
 
 /*looks **********************************/
 $(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
-
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
 $(document).on("tap",".looks_div .ron img",function()
 {
-$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block');
+$(".big_img2").center().attr("src",$(this).attr("src")).css('display', 'inline-block');
 $("#pop").show();
 $( "body" ).scrollTop( 0 );
 
