@@ -516,6 +516,7 @@ url = $(this).attr("data-url");
 $( "body" ).scrollTop( 0 );
 if(url == '.profile_div')
 {
+$("body").css("overflow-x", "hidden");
 current = 1;
  $("#profile_nav img").attr("src","img/profile_nav.jpg");
  $("#1").attr("src","img/profile_nav_h.jpg");
@@ -523,6 +524,8 @@ $(".setter,#profile_nav").show("slide");
 }
 else
 {
+$("body").css("overflow-x", "auto");
+
 $(".setter,#profile_nav").hide("slide");
 //$("#profile_nav").hide("slide");
 
@@ -565,7 +568,7 @@ $(this).hide();
 $(document).on("tap",".hof_div .img-ron",function()
 {
 //alert($(this).attr("src"))
-$(".big_img2").attr("src",$(this).attr("src")).show().css('left',$(this).position().left);
+$(".big_img2").center().attr("src",$(this).attr("src")).show().css('left',$(this).position().left);
 $("#pop").show();
 });
 $(".hof_toggle").on("tap",function()
@@ -590,9 +593,10 @@ $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{h
 /*looks **********************************/
 $(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
 jQuery.fn.center = function () {
-    this.css("position","absolute");
-    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
-                                                $(window).scrollTop()) + "px");
+    this.css("position","fixed");
+	//Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
+      //                                          $(window).scrollTop()) +  center height
+    this.css("top", "0px");
     this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
                                                 $(window).scrollLeft()) + "px");
     return this;

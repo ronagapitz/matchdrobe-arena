@@ -23,6 +23,7 @@ top:0
 }
 .popup
 {
+
 position: absolute;
 z-index: 3000;
 display: none;
@@ -151,7 +152,7 @@ visibility: hidden;
 display: none;
 background: url(../img/hof_pop.png);
 background-repeat: no-repeat;
-position: absolute;
+position: fixed;
 right: 0;
 z-index: 2000
 
@@ -212,6 +213,7 @@ max-width: 100px;
 }
 .looks_div .big_img,.big_img2
 {
+top:0px;
 /*
 border: 1px solid transparent;
 
@@ -924,7 +926,15 @@ margin-top: 10%;
 	border-left: 100px solid transparent;
 }
 
-
+.hof_bottom
+{
+background:url(../img/hof_bottom.png);
+min-height: 8rem;
+background-repeat: no-repaeat;
+margin-left: 1%;
+background-size: 100% 100%;
+margin-bottom:-2px;
+}
 .hof_div
 {
 height: 100% !important;
@@ -935,17 +945,12 @@ height: 100% !important;
 .big_style,
 .big_style * ,
  .arena_div,
- .hof_div,
  
- .profile_div ,
+ 
+
  .hof_pop,#pop,.popup
 {
- -webkit-transform: translateZ(0);
-   -moz-transform: translateZ(0);
-   -ms-transform: translateZ(0);
-   -o-transform: translateZ(0);
-   transform: translateZ(0);
-   
+ 
    -webkit-backface-visibility: hidden;
    -moz-backface-visibility: hidden;
    -ms-backface-visibility: hidden;
