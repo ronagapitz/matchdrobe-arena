@@ -2,7 +2,7 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.matchdrobe.arena"
-        versionCode = "38"
+        versionCode = "40"
         version     = "0.1.1">
  
     <name>matchdrobe arena</name>
@@ -30,7 +30,6 @@ matchdrobe arena    </description>
     <author href="http://www.matchdrobe.com" email="ron@matchdrobe.com">
         ron
     </author>
-	<preference name="load-url-timeout" value="60000" />
      <icon src="icon.png" />
     <icon src="icon.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="icon.png"   gap:platform="android"    gap:density="mdpi" />
@@ -58,5 +57,6 @@ matchdrobe arena    </description>
     <feature name="http://api.phonegap.com/1.0/media"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="http://api.phonegap.com/1.0/notification"/>
- 
+    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+	  <access origin="http://matchdrobe.com" /> 
 </widget>
