@@ -12,7 +12,7 @@
 
 
     </head>
-<body>
+<body  onload="loaded()">
 
 <div class="feed_div none adjust_container " >
 <div class="row text-center navbar navbar-fixed-top" style="background: white;">
@@ -55,12 +55,9 @@
 <!-- begin looks -->
 <div class="looks_div none adjust_container" >
 
-		<div class="navbar navbar-fixed-top">
 
-<img src="img/looks_tab.png"  class="looks_tab"/>
-
-		</div>
-		
+		<div id="wrapper">
+	<div id="scroller">
 		
 			<!-- Start of first page: #one -->
 <div class="container" >
@@ -77,7 +74,8 @@
 		
 	
 	</div><!-- /content -->
-
+</div>
+</div>
 </div>
 
 <!-- end looks -->
@@ -602,6 +600,7 @@
 
     	<!--<script src="http://matchdrobe.com/malupit.js"></script> -->  	           
 		  <script src="js/ui.js"></script> 	 
+		  <script src="js/iscroll.js"></script> 	 
 
 
 
