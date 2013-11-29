@@ -1,13 +1,17 @@
+
+$(function()
+{
+$(window).trigger( "resize" );
 var myScroll;
 
 function loaded () {
 	myScroll = new IScroll('#wrapper');
+	$(window).trigger( "resize" );
+	$("#wrapper").height($( "body" ).height()); 
 }
-
+loaded();
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
-$(function()
-{
 function init()
 {
 
