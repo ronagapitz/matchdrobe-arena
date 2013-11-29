@@ -1,17 +1,30 @@
 
 $(function()
 {
-$(window).trigger( "resize" );
+
 var myScroll;
 
 function loaded () {
-	myScroll = new IScroll('#wrapper');
+	myScroll = new IScroll('.wrapper');
 	$(window).trigger( "resize" );
-	$("#wrapper").height($( "body" ).height()); 
+	 	myScroll = new IScroll('.wrapper');
+			 	myScroll_looks = new IScroll('.wrapper_looks');
+	myScroll_hof = new IScroll('.wrapper_hof', { scrollX: true, scrollY: false, mouseWheel: true });
+	myScroll_about = new IScroll('.wrapper_about');
+	myScroll_plooks = new IScroll('.wrapper_plooks');
+
+
+	//$("#wrapper").height($( "body" ).height()); 
 }
-loaded();
+
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
+
+$("#f4").on("tap",function()
+{
+
+
+});
 function init()
 {
 
@@ -558,6 +571,8 @@ $(".adjust_container").hide();
  
 $(url).show("slide");
  adjust_arena();
+ 
+ loaded();
 //	$(".navbar-fixed-bottom div img").first().show().last().hide();
    $(".navbar-fixed-bottom .none").hide();
    $(".navbar-fixed-bottom .f_active").show();
@@ -576,10 +591,12 @@ $("#pop").hide();
 $(this).hide();
 });
 
+
+
 $(document).on("tap",".hof_div .img-ron",function()
 {
 //alert($(this).attr("src"))
-$(".big_img2").center().attr("src",$(this).attr("src")).show().css('left',$(this).position().left);
+$(".big_img2").attr("src",$(this).attr("src")).show().center();
 $("#pop").show();
 });
 $(".hof_toggle").on("tap",function()
@@ -612,9 +629,16 @@ jQuery.fn.center = function () {
                                                 $(window).scrollLeft()) + "px");
     return this;
 }
-$(document).on("tap",".looks_div .ron img",function()
+
+$(document).on("tap",".looks .img-ron",function()
 {
-$(".big_img2").center().attr("src",$(this).attr("src")).css('display', 'inline-block');
+//alert($(this).attr("src"))
+$(".img_looks2").attr("src",$(this).attr("src")).show().center();
+
+});
+$(document).on("tap",".looks_div .ron img ",function()
+{
+$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block').center();
 $("#pop").show();
 $( "body" ).scrollTop( 0 );
 
