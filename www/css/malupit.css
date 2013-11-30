@@ -227,7 +227,7 @@ max-width: 100px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.wrapper_hof
+#wrapper_hof
 {
 position: absolute;
 	z-index: 1;
@@ -240,7 +240,8 @@ position: absolute;
 }
 
 
-.scroller_hof
+
+#scroller_hof
 {
 position: absolute;
 	z-index: 1;
@@ -264,7 +265,7 @@ position: absolute;
 	text-size-adjust: none;
 
 }
-.wrapper,.wrapper_looks ,.wrapper_about ,.wrapper_plooks {
+#wrapper,#wrapper_looks ,#wrapper_about ,#wrapper_plooks {
 
 position: absolute;
 	width: 100%;
@@ -289,7 +290,7 @@ position: absolute;
 	text-size-adjust: none;
 }
 
-.scroller ,.scroller_looks ,.scroller_about ,.scroller_plooks  {
+#scroller ,#scroller_looks ,#scroller_about ,#scroller_plooks  {
 position: absolute;
 
 	/* Prevent elements to be highlighted on tap */

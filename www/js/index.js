@@ -5,13 +5,13 @@ $(function()
 var myScroll;
 
 function loaded () {
-	myScroll = new IScroll('.wrapper');
+	myScroll = new IScroll('#wrapper');
 	$(window).trigger( "resize" );
-	 	myScroll = new IScroll('.wrapper');
-			 	myScroll_looks = new IScroll('.wrapper_looks');
-	myScroll_hof = new IScroll('.wrapper_hof', { scrollX: true, scrollY: false, mouseWheel: true });
-	myScroll_about = new IScroll('.wrapper_about');
-	myScroll_plooks = new IScroll('.wrapper_plooks');
+	 	myScroll = new IScroll('#wrapper');
+			 	myScroll_looks = new IScroll('#wrapper_looks');
+	myScroll_hof = new IScroll('#wrapper_hof', { scrollX: true, scrollY: false, mouseWheel: true });
+	myScroll_about = new IScroll('#wrapper_about');
+	myScroll_plooks = new IScroll('#wrapper_plooks');
 
 
 	//$("#wrapper").height($( "body" ).height()); 
