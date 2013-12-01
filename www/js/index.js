@@ -146,7 +146,7 @@ $(".adjust_container").css({"padding-top" :$("#f1").height()+20,
 			$("div.email").height( ($("div.email").width() * (.090))).css({"visibility":"visible","margin-bottom" : $("div.email").height()+'px'});
 //alert($("div.email").width());
 
-$(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.17)), "padding-bottom":($("div.email").width() * (.17))});
+//$(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.17)), "padding-bottom":($("div.email").width() * (.17))});
 
 		$(".login_start").on('tap', function(e) {
 	//alert();
@@ -254,7 +254,7 @@ if(localStorage.tribe =="full")
  adjust_arena();
  
  });
- $(".tribe_div,.main_page").hide();
+// $(".tribe_div,.main_page").hide();
 $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
 }
