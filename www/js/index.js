@@ -30,6 +30,11 @@ function updateLayout() {
 }
 
 page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+hofScroll = new iScroll('wrapper_hof');
+
+
 
 $(function()
 {
@@ -167,9 +172,11 @@ $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 function adjust_arena()
 {
 $(".adjust_container").css({
-"padding-bottom": $("#f1").height()+30
+"padding-bottom": $("#f1").height()+40
 
 });
+
+$(".pair").css("margin-top",$(".navbar_arena").height() + 10);
 
 
 }
@@ -579,25 +586,35 @@ $(".setter,#profile_nav").hide("slide");
 //$("#profile_nav").hide("slide");
 
 }
-if(url == '.hof_div')
-{
 
 
-$("body").addClass("horizontal-slide")
-}
-else
-{
-$("body").removeClass("horizontal-slide")
 
 
-}
 $(".adjust_container").hide();
 
  
 $(url).show("slide");
  adjust_arena();
- 
- loaded();
+ if(url == '.hof_div')
+{
+
+hofScroll.refresh();
+}
+
+
+ if(url == '.looks_div')
+{
+$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
+looksScroll.refresh();
+}
+if(url == '.feed_div')
+{
+$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
+
+feedScroll.refresh();
+
+}
+// loaded();
 //	$(".navbar-fixed-bottom div img").first().show().last().hide();
    $(".navbar-fixed-bottom .none").hide();
    $(".navbar-fixed-bottom .f_active").show();

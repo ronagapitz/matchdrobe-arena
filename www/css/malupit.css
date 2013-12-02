@@ -1,3 +1,112 @@
+.frame
+{
+visibility: hidden;
+}
+/*8feeds**/
+.feed_tab
+{
+
+width: 100%;
+max-width: 700px;
+}
+.activity_item
+{
+float: left;
+
+}
+body
+{
+overflow: hidden
+}
+/*hof***:*/
+
+.img-ron
+{
+width: 100%;
+}
+
+.hof_div .ron
+{
+width: 500vw;
+
+}
+.third
+{
+margin-right: 5vw;
+float: left;
+width: 40vw; 
+}
+.scroller_hof
+{
+margin-top: 5vw;
+width: 500vw;
+	height:100%;
+	float:left;
+	padding:0;
+
+
+}
+.hof_tab
+{
+width: 50%;
+max-width: 450px;
+margin: auto;
+}
+
+
+#triangle {
+	width: 0;
+	height: 0;
+	border-bottom: 100px solid red;
+	border-left: 100px solid transparent;
+}
+
+.hof_bottom
+{
+background:url(../img/hof_bottom.png);
+min-height: 8rem;
+background-repeat: no-repaeat;
+margin-left: 1%;
+background-size: 100% 100%;
+margin-bottom:-2px;
+}
+.hof_div
+{
+height: 100% !important;
+}
+
+
+/**********looks */
+
+.looks_div .big_img,.big_img2
+{
+top:0px;
+/*
+border: 1px solid transparent;
+
+-webkit-transform: translate3d(0,0,0);
+-webkit-backface-visibility: hidden;
+-webkit-transform-style: preserve-3d; 
+
+*/
+z-index: 4000;
+height: 100% !important;
+width: auto !important;
+margin: 0 auto !important;
+ 
+  display: none;
+  position: fixed
+}
+.looks_tab
+{
+width: 100%;
+max-width: 768px;
+margin: auto;
+position: absolute;
+top:0;
+left:0;
+z-indx: 100;
+}
 /******arena ***/
 .arena_tab
 {
@@ -31,7 +140,7 @@ overflow: hidden;
 height: 10rem;
 width: 14rem !important;
 margin-top: 2rem;
-font-size: 2rem !Important;
+font-size: 1.2rem !Important;
 
 }
 .fb_photo
@@ -114,11 +223,40 @@ overflow: hidden !Important;
 
 .navbar_arena
 {
+position:absolute;
+top: 0;
 margin-bottom: 1rem;
 }
 .col-xs-6
 {
 width: 50%;
+}
+
+.confirm_button
+{
+margin-bottom: 20px;
+width: 40%;
+max-width: 325px !important;
+
+
+}
+.pop_back
+
+{
+width: 20%;
+max-width: 164px !important;
+
+
+}
+.pull-left
+{
+float: left;
+}
+.tag_content
+{
+
+width: 75%;
+
 }
 
 a.arena_img img
@@ -135,7 +273,7 @@ color: white;
 .item_desc
 {
 
-font-size: 1.5rem !important;
+font-size: 1rem !important;
 }
 .skip
 {
@@ -153,7 +291,7 @@ bottom: 10%;
 .points
 {
 width: 15%;
-font-size: 2.3rem;
+font-size: 1.2rem;
 line-height: 1;
 margin-right: 3%;
 
@@ -251,6 +389,11 @@ width: 32%;
 .navbar
 {
 margin-bottom: 2rem;
+z-index: 1000;
+position: fixed;
+left: 0px;
+top: 0px;
+width: 100%
 }
 .center
 {
@@ -268,7 +411,7 @@ width: 63%;
 display: none;
 
 }
-.login_div,.register_div,.tribe_div,.arena_div
+.login_div,.register_div,.tribe_div,.arena_div,.looks_div
 {
 width: 100%;
 position: absolute;
@@ -281,7 +424,7 @@ padding-bottom: 10vh;
 }
 input.noborder
 {
-font-size: 2rem;
+font-size: 1.2em;
 border: none !important;
 height: 80% !Important;
 margin-top: .85% !important;
@@ -392,7 +535,7 @@ font-style: italic
 .choose_style
 {
 margin-top: 0px !important;
-font-size : 2rem;
+font-size : 1.2rem;
 color: #b80941;
 background: white;
 paddding-bottom: 10px;
@@ -425,7 +568,7 @@ paddding-bottom: 10px;
     left:0px;
 }
 
-#wrapper {
+#wrapper,#wrapper_looks,#wrapper_feeds ,#wrapper_hof{
     position:absolute;
     z-index:1;
     top:0px;
@@ -453,6 +596,7 @@ position: fixed;
 width: 100%;height:100%;opacity: .5; background: black;z-index: 2000;
 top:0
 }
+
 
 .looks_div .big_img,.big_img2
 {
@@ -490,9 +634,20 @@ float:left;
 
 }
 /*******global ********/
+small.gray
+{
+font-size: 1rem !important;
+font-weight: normal;
+
+}
 *
 {
 font-family: calibri !Important;
+color: #303030;
+}
+p
+{
+margin: .3rem;
 }
 .top_tags, .ctag
 {
@@ -502,12 +657,12 @@ font-size: 1.1rem !Important;
 }
 
 h3, .h3 {
-font-size: 1.5rem !important;
+font-size: 1.2rem !important;
 }
 .pink ,.gray
 {
 
-font-size: 1.5rem;
+font-size: 1.2rem !important;
 }
 .pink_b
 {
@@ -540,23 +695,30 @@ float: left;
 width: 20%;
 
 }
+
 .navbar-fixed-bottom
 {
  position: fixed;
     bottom: 0;
-    background-color: #f0f;
-   
+   visibility:hidden;
     bottom: 0;
     left: 0;
 	z-index: 200;
     right: 0;
-
+width:100%;
+background: white;
 }
 .navbar-fixed-bottom div img
 {
 width: 100%;
-}
 
+}
+	.row
+	{
+	
+	width: 100%;
+	overflow: hidden;
+	}
 .footer_arena
 {
 background: url(../img/arena_s.png);
