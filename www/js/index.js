@@ -1,10 +1,44 @@
+document.addEventListener("orientationchange", updateLayout);
+
+// The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout();
+wrapperWidth = 0;
+
+var myScroll = new iScroll('pageWrapper', {
+	snap: true,
+	momentum: false,
+	hScrollbar: false,
+	vScrollbar: false,
+    lockDirection: true,click: true});
+
+updateLayout();
+
+function updateLayout() {
+
+    var currentPage = 0;
+
+    if (wrapperWidth > 0) {
+        currentPage = - Math.ceil( $('#pageScroller').position().left / wrapperWidth);
+    }
+
+    wrapperWidth = $('#pageWrapper').width();
+
+    $('#pageScroller').css('width', wrapperWidth * 4);
+    $('.page').css('width', wrapperWidth - 40);
+    myScroll.refresh();
+    myScroll.scrollToPage(currentPage, 0, 0);
+	
+}
+
+page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 $(function()
 {
 
+$("input").on("tap",function()
+{
 
-
-
+$(this).focus();
+});
 
 $("#f4").on("tap",function()
 {
@@ -13,7 +47,6 @@ $("#f4").on("tap",function()
 });
 function init()
 {
-
 
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);
 
@@ -133,20 +166,20 @@ $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
 
 function adjust_arena()
 {
-$(".adjust_container").css({"padding-top" :$("#f1").height()+20,
+$(".adjust_container").css({
 "padding-bottom": $("#f1").height()+30
 
 });
 
 
 }
- var email_width = 	$( window ).width() * .9;
+ var email_width = 	$( window ).width() * .95;
 	
 	$("div.email").width(email_width);
 			$("div.email").height( ($("div.email").width() * (.090))).css({"visibility":"visible","margin-bottom" : $("div.email").height()+'px'});
 //alert($("div.email").width());
 
-//$(".login_div, .register_div").css( {"padding-top":($("div.email").width() * (.17)), "padding-bottom":($("div.email").width() * (.17))});
+$(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() * (.17))});
 
 		$(".login_start").on('tap', function(e) {
 	//alert();
@@ -189,6 +222,10 @@ $(".adjust_container").css({"padding-top" :$("#f1").height()+20,
 
 					$(".login_div").hide();
 					$(".tribe_div").show("slide");
+						page3Scroll.refresh();
+						$("#wrapper").css("margin-top",$(".navbar_tribe").css("height"));
+
+						
 	 }
 	 else
 	 {
@@ -245,6 +282,7 @@ var $img = '';
 
 if(localStorage.tribe =="full")
 {
+$(".main_page, .register_div, .login_div").hide();
  $("#f3 img").toggle();
 
  $(".navbar-fixed-bottom").css("visibility","visible");
@@ -329,6 +367,7 @@ $(".reg_con").on("tap",function()
 {
 	$(".register_div").hide();
 					$(".tribe_div").show("slide");
+				
 					$(".reg_pop,#pop").hide();
 
 });
