@@ -4,11 +4,25 @@ document.addEventListener("orientationchange", updateLayout);
 wrapperWidth = 0;
 
 var myScroll = new iScroll('pageWrapper', {
+onScrollEnd: function()
+{
+
+
+},
 	snap: true,
 	momentum: false,
 	hScrollbar: false,
 	vScrollbar: false,
     lockDirection: true,click: true});
+	
+	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+hofScroll = new iScroll('wrapper_hof');
+followersScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+
+
+
 
 updateLayout();
 
@@ -22,17 +36,18 @@ function updateLayout() {
 
     wrapperWidth = $('#pageWrapper').width();
 
-    $('#pageScroller').css('width', wrapperWidth * 4);
+    $('#pageScroller').css('width', wrapperWidth * 8);
     $('.page').css('width', wrapperWidth - 40);
     myScroll.refresh();
     myScroll.scrollToPage(currentPage, 0, 0);
+	page3Scroll.refresh();
+	looksScroll.refresh();
+	feedScroll.refresh();
+	followersScroll.refresh();
+	
+	hofScroll.refresh();
 	
 }
-
-page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-hofScroll = new iScroll('wrapper_hof');
 
 
 
@@ -53,12 +68,15 @@ $("#f4").on("tap",function()
 function init()
 {
 
-$("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);
+$("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
+{
+updateLayout();
+});
 
 
 	$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
-		$("#dp").attr("src", localStorage.dp);
+		$(".profile_pic img").attr("src", localStorage.dp);
 
 }
 init();
@@ -82,37 +100,7 @@ $( ".edit_p" ).click(
   }
 );
 current = 1;
- $(".profile_pages").width($(window).width()).swipe( { swipeLeft:function()
- {
- if(current < 5)
- {
-  current +=1;
 
- $("#profile_nav img").attr("src","img/profile_nav.jpg");
- $("#"+current).attr("src","img/profile_nav_h.jpg");
- $("#profile_nav span").text($("#"+current).attr("data-text"));
- }
- 
- $('html, body').animate({scrollLeft: $(this).next().offset().left});
- }, 
- swipeRight:function()
- {
-  if(current > 1)
-{
-  current -=1;
-   $("#profile_nav img").attr("src","img/profile_nav.jpg");
-   
-
-   $("#"+current).attr("src","img/profile_nav_h.jpg");
- $("#profile_nav span").text($("#"+current).attr("data-text"));
-
-   }
-
-
- 
- $('html, body').animate({scrollLeft: $(this).prev().offset().left});
-
- }, allowPageScroll:"auto"} );
 $("#reg_form").submit(function()
 {
 
@@ -164,13 +152,23 @@ $(".setter").on("tap",function()
 
 $(".profile_setings,.main_profile").toggle();
 })
-$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
+$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
+{
+updateLayout();
+});
 
 
 /* adjust header height */
 
 function adjust_arena()
 {
+
+$("#profile_nav img").attr("src","img/profile_nav.jpg");
+ //$("#1").attr("src","img/profile_nav_h.jpg");
+$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
+$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
+
+
 $(".adjust_container").css({
 "padding-bottom": $("#f1").height()+40
 
@@ -192,7 +190,8 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 	//alert();
 	
 
-	$(".login_div").show("slide");
+	$(".login_div").show();
+	$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
 	$(".submit").effect('slide', { direction: 'left', mode: 'show' });
 		$(".main_page").hide();
 
@@ -219,10 +218,11 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 				localStorage.about = e.about;
 				localStorage.dp = e.dp;
 		$("#dp").attr("src", localStorage.dp);
+		$(".profile_pic img").attr("src", localStorage.dp);
 
 		$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
-
+updateLayout();
 
 	//alert("Login Successful");
 					//	  document.location.href = 'f_style_tribe.html';
@@ -231,6 +231,11 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 					$(".tribe_div").show("slide");
 						page3Scroll.refresh();
 						$("#wrapper").css("margin-top",$(".navbar_tribe").css("height"));
+
+$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id },function()
+{
+updateLayout();
+});
 
 						
 	 }
@@ -245,7 +250,7 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 	});
 	$(".regtab").on('tap', function(e) {
 	
-			$(".main_page").show("slide");
+			$(".main_page").show();
 			$(".login_div,.register_div").hide();
 			
 			return false;
@@ -259,7 +264,9 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 	//alert();
 	
 
-	$(".register_div").show("slide");
+	$(".register_div").show();
+		$(".register_div .container").css({"margin-top": $(".nav_reg").height()+20});
+
 		$(".main_page").hide();
 
 	return false;
@@ -289,18 +296,20 @@ var $img = '';
 
 if(localStorage.tribe =="full")
 {
+
 $(".main_page, .register_div, .login_div").hide();
- $("#f3 img").toggle();
+ $("#f1 img").toggle();
 
  $(".navbar-fixed-bottom").css("visibility","visible");
 
- $(".arena_div").show("slide",function()
- {
+ $(".frame").css("visibility","visible");
  adjust_arena();
- 
- });
 // $(".tribe_div,.main_page").hide();
-$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
+$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
+{
+updateLayout();
+
+});
 
 }
 //$("body").css({'padding-top':$(".res_head").height(),'margin-top': '10px'});
@@ -324,11 +333,9 @@ if(tribe == 0)
 $("#f3").click();
 $(".navbar-fixed-bottom").css("visibility","visible");
 localStorage.tribe ="full";
-$(".arena_div").show("slide",function()
-{
-
-
-});
+ $(".frame").css("visibility","visible");
+ updateLayout();
+adjust_arena();
  $(".tribe_div").hide();
 }
 return false;
@@ -342,7 +349,7 @@ return false;
 });
 $(".tribe img").on('tap',function()
 {
-$( "body" ).scrollTop( 0 );
+
 
 $img = {src: $(this).attr("data-src"),
 id : "#"+$(this).attr("id"),
@@ -350,12 +357,13 @@ tid : $(this).attr("data-id")
 
 
 };
-//$(".gender, .choose_style").hide("scale");
-$("#pop,.big_style").show("slide").removeClass("hide");
 $(".big_img").attr("src",$img.src);
+
+//$(".gender, .choose_style").hide("scale");
+$("#pop,.big_style").show();
 //$(this).css({'opacity': '.6'});
 
-})
+});
 
 //end style tribe
 
@@ -394,7 +402,10 @@ $("#reg_btn").on('tap',function()
    );
 //arena ******************************************************************************************************
 
-$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id });
+$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id },function()
+{
+updateLayout();
+});
 $(".follow").on("tap",function()
 {
 if($(this).attr("src") == "img/unfollow.jpg")
@@ -415,7 +426,10 @@ $.post("http://matchdrobe.com/app/arena/arena_functions.php",{user:$(this).attr(
 });
 }
 
-$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id });
+$("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id },function()
+{
+updateLayout();
+});
 
 });
 $(document).on("tap",".pop_back",function()
@@ -426,7 +440,10 @@ $(".popup").hide("slide");
 });
 $(document).on("tap",".skip",function()
 {
-	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
+	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
+	{
+	updateLayout();
+	});
 
 $(".tapper").hide();
 }); 
@@ -519,7 +536,10 @@ $("input#tag").focus().focus();
 	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name,img_liked : $img_liked},function(e)
 	{
 	//alert(e);
-	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id);
+	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
+	{
+	updateLayout();
+	});
 
 	
 	});
@@ -547,7 +567,11 @@ $(".points").text(localStorage.pts);
 
 array_tag = [];
 
-	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/");
+	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
+	{
+	updateLayout();
+	
+	});
 
 	});
 
@@ -563,38 +587,35 @@ array_tag = [];
 	});
 
 
-/* footer ****************************/
+/* footer *********************** //**/
 
 
 
 $(".navbar-fixed-bottom div").on("tap",function() {
+updateLayout();
+
+ $(this).find(".none").show();
+   $(this).find(".f_active").hide();
+	
+
 url = $(this).attr("data-url");
 $( "body" ).scrollTop( 0 );
 if(url == '.profile_div')
 {
-$("body").css("overflow-x", "hidden");
+//$("body").css("overflow-x", "hidden");
 current = 1;
- $("#profile_nav img").attr("src","img/profile_nav.jpg");
- $("#1").attr("src","img/profile_nav_h.jpg");
+ 
 $(".setter,#profile_nav").show("slide");
 }
-else
-{
-$("body").css("overflow-x", "auto");
-
-$(".setter,#profile_nav").hide("slide");
-//$("#profile_nav").hide("slide");
-
-}
 
 
 
 
-$(".adjust_container").hide();
+//$(".adjust_container").hide();
 
  
-$(url).show("slide");
- adjust_arena();
+//$(url).show("slide");
+adjust_arena();
  if(url == '.hof_div')
 {
 
@@ -604,26 +625,20 @@ hofScroll.refresh();
 
  if(url == '.looks_div')
 {
-$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
 looksScroll.refresh();
 }
 if(url == '.feed_div')
 {
-$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
 
 feedScroll.refresh();
 
-}
+}  
 // loaded();
-//	$(".navbar-fixed-bottom div img").first().show().last().hide();
+	$(".navbar-fixed-bottom div img").first().show().last().hide();
    $(".navbar-fixed-bottom .none").hide();
    $(".navbar-fixed-bottom .f_active").show();
- 
- $(this).find(".none").show();
-   $(this).find(".f_active").hide();
-	
-	
-});
+ 	
+}); 
 
 /*hof**************************/
 $(document).on("tap",".big_img2",function()
@@ -657,11 +672,20 @@ $(".hof_pop").on("tap",function()
 });
 
 
-$(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{hof: 1});
+$(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{hof: 1},function()
+{
+updateLayout();
+
+});
 
 
 /*looks **********************************/
-$(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id});
+$(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id},function()
+
+{
+
+updateLayout();
+});
 jQuery.fn.center = function () {
     this.css("position","fixed");
 	//Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
@@ -694,7 +718,9 @@ $("#pop").hide();
 $(".popup").hide();
 });
 
+
 /*****************settings ******************/
+
 
 $("#logout").on("tap",function()
 {

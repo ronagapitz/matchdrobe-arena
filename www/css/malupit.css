@@ -2,6 +2,99 @@
 {
 visibility: hidden;
 }
+
+/*******profile */
+/**************************profile *********/
+
+/****follower */
+.f_pic img
+{
+  border-radius: 100%;
+
+}
+.profile_name
+{
+margin-top: 2rem;
+font-size: 2rem;
+color: #b80941;
+text-align: center;
+font-weight: bold;
+
+}
+
+.f_top
+{
+overflow: hidden;
+
+}
+.f_name
+{
+margin-top: 1rem;
+
+}
+.f_name *
+{
+color: #303030;
+font-weight: bold !important;
+font-size: 1rem;
+
+}
+.f_parent
+{
+margin-top: 3rem;
+border-bottom: solid 1px #303030;
+padding-bottom: 2rem;
+}
+.f_looks
+{
+width: 100%;
+overflow: hidden;
+padding-top: 2rem
+}
+
+
+.f_items
+{
+width: 21%;
+float: left;
+overflow: hidden;
+margin-left: 1%;
+
+}
+.f_pic
+{
+float: left;
+margin-right: 2rem;
+}
+
+.profile_desc
+{
+font-size: 1rem;
+text-align: center;
+width: 40%;
+overflow: hidden;
+margin: auto;
+padding-bottom: 3rem;
+padding-top: 1rem;
+}
+.profile_pages
+{
+    float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	position: relative;
+}
+#dp,#dp_big ,.profile_pic img
+{
+
+  border-radius: 100%;
+ 
+max-width: 450px;
+width: 70%;
+margin: auto;
+display: block
+}
 /*8feeds**/
 .feed_tab
 {
@@ -145,6 +238,8 @@ font-size: 1.2rem !Important;
 }
 .fb_photo
 {
+  border-radius: 100%;
+
 width: 55%;
 min-width: 50px;
 max-width: 100px;
@@ -347,6 +442,13 @@ margin: 0 auto !important;
 
 
 /*****login + register */
+#reg_btn
+{
+border: none;
+background: transparent;
+padding: 0px;
+float: right;
+}
 .main_page
 {
 margin-top: 10%;
@@ -568,7 +670,7 @@ paddding-bottom: 10px;
     left:0px;
 }
 
-#wrapper,#wrapper_looks,#wrapper_feeds ,#wrapper_hof{
+#wrapper,#wrapper_looks,#wrapper_feeds ,#wrapper_hof,wrapper_followers{
     position:absolute;
     z-index:1;
     top:0px;
@@ -590,7 +692,7 @@ paddding-bottom: 10px;
 
 #pop
 {
-
+left:0px;
 display: none;
 position: fixed;
 width: 100%;height:100%;opacity: .5; background: black;z-index: 2000;

@@ -5,36 +5,67 @@
     <link rel="stylesheet" type="text/css" href="css/malupit.css">
 </head>
 <body>
+		<!-- popup tags -->
+		<!-- begin pop up tags -->
+ <div class="popup tag_pop like_modal col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="tag_content">
+    <div class="row"> <!-- profgile photo -->
+	  <div class="col-xs-3"><img class="img-responsive fb_photo" src=""  data-name=""></div>
+	  
+	  	  <div class="col-xs-7">
+		  <p class="pink username " ></p>
+		  		  <p > <small class="gray">October 2, 2013 </small></p>
+				  <p class="item_desc" ><p>
 
+		  </div>
+		  
+		  
 
-<!-- begin hof -->
-<div class="hof_div none adjust_container" >
-
-	
-	
-		<div class="row text-center navbar navbar-fixed-top" style="background: white;">
-
+	  </div>
+	  
+	  <!--desc -->
+	  <div class="row  ">
+	  	<div class="col-xs-3 " ></div>  	  <div class="col-xs-9 black nega">
 		
-		 <img src="img/hof_tab.png" class="hof_tab pull-left" />
-		 		 <img src="img/hof_toggle.png" class="hof_toggle pull-right" />
+</div>
+	  </div>
+	  
+	  <!-- tagger -->
+	  
+	  <div id="tagger">
+		  
+		  
+		  </div>
+	  
+	  
+	  
+   </div>
+	   </div>
+<div id="pop"></div>
+<!-- pop up tribe -->
+<div class="big_style row popup">
+<div class="row" style="margin-bottom: 3%">
+<div class="col-xs-12 ">
 
-		</div>
-	<!-- Start of first page: #one -->
-<div id="wrapper_hof">
-                        <div class="scroller_hof">
-		
-<div class="ron" style="margin-top: 5vh">
+<div class="" ><a href="#" class=" back_style"> <img  class="img-responsive hov" style="width: 22%;max-width: 152px;float: left;"  src="img/back.png" /></a>
 
-
-
-  </div>
-  
-  </div>
-  </div>
+<a href="#" class=" choose"> <img  class="img-responsive hov" src="img/choose.png" style="margin-left: -10px;float: left;max-width: 266px;width: 38%" /></a>
 
 </div>
 
-<!-- end hof -->
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
+<img  class="img-responsive center big_img" src="" />
+</div>
+</div>
+</div>
+<!-- end popup tribe -->
+
+
+
 
                    <div class="container text-center  main_page">
 <div class="row center"><div class="col-xs-12"><img src ="img/Arena_Logo.png" class="img-responsive center logo_start" /></div></div>
@@ -66,7 +97,7 @@
 
 <!-- begin login -->
 	<div class="login_div none">
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar navbar-fixed-top nav_log">
 
 <a href="index.html" class="regtab"><img  src="img/login_tab.png" /></a>
 
@@ -98,11 +129,12 @@
 </div>
 <!-- begin register -->          
     <div class="register_div none">
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar navbar-fixed-top nav_reg">
 
 <a href="index.html" class="regtab"><img  src="img/reg_tab.png" /></a>
 
 </div>
+<div class="container">
 <form id="reg_form" action="" >
 
 <div class="container" style="margin-top: 20px;">
@@ -130,12 +162,12 @@
 
 
 
-<div class="row "><div class="col-xs-12"><button type="submit" id="reg_btn" ><img  src ="img/submit.png" class="hov submit" /></button></div>
+<div class="row "><div class="col-xs-12"><button type="submit" id="reg_btn" class="submit hov" ><img  src ="img/submit.png" class="" /></button></div>
 
 </div>
 
 </form>
-
+</div>
 
 </div>
 
@@ -248,8 +280,71 @@
 
 <!-- end tribe -->
 
+
+
+
+
+    <div class="frame">
+
+        <div id="pageWrapper">
+            <div id="pageScroller">
+                <div class="page" id="feed_page" >
+					<!-- feeds-->
+<div class="feed_div  adjust_container " >
+<div class="row text-center navbar navbar-fixed-top nav_feed" style="background: white;">
+
+		
+		 <img src="img/feed.jpg" class="pull-left feed_tab" />
+
+		</div>
+		<div id="wrapper_feeds">
+                        <div class="scroller">
+		
+		<div class="container">
+		
+		</div>
+		</div>
+		</div>
+		
+
+</div>
+
+<!-- end feeds -->
+               </div> <!-- end pag -->
+ <div class="page"  id="hof_page">
+                    <!-- begin hof -->
+<div class="hof_div  adjust_container" >
+
+	
+	
+		<div class="row text-center navbar navbar-fixed-top" style="background: white;">
+
+		
+		 <img src="img/hof_tab.png" class="hof_tab pull-left" />
+		 		 <img src="img/hof_toggle.png" class="hof_toggle pull-right" />
+
+		</div>
+	<!-- Start of first page: #one -->
+<div id="wrapper_hof">
+                        <div class="scroller_hof">
+		
+<div class="ron" style="margin-top: 5vh">
+
+
+
+  </div>
+  
+  </div>
+  </div>
+
+</div>
+
+<!-- end hof -->
+                </div>
+                <div class="page" id="arena_page" >
+                   
 <!-- begin arena -->
-<div class="arena_div none adjust_container" >
+<div class="arena_div  adjust_container" >
 <div class="container">
 
 <div class="row text-center style  navbar_arena" data-position="fixed" style="background: white;">
@@ -286,9 +381,11 @@
 
 
 </div>
-
-<!-- begin looks -->
-<div class="looks_div page none adjust_container" >
+                </div>
+               
+                <div class="page"  id="looks_page">
+                  <!-- begin looks -->
+<div class="looks_div page adjust_container" >
 
 		<div class="navbar navbar-fixed-top">
 
@@ -323,54 +420,60 @@
 
 
 
-			<!-- feeds-->
-<div class="feed_div none adjust_container " >
-<div class="row text-center navbar navbar-fixed-top nav_feed" style="background: white;">
-
-		
-		 <img src="img/feed.jpg" class="pull-left feed_tab" />
-
+                </div>
+				
+				<!-- begin page -->
+				                <div class="page"  id="profile_page">
+								<div class="main_profile " style="width: 100%;background:#f3f3f3;overflow:hidden;padding-top:20px">
+		<div class="profile_pic">
+		<img src="" />
 		</div>
-		<div id="wrapper_feeds">
+		
+		<div class="profile_name">
+		dfdggggggggggggggggggg
+		</div>
+		<div class="profile_desc">
+		Description in here.............................
+		</div>
+	
+		</div>
+		
+								</div><!-- end a page -->
+								
+								<!-- begin page -->
+				                <div class="page"  id="profile_page">
+								<div id="profile_follow" class="profile_pages">
+	<div id="wrapper_followers">
                         <div class="scroller">
 		
-		<div class="container">
-		
-		</div>
-		</div>
-		</div>
-		
+	<div class="container"><img style="width: 100%" src="img/follower.jpg" id="dp" /></div>
+	
+	</div>
+	</div></div>
+								</div><!-- end a page -->
+								<!-- begin page -->
+				                <div class="page"  id="profile_page">
+								<div id="profile_follow" class="profile_pages">
+	
+	<div class="container"><img style="width: 100%" src="img/follower.jpg" id="dp" /></div>
+	
+	</div>
+								</div><!-- end a page -->
+								<!-- begin page -->
+				                <div class="page"  id="profile_page">
+								
+	<div id="profile_activity" class="profile_pages">
+		<div class="container"><img style="width: 100%" src="img/activity.jpg" id="dp" /></div>
 
-</div>
+	
+	</div>
+	
+								</div><!-- end a page -->
 
-<!-- end feeds -->
-
-    <div class="frame">
-
-        <div id="pageWrapper">
-            <div id="pageScroller">
-                <div class="page" >
-		
-</div> <!-- end pag -->
-
-                <div class="page" >
-                    <h1>Page 2</h1>
-                    <hr/>
-                    <img src="picture.jpg" width="100%"/>
-                </div>
-                <div class="page" >
-                    
-                </div>
-                <div class="page" >
-                    <h1>Page 4</h1>
-                    <hr/>
-                    <div style="width:100%;text-align:center;">
-                        <img src="logo.png" />
-                    </div>
-                </div>
             </div>
         </div>
 		
+		</div>
 		
 		<!--footer -->
 			<div class="navbar-fixed-bottom" >
@@ -385,8 +488,8 @@
 
 	
 	</center>
-  <div id="f1" data-url=".feed_div">
- <img src="img/f1.png" class="f_active" />
+  <div id="f1"  data-url=".feed_div">
+<img src="img/f1.png" class="f_active" />
   <img src="img/f1_h.png" class="none" />
 
   </div>
@@ -401,12 +504,12 @@
 
   </div>
     <div id="f4" data-url=".looks_div">
- <img src="img/f4.png" class="f_active" />
+  <img src="img/f4.png" class="f_active" />
   <img src="img/f4_h.png" class="none" />
 
   </div>
     <div  id="f5" data-url=".profile_div">
- <img src="img/f5.png" class="f_active"  />
+<img src="img/f5.png" class="f_active"  />
   <img src="img/f5_h.png" class="none" />
 
   </div>
@@ -414,65 +517,8 @@
   
   </div>
 		
-		<!-- popup tags -->
-		<!-- begin pop up tags -->
- <div class="popup tag_pop like_modal col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="tag_content">
-    <div class="row"> <!-- profgile photo -->
-	  <div class="col-xs-3"><img class="img-responsive fb_photo" src=""  data-name=""></div>
-	  
-	  	  <div class="col-xs-7">
-		  <p class="pink username " ></p>
-		  		  <p > <small class="gray">October 2, 2013 </small></p>
-				  <p class="item_desc" ><p>
 
-		  </div>
-		  
-		  
-
-	  </div>
-	  
-	  <!--desc -->
-	  <div class="row  ">
-	  	<div class="col-xs-3 " ></div>  	  <div class="col-xs-9 black nega">
 		
-</div>
-	  </div>
-	  
-	  <!-- tagger -->
-	  
-	  <div id="tagger">
-		  
-		  
-		  </div>
-	  
-	  
-	  
-   </div>
-	   </div>
-		<!-- pop up tribe -->
-<div id="pop"></div>
-<div class="big_style row popup">
-<div class="row" style="margin-bottom: 3%">
-<div class="col-xs-12 ">
-
-<div class="" ><a href="#" class=" back_style"> <img  class="img-responsive hov" style="width: 22%;max-width: 152px;float: left;"  src="img/back.png" /></a>
-
-<a href="#" class=" choose"> <img  class="img-responsive hov" src="img/choose.png" style="margin-left: -10px;float: left;max-width: 266px;width: 38%" /></a>
-
-</div>
-
-</div>
-</div>
-
-<div class="row">
-<div class="col-xs-12">
-<img  class="img-responsive center big_img" src="" />
-</div>
-</div>
-</div>
-<!-- end popup tribe -->
-
 <!--looks popup-->
 <img  class="popup  center big_img2" src="" style="top: 0px" />
 
