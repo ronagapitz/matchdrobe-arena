@@ -31,7 +31,7 @@ onScrollEnd: function()
 	vScrollbar: false,
     lockDirection: true,click: true});
 	
-	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+//	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 hofScroll = new iScroll('wrapper_hof');
@@ -55,7 +55,7 @@ function updateLayout() {
     $('.page').css('width', wrapperWidth - 40);
     myScroll.refresh();
     myScroll.scrollToPage(currentPage, 0, 0);
-	page3Scroll.refresh();
+	//page3Scroll.refresh();
 	looksScroll.refresh();
 	feedScroll.refresh();
 	followersScroll.refresh();
@@ -243,7 +243,7 @@ updateLayout();
 
 					$(".login_div").hide();
 					$(".tribe_div").show("slide");
-						page3Scroll.refresh();
+					//	page3Scroll.refresh();
 						$("#wrapper").css("margin-top",$(".navbar_tribe").css("height"));
 
 $("#profile_follow .container").load("http://matchdrobe.com/app/arena/arena_functions.php",{followers: localStorage.user_id },function()
@@ -740,7 +740,7 @@ $(".popup").hide();
 
 
 /*****************settings ******************/
-localStorage.clear();
+//localStorage.clear();
 
 
 $("#logout").on("tap",function()
