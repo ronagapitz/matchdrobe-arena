@@ -375,7 +375,7 @@ font-size: 1rem !important;
    
    
  z-index:1; /*for some reason we need a z index */
-position: fixed;
+position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
@@ -492,7 +492,7 @@ width: 32%;
 {
 margin-bottom: 2rem;
 z-index: 1000;
-position: fixed;
+position: absolute;
 left: 0px;
 top: 0px;
 width: 100%
