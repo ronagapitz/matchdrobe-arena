@@ -740,13 +740,14 @@ $(".popup").hide();
 
 
 /*****************settings ******************/
+localStorage.clear();
 
 
 $("#logout").on("tap",function()
 {
 
 localStorage.clear();
-document.location.href = 'index.html';
+document.location.href = 'intdex.html';
 
 });
 

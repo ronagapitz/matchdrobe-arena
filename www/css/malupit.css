@@ -527,6 +527,7 @@ position: absolute;
 top:0;
 left: 0;
 padding-bottom: 10vh;
+height: 100vh;
 }
 .hov:active {
   -webkit-transform: scale3d(0.9, 0.9, 1);
