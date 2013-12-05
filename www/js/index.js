@@ -1,11 +1,27 @@
 document.addEventListener("orientationchange", updateLayout);
 
+    var currentPage = 0;
 // The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout();
 wrapperWidth = 0;
-
+var foot_select = 1;
 var myScroll = new iScroll('pageWrapper', {
 onScrollEnd: function()
 {
+
+    if (wrapperWidth > 0) {
+        currentPage = - Math.ceil( $('#pageScroller').position().left / wrapperWidth);
+		
+		current = currentPage + 1;
+		$(".navbar-fixed-bottom div .f_active").show();
+   $(".navbar-fixed-bottom .none").hide();
+   $('#f'+current+ " .none").show();
+      $('#f'+current+ " .f_active").hide();
+
+   
+    }
+
+	//alert(currentPage);
+
 
 
 },
@@ -19,7 +35,7 @@ onScrollEnd: function()
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 hofScroll = new iScroll('wrapper_hof');
-followersScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+followersScroll = new iScroll('wrapper_followers', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 
 
@@ -28,7 +44,6 @@ updateLayout();
 
 function updateLayout() {
 
-    var currentPage = 0;
 
     if (wrapperWidth > 0) {
         currentPage = - Math.ceil( $('#pageScroller').position().left / wrapperWidth);
@@ -46,7 +61,6 @@ function updateLayout() {
 	followersScroll.refresh();
 	
 	hofScroll.refresh();
-	
 }
 
 
@@ -594,49 +608,55 @@ array_tag = [];
 $(".navbar-fixed-bottom div").on("tap",function() {
 updateLayout();
 
- $(this).find(".none").show();
-   $(this).find(".f_active").hide();
-	
 
 url = $(this).attr("data-url");
+myScroll.scrollToPage(url, 0, 0);
 $( "body" ).scrollTop( 0 );
 if(url == '.profile_div')
 {
 //$("body").css("overflow-x", "hidden");
 current = 1;
- 
+ $("#profile_nav img").attr("src","img/profile_nav.jpg");
+ $("#1").attr("src","img/profile_nav_h.jpg");
 $(".setter,#profile_nav").show("slide");
 }
 
 
 
+updateLayout();
 
 //$(".adjust_container").hide();
 
  
 //$(url).show("slide");
-adjust_arena();
+ adjust_arena();
  if(url == '.hof_div')
 {
 
 hofScroll.refresh();
 }
 
-
+/*
  if(url == '.looks_div')
 {
+$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
 looksScroll.refresh();
 }
 if(url == '.feed_div')
 {
+$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
 
 feedScroll.refresh();
 
-}  
+}  */
 // loaded();
-	$(".navbar-fixed-bottom div img").first().show().last().hide();
+$(".navbar-fixed-bottom div .f_active").show();
    $(".navbar-fixed-bottom .none").hide();
-   $(".navbar-fixed-bottom .f_active").show();
+   $(".none", this).show();
+      $(".f_active", this).hide();
+
+   
+ 
  	
 }); 
 
