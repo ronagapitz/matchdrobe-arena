@@ -106,6 +106,7 @@ margin-left:1rem;
 }
 .heart_div
 {
+width: 100%;
 text-align: center;
 }
 .heart
@@ -115,6 +116,7 @@ text-align: center;
 }
 .heart_parent
 {
+
 margin: 2rem;
 
 float: left;
@@ -456,7 +458,7 @@ margin: 0 auto !important;
   right: 0 !important;
   z-index: -1;
 
-  top: 25vh;
+  top: 35vh;
   display:inline-block;
 }
 
@@ -531,6 +533,7 @@ position: absolute;
 left: 0px;
 top: 0px;
 width: 100%
+z-index: 2000;
 }
 .center
 {

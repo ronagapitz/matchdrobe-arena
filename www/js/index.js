@@ -16,7 +16,11 @@ onScrollEnd: function()
    $(".navbar-fixed-bottom .none").hide();
    $('#f'+current+ " .none").show();
       $('#f'+current+ " .f_active").hide();
-
+looksScroll.refresh();
+	feedScroll.refresh();
+	followersScroll.refresh();
+	
+	hofScroll.refresh();
    
     }
 
