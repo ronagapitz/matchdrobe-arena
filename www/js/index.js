@@ -136,7 +136,7 @@ function init()
 {
 
 
-$("#wrapper_feeds").css("margin-top",$(".feed_tab").height());
+$("#wrapper_feeds,#wrapper_looks").css("margin-top",$(".feed_tab").height()+20);
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
 updateLayout();
@@ -234,8 +234,8 @@ function adjust_arena()
 
 $("#profile_nav img").attr("src","img/profile_nav.jpg");
  //$("#1").attr("src","img/profile_nav_h.jpg");
-$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
-$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
+//$(".looks_div .container").css({"margin-top":$(".looks_tab").height() + 20});
+//$(".feed_div .container").css({"margin-top":$(".nav_feed").height() + 20});
 
 
 $(".adjust_container").css({
@@ -606,7 +606,7 @@ $("input#tag").focus().focus();
 	img_user: localStorage.dp},function(e)
 	{
 	//alert(e);
-	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
+	$("#profile_activity .container,.feed_div .").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 	{
 	updateLayout();
 	});
