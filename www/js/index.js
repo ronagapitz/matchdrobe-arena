@@ -67,6 +67,55 @@ function updateLayout() {
 
 $(function()
 {
+arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
+//feeds
+$(document).on("tap","img.heart", function()
+{
+if($(this).attr("src") == 'img/heart.png')
+{
+likes = $(this).parent().find("span");
+$(this).attr("src","img/heart_fill.png");
+likes.text(parseInt(likes.text()) + 1);
+
+$(this).parent().next().find(".unliker").attr("src","img/broken.png");
+$.post(arena_url,{feed_id: $(this).attr("data-id"), user_id: localStorage.user_id, feed_liker: 1},function(e)
+{
+//alert(e);
+});
+
+}
+
+/*
+else if($(this).attr("src") == 'img/heart_fill.png')
+{
+
+$(this).attr("src","img/heart.png");
+}*.*/
+
+else if($(this).attr("src") == 'img/broken.png')
+{
+likes = $(this).parent().find("span");
+likes.text(parseInt(likes.text()) + 1);
+
+$.post(arena_url,{feed_id: $(this).attr("data-id"), user_id: localStorage.user_id, feed_unliker: 1},function(e)
+{
+
+
+});
+
+
+$(this).attr("src","img/broken_fill.png");
+$(this).parent().prev().find(".liker").attr("src","img/heart.png");
+
+}
+/*
+else if($(this).attr("src") == 'img/broken_fill.png')
+{
+
+$(this).attr("src","img/broken.png");
+}*/
+
+});
 
 $("input").on("tap",function()
 {
@@ -547,7 +596,8 @@ $("input#tag").focus().focus();
 	sec =$("#fuck").val();
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
 	$.get("http://matchdrobe.com/app/arena/arena_functions.php",{img_1: $("#h1").attr("data-image"), img_3: sec,item_1 : $("#h1").val(), item_2: $("#h2").val(),
-	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name,img_liked : $img_liked},function(e)
+	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name,img_liked : $img_liked,
+	img_user: localStorage.dp},function(e)
 	{
 	//alert(e);
 	$("#profile_activity .container,.feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()

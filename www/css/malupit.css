@@ -96,6 +96,30 @@ margin: auto;
 display: block
 }
 /*8feeds**/
+.feed_user
+{
+width: 15%;
+max-width: 200px;
+border-radius: 100%;
+margin-left:1rem;
+
+}
+.heart_div
+{
+text-align: center;
+}
+.heart
+{
+width: 50%;
+text-align: center;
+}
+.heart_parent
+{
+margin: 2rem;
+
+float: left;
+
+}
 .feed_tab
 {
 
@@ -106,6 +130,10 @@ max-width: 700px;
 {
 float: left;
 
+}
+.pink
+{
+color: rgb(184, 9, 65) !important;
 }
 body
 {
@@ -428,7 +456,7 @@ margin: 0 auto !important;
   right: 0 !important;
   z-index: -1;
 
-  top: 40vh;
+  top: 25vh;
   display:inline-block;
 }
 
