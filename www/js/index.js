@@ -135,6 +135,8 @@ $("#f4").on("tap",function()
 function init()
 {
 
+
+$("#wrapper_feeds").css("margin-top",$(".feed_tab").height());
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
 updateLayout();
