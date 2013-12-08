@@ -74,63 +74,11 @@ function updateLayout() {
 $(function()
 {
 
+$('#popup').bind('pinchopen pinchclose', function(el, ev) {
+    i *= ev.scale;
+    $('#element_id').css("width",i+"px");
+});
 
-function log(event_, obj) {
-// ignore bubbled handlers
-//		if ( obj.originalEvent.currentTarget !== obj.originalEvent.target ) { return; }
-	obj.originalEvent.preventDefault();
-	jQuery('#logger')
-		.find('li')
-			.slice(1,jQuery('#logger').find('li').size()-8)
-				.animate({'opacity':'0', 'height':'0'},function(){jQuery(this).remove()})
-			.end()
-		.end()
-		.append('<li><b>'+jQuery(obj.originalEvent.currentTarget).attr('id')+'</b>: '+obj.description+ ' : '+obj.type +'</li>')
-
-}
-
-function manipulate(event_, obj) {
-// ignore bubbled handlers
-//		if ( obj.originalEvent.currentTarget !== obj.originalEvent.target ) { return; }
-	event_.preventDefault();
-	obj.originalEvent.preventDefault();
-	log(event_, obj)
-
-	var _a = obj.description.split(':');
-
-	jQuery(obj.originalEvent.currentTarget).css('zIndex','1000')
-	switch(_a[0]) {
-		case 'pinch':
-			jQuery(obj.originalEvent.currentTarget).css('-webkit-transform','scale('+ ( obj.direction * obj.delta[0].moved ) +')');
-		break;
-		case  'rotate':
- 			//jQuery(obj.originalEvent.currentTarget).css('-webkit-transform','rotate('+ (  obj.delta[0].moved ) +'deg)');
-		break;
-
-		case  'swipemove':
-			if(_a[1] != 1) {break;}
-			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','');
- 			jQuery(obj.originalEvent.currentTarget).css('left', parseInt(jQuery(obj.originalEvent.currentTarget).css('left')) + obj.delta[0].startX );
-			jQuery(obj.originalEvent.currentTarget).css('top', parseInt(jQuery(obj.originalEvent.currentTarget).css('top')) + obj.delta[0].startY );
-//			jQuery(obj.originalEvent.currentTarget).data('moving',true)
-		break;
-
-		case 'swipe' :
-//			if(_a[1] != 1 || jQuery(obj.originalEvent.currentTarget).data('moving') } {break;}
- 			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','all 1s ease-out').css('left', parseInt(jQuery(obj.originalEvent.currentTarget).css('left')) + obj.delta[0].startX );
-			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','all 1s ease-out').css('top', parseInt(jQuery(obj.originalEvent.currentTarget).css('top')) + obj.delta[0].startY );
-		break;
-	  }
-	  jQuery(obj.originalEvent.currentTarget).css('zIndex','')
-}
-
-	function BlockMove(event) {
-		// Tell Safari not to move the window.
-		event.preventDefault() ;
-	}
-
-$("#popup").bind("pinchopen",manipulate);
-$("#popup").bind("pinchclose",manipulate);
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
 //feeds
