@@ -38,6 +38,12 @@ matchdrobe arena    </description>
 	  <icon src="icon.png"     gap:platform="blackberry" />
     <icon src="icon.png"     gap:platform="blackberry" gap:state="hover"/>
     <preference name="phonegap-version" value="2.9.0" />
+	
+	<gap:splash src="img/splash320.png"    gap:platform="ios"     width="320" height="480" />
+    <gap:splash  src="img/splash720.png" gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="img/splash720.png"      gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="img/splash720.png"     gap:platform="ios"     width="1024" height="768" />
+    <gap:splash src="img/splash720.png" gap:platform="winphone" />
     <!--
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
        <param name="APP_ID" value="408729362586583" />
