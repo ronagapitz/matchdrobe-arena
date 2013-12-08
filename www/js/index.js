@@ -4,6 +4,8 @@ document.addEventListener("orientationchange", updateLayout);
 // The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout();
 wrapperWidth = 0;
 var foot_select = 1;
+
+
 var myScroll = new iScroll('pageWrapper', {
 onScrollEnd: function()
 {
@@ -71,6 +73,65 @@ function updateLayout() {
 
 $(function()
 {
+
+
+function log(event_, obj) {
+// ignore bubbled handlers
+//		if ( obj.originalEvent.currentTarget !== obj.originalEvent.target ) { return; }
+	obj.originalEvent.preventDefault();
+	jQuery('#logger')
+		.find('li')
+			.slice(1,jQuery('#logger').find('li').size()-8)
+				.animate({'opacity':'0', 'height':'0'},function(){jQuery(this).remove()})
+			.end()
+		.end()
+		.append('<li><b>'+jQuery(obj.originalEvent.currentTarget).attr('id')+'</b>: '+obj.description+ ' : '+obj.type +'</li>')
+
+}
+
+function manipulate(event_, obj) {
+// ignore bubbled handlers
+//		if ( obj.originalEvent.currentTarget !== obj.originalEvent.target ) { return; }
+	event_.preventDefault();
+	obj.originalEvent.preventDefault();
+	log(event_, obj)
+
+	var _a = obj.description.split(':');
+
+	jQuery(obj.originalEvent.currentTarget).css('zIndex','1000')
+	switch(_a[0]) {
+		case 'pinch':
+			jQuery(obj.originalEvent.currentTarget).css('-webkit-transform','scale('+ ( obj.direction * obj.delta[0].moved ) +')');
+		break;
+		case  'rotate':
+ 			//jQuery(obj.originalEvent.currentTarget).css('-webkit-transform','rotate('+ (  obj.delta[0].moved ) +'deg)');
+		break;
+
+		case  'swipemove':
+			if(_a[1] != 1) {break;}
+			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','');
+ 			jQuery(obj.originalEvent.currentTarget).css('left', parseInt(jQuery(obj.originalEvent.currentTarget).css('left')) + obj.delta[0].startX );
+			jQuery(obj.originalEvent.currentTarget).css('top', parseInt(jQuery(obj.originalEvent.currentTarget).css('top')) + obj.delta[0].startY );
+//			jQuery(obj.originalEvent.currentTarget).data('moving',true)
+		break;
+
+		case 'swipe' :
+//			if(_a[1] != 1 || jQuery(obj.originalEvent.currentTarget).data('moving') } {break;}
+ 			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','all 1s ease-out').css('left', parseInt(jQuery(obj.originalEvent.currentTarget).css('left')) + obj.delta[0].startX );
+			jQuery(obj.originalEvent.currentTarget).css('-webkit-transition','all 1s ease-out').css('top', parseInt(jQuery(obj.originalEvent.currentTarget).css('top')) + obj.delta[0].startY );
+		break;
+	  }
+	  jQuery(obj.originalEvent.currentTarget).css('zIndex','')
+}
+
+	function BlockMove(event) {
+		// Tell Safari not to move the window.
+		event.preventDefault() ;
+	}
+
+$("#popup").bind("pinchopen",manipulate);
+$("#popup").bind("pinchclose",manipulate);
+
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
 //feeds
 $(document).on("tap","img.heart", function()
@@ -80,6 +141,12 @@ if($(this).attr("src") == 'img/heart.png')
 likes = $(this).parent().find("span");
 $(this).attr("src","img/heart_fill.png");
 likes.text(parseInt(likes.text()) + 1);
+likes2 = $(this).parent().next().find("span");
+if(parseInt(likes2.text()) >0)
+{
+likes2.text(parseInt(likes2.text()) - 1);
+
+}
 
 $(this).parent().next().find(".unliker").attr("src","img/broken.png");
 $.post(arena_url,{feed_id: $(this).attr("data-id"), user_id: localStorage.user_id, feed_liker: 1},function(e)
@@ -100,6 +167,13 @@ else if($(this).attr("src") == 'img/broken.png')
 {
 likes = $(this).parent().find("span");
 likes.text(parseInt(likes.text()) + 1);
+likes2 = $(this).parent().prev().find("span");
+if(parseInt(likes2.text()) >0)
+{
+likes2.text(parseInt(likes2.text()) - 1);
+
+}
+
 
 $.post(arena_url,{feed_id: $(this).attr("data-id"), user_id: localStorage.user_id, feed_unliker: 1},function(e)
 {
@@ -780,8 +854,10 @@ $(".img_looks2").attr("src",$(this).attr("src")).show().center();
 });
 $(document).on("tap",".looks_div .ron img ",function()
 {
+
 $(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block').center();
 $("#pop").show();
+//popscroll.refresh();
 $( "body" ).scrollTop( 0 );
 
 })
