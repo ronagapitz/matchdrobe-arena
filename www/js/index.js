@@ -45,7 +45,6 @@ followersScroll = new iScroll('wrapper_followers', {hScrollbar: false, vScrollba
 
 
 
-
 updateLayout();
 
 function updateLayout() {
@@ -73,11 +72,6 @@ function updateLayout() {
 
 $(function()
 {
-
-$('#popup').bind('pinchopen pinchclose', function(el, ev) {
-    i *= ev.scale;
-    $('#element_id').css("width",i+"px");
-});
 
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
@@ -803,8 +797,11 @@ $(".img_looks2").attr("src",$(this).attr("src")).show().center();
 $(document).on("tap",".looks_div .ron img ",function()
 {
 
-$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block').center();
+
+$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block')
 $("#pop").show();
+$("#popup").show().center();
+zoom = new iScroll('popup', { zoom:true });
 //popscroll.refresh();
 $( "body" ).scrollTop( 0 );
 
@@ -815,7 +812,9 @@ $(".big_img2").on("tap", function()
 
 $("#pop").hide();
 
-$(".popup").hide();
+$("#popup").hide();
+
+
 });
 
 
