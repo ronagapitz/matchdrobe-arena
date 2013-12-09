@@ -152,7 +152,7 @@ function init()
 {
 
 
-$("#wrapper_feeds,#wrapper_looks").css("margin-top",$(".feed_tab").height()+20);
+$("#wrapper_feeds,#wrapper_looks,#wrapper_hof").css("margin-top",$(".feed_tab").height()+20);
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
 updateLayout();
