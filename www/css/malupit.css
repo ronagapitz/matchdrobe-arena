@@ -159,7 +159,7 @@ width: 100%;
 
 .hof_div .ron
 {
-width: 500vw;
+width: 100vw;
 
 }
 .third
@@ -171,11 +171,11 @@ width: 40vw;
 .scroller_hof
 {
 margin-top: 5vw;
-width: 500vw;
-	height:100%;
+width: 100vw;
+	
 	float:left;
 	padding:0;
-
+padding-bottom: 10vh;
 
 }
 .hof_tab
@@ -408,7 +408,6 @@ width: 100%;
 
 .pdesc
 {
-color: white;
 }
 .item_desc
 {
@@ -727,6 +726,9 @@ paddding-bottom: 10px;
 
 .big_img2
 {
+    -webkit-transform:translate3d(0,0,0);
+
+
 left: 0;
 right: 0;
 }
@@ -746,6 +748,82 @@ right: 0;
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	width:100%;
 	padding:0;
+	padding-bottom: 10vh;
+
+}
+.hof_thumb img
+{
+width: 100%;
+}
+.hof_thumb
+{
+float: left;
+width: 30%;
+overflow: hidden;
+}
+/*****hof only */
+.hof_pic
+{
+float: left;
+}
+.hof_details
+{
+overflow: hidden;
+padding-top: 10%;
+padding-left: 5%;
+}
+.hof_count
+{
+background: #d7d7d7;
+padding: .3rem;
+width: 10%;
+margin-left: 10%;
+text-align: center;
+color: #b80941;
+float: left;
+}
+.hof_wins
+{
+margin-left: 10%;
+
+float: left;
+}
+.hof_percent
+{
+
+float: left;
+background:  #b80941;
+padding: .3rem;
+width: 20%;
+margin-left: 0%;
+text-align: center;
+color: white;
+font-weight: bold;
+}
+.hof_percent:after {
+    content: '';
+    line-height: 0;
+    font-size: 0;
+    width: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 100px solid #fff;
+    border-left: 30px solid transparent;
+    border-right: 0 solid #fff;
+    position: absolute;
+    top: -50px;
+    right: 0;
+}
+.hof_parent
+{
+margin-bottom: 1rem;
+overflow: hidden;
+width: 85%;
+margin-left: 2%
+}
+.hof_user
+{
+float: left;
+text-align: center;
 }
 
 #popup .scroller

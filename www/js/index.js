@@ -40,7 +40,7 @@ looksScroll.refresh();
 //	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-hofScroll = new iScroll('wrapper_hof');
+hofScroll = new iScroll('wrapper_hof', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 followersScroll = new iScroll('wrapper_followers', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 
@@ -745,8 +745,11 @@ $(this).hide();
 $(document).on("tap",".hof_div .img-ron",function()
 {
 //alert($(this).attr("src"))
-$(".big_img2").attr("src",$(this).attr("src")).show().center();
+
+$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block').center();
 $("#pop").show();
+$("#popup").show().center();
+zoom = new iScroll('popup', { zoom:true });
 });
 $(".hof_toggle").on("tap",function()
 {
@@ -779,12 +782,12 @@ $(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/aren
 updateLayout();
 });
 jQuery.fn.center = function () {
-    this.css("position","fixed");
+  //  this.css("position","fixed");
 	//Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
       //                                          $(window).scrollTop()) +  center height
     this.css("top", "0px");
-    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
-                                                $(window).scrollLeft()) + "px");
+   // this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
+   //                                             $(window).scrollLeft()) + "px");
     return this;
 }
 
@@ -798,12 +801,11 @@ $(document).on("tap",".looks_div .ron img ",function()
 {
 
 
-$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block')
+$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block');
 $("#pop").show();
-$("#popup").show().center();
+$("#popup").show();
 zoom = new iScroll('popup', { zoom:true });
 //popscroll.refresh();
-$( "body" ).scrollTop( 0 );
 
 })
 
