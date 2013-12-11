@@ -100,7 +100,7 @@ display: block
 {
 width: 15%;
 max-width: 200px;
-border-radius: 100%;
+border-radius: 100% !important;
 margin-left:1rem;
 
 }
@@ -170,6 +170,9 @@ width: 40vw;
 }
 .scroller_hof
 {
+    -webkit-transform:translate3d(0,0,0);
+
+ -webkit-transform: translateZ(0);
 margin-top: 5vw;
 width: 100vw;
 	
@@ -295,7 +298,7 @@ font-size: 1.2rem !Important;
 }
 .fb_photo
 {
-  border-radius: 100%;
+  border-radius: 100% !important;
 
 width: 55%;
 min-width: 50px;
@@ -723,6 +726,7 @@ paddding-bottom: 10px;
     -webkit-transform:translate3d(0,0,0);
     height: 100%;
     padding: 20px;
+	 -webkit-transform: translateZ(0);
 }
 
 #pageWrapper {
@@ -764,6 +768,7 @@ right: 0;
 }
 
 .scroller {
+ -webkit-transform: translateZ(0);
 	position:absolute; z-index:1;
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	width:100%;
@@ -849,6 +854,9 @@ text-align: center;
 #popup .scroller
 {
 height: 100%;
+ -webkit-transform: translateZ(0);
+     -webkit-transform:translate3d(0,0,0);
+
 }
 
 /*****popups **********/
