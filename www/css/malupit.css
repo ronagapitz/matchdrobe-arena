@@ -735,7 +735,15 @@ paddding-bottom: 10px;
     left:0px;
 	padding-bottom:20vh;
 }
-
+* {
+text-shadow: none !important;
+-webkit-box-shadow: none !important;
+-webkit-border-radius:0 !important;
+-webkit-border-top-left-radius:0 !important;
+-webkit-border-bottom-left-radius:0 !important;
+-webkit-border-bottom-right-radius:0 !important;
+-webkit-border-top-right-radius:0 !important;
+}
 .big_img2
 {
     -webkit-transform:translate3d(0,0,0);

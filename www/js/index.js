@@ -152,7 +152,7 @@ function init()
 {
 
 
-$("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+40,"margin-bottom":$(".feed_tab").height()+70});
+$("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+40,"margin-bottom":$(".feed_tab").height()+100});
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
 updateLayout();
