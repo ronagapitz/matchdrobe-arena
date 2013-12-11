@@ -152,7 +152,7 @@ function init()
 {
 
 
-$("#wrapper_feeds,#wrapper_looks,#wrapper_hof").css("margin-top",$(".feed_tab").height()+20);
+$("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+30});
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
 updateLayout();
@@ -804,7 +804,7 @@ $(document).on("tap",".looks_div .ron img ",function()
 $(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block');
 $("#pop").show();
 $("#popup").show();
-zoom = new iScroll('popup', { zoom:true });
+zoom = new iScroll('popup', { zoom:true,hScrollbar: false, vScrollbar: false });
 //popscroll.refresh();
 
 })

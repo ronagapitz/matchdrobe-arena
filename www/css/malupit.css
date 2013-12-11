@@ -267,7 +267,19 @@ padding-right: 4px;
 
 }
 
-	
+	.diagonal {
+background: -moz-linear-gradient(-45deg, #b80941 0%, #b80941 50%, rgba(0,0,0,0) 51%, rgba(0,0,0,0) 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#00ccff), color-stop(50%,#00ccff), color-stop(51%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0)));
+background: -webkit-linear-gradient(-45deg, #00ccff 0%,#00ccff 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0) 100%);
+background: -o-linear-gradient(-45deg, #b80941 0%,#b80941 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0) 100%);
+background: -ms-linear-gradient(-45deg, #b80941 0%,#b80941 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0) 100%);
+background: linear-gradient(135deg, #b80941 0%,#b80941 50%,rgba(0,0,0,0) 51%,rgba(0,0,0,0) 100%);
+}
+.diagonal {
+display: block;
+
+float:left;
+}
 #add_tag
 {
 overflow: hidden;
@@ -740,7 +752,7 @@ right: 0;
     left:0px;
     right:0px;
     overflow:auto;
-	height: 90vh;
+	height: 80vh;
 }
 
 .scroller {
