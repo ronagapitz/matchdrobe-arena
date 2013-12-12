@@ -91,7 +91,7 @@ function updateLayout() {
 $(function()
 {
 
-localStorage.clear();
+localStorage.clear(); 
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
 //feeds
