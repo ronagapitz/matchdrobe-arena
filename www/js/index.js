@@ -76,6 +76,26 @@ $(function()
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
 //feeds
+function profile(name)
+{
+myScroll.scrollToPage(4, 0, 0);
+$.post(arena_url,{full_name: name,profile: 1},function(e)
+{
+$("div.profile_name").text(e.name);
+$("div.profile_pic img").attr("src",e.pic);
+$("div.profile_desc").text(e.about);
+$("div.followers span").text(e.followers);
+
+$("div.following span").text(e.following);
+
+},"json");
+ $(".popup,#pop").hide();
+}
+//feed to profile
+$(document).on("tap","img.feed_user",function()
+{
+profile($(this).attr("data-name"));
+});
 $(document).on("tap","img.heart", function()
 {
 if($(this).attr("src") == 'img/heart.png')
@@ -158,7 +178,14 @@ $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.
 updateLayout();
 });
 
+$.post(arena_url,{count_follow:localStorage.user_id},function(e)
+{
+//alert(e.followers + ' ' + e.following );
+$(".followers span").text(e.followers);
+$(".following span").text(e.following);
 
+
+},"json");   //count followers
 	$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
 		$(".profile_pic img").attr("src", localStorage.dp);
@@ -546,15 +573,7 @@ $("#f3").trigger("tap");
 
 $(document).on("tap","img.fb_photo", function()
 {
-$("#profile_nav").show();
-current = 1;
- $("#profile_nav img").attr("src","img/profile_nav.jpg");
- $("#1").attr("src","img/profile_nav_h.jpg");
-
-$(".popup,#pop,.arena_div").hide("slide");
-$(".profile_div2").show("slide");
-$("#dp_big").attr("src",$(".fb_photo").attr('src'));
-$(".name_plate").text($(this).attr("data-user"));
+profile($(this).attr("data-user"));
 });
 
 $("div.cont").on("tap", "a.arena_img", 
@@ -562,7 +581,7 @@ $("div.cont").on("tap", "a.arena_img",
 $(".follow").attr('data-id',$(this).attr("data-userid"));
 		//$(".like_modal .tag_content").empty();
 $(".fb_photo").attr({"src": $(this).attr("data-photo"),"data-user":$(this).attr("data-name"),
-"data-full":$(this).attr("data-full")} );
+"data-user":$(this).attr("data-full")} );
 
 $(".profile_div2 .profile_name").text($(this).attr("data-full"));
 $(".profile_div2 .profile_desc").text($(this).attr("data-about"));
