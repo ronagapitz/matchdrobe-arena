@@ -3,13 +3,24 @@
 visibility: hidden;
 }
 
+
+@font-face
+{
+font-family: calibri;
+src: url('calibri.ttf');
+    
+}
+
+
+
+
 /*******profile */
 /**************************profile *********/
 
 /****follower */
 .f_pic img
 {
-  border-radius: 100%;
+  border-radius: 100% !important;
 
 }
 .profile_name
@@ -59,6 +70,7 @@ width: 21%;
 float: left;
 overflow: hidden;
 margin-left: 1%;
+height: 15vh;
 
 }
 .f_pic
@@ -89,12 +101,18 @@ padding-top: 1rem;
 .main_profile
 {
 text-align: center;
-padding-top: 10vh;
+margin-top: 15vh;
 }
 .count_follower
 {
-width: 50%;
+width: 100%;
 margin: auto;
+
+}
+
+.following
+{
+float: right !important;
 
 }
 .count_follower div
@@ -103,6 +121,7 @@ width: 40%;
 float: left;
 text-align: center;
 margin: 1%;
+font-size: 1.3rem;
 }
 #dp,#dp_big ,.profile_pic img
 {
@@ -213,7 +232,7 @@ margin: auto;
 	height: 0;
 	border-bottom: 100px solid red;
 	border-left: 100px solid transparent;
-}
+           }
 
 .hof_bottom
 {

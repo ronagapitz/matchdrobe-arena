@@ -39,8 +39,20 @@ looksScroll.refresh();
 	
 //	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true });
-hofScroll = new iScroll('wrapper_hof', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
+    $('#wrapper_feeds').trigger('scroll');
+}
+,onScrollStart: function () {
+    $('#wrapper_feeds').trigger('scroll');
+}
+});
+hofScroll = new iScroll('wrapper_hof', {hScrollbar: false, vScrollbar: false, lockDirection: true,
+onScrollEnd: function () {
+    $('#wrapper_hof').trigger('scroll');
+}
+,onScrollStart: function () {
+    $('#wrapper_hof').trigger('scroll');
+} });
 followersScroll = new iScroll('wrapper_followers', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 
@@ -91,8 +103,12 @@ $("div.following span").text(e.following);
 },"json");
  $(".popup,#pop").hide();
 }
+
+//followers to profile
+
+
 //feed to profile
-$(document).on("tap","img.feed_user",function()
+$(document).on("tap","img.feed_user, .f_pic img",function()
 {
 profile($(this).attr("data-name"));
 });
@@ -175,6 +191,9 @@ function init()
 $("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+40,"margin-bottom":$(".feed_tab").height()+100});
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
 {
+$("img.lazy").lazyload({
+    effect : "fadeIn"
+});
 updateLayout();
 });
 
@@ -761,7 +780,7 @@ $(this).hide();
 
 
 
-$(document).on("tap",".hof_div .img-ron",function()
+$(document).on("tap",".hof_div .img-ron, .f_items img",function()
 {
 //alert($(this).attr("src"))
 
@@ -788,6 +807,10 @@ $(".hof_pop").on("tap",function()
 
 $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{hof: 1},function()
 {
+$(".hof_div img.lazy").lazyload({
+    effect : "fadeIn",
+	 skip_invisible : false
+});
 updateLayout();
 
 });
