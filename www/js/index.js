@@ -355,8 +355,18 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 		$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
 updateLayout();
-profile(localStorage.full_name);
 
+$.post(arena_url,{full_name: localStorage.full_name,profile: 1},function(e)
+{
+$("div.profile_name").text(e.name);
+$("div.profile_pic img").attr("src",e.pic);
+$("div.profile_desc").text(e.about);
+$("div.followers span").text(e.followers);
+
+$("div.following span").text(e.following);
+
+},"json");
+ $(".popup,#pop").hide();
 	//alert("Login Successful");
 					//	  document.location.href = 'f_style_tribe.html';
 
