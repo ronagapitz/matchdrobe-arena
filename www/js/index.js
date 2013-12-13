@@ -42,23 +42,17 @@ looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false
 onScrollEnd: function () {
     $('#wrapper_looks').trigger('scroll');
 }
-,onScrollStart: function () {
-    $('#wrapper_looks').trigger('scroll');
-}  });
+ });
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
     $('#wrapper_feeds').trigger('scroll');
 }
-,onScrollStart: function () {
-    $('#wrapper_feeds').trigger('scroll');
-}
+
 });
 hofScroll = new iScroll('wrapper_hof', {hScrollbar: false, vScrollbar: false, lockDirection: true,
 onScrollEnd: function () {
     $('#wrapper_hof').trigger('scroll');
 }
-,onScrollStart: function () {
-    $('#wrapper_hof').trigger('scroll');
-} });
+ });
 followersScroll = new iScroll('wrapper_followers', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 
 
@@ -361,6 +355,7 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 		$(".profile_name").text(localStorage.full_name);
 				$(".profile_desc").text(localStorage.about);
 updateLayout();
+profile(localStorage.full_name);
 
 	//alert("Login Successful");
 					//	  document.location.href = 'f_style_tribe.html';
@@ -849,7 +844,7 @@ $(document).on("tap",".looks .img-ron",function()
 $(".img_looks2").attr("src",$(this).attr("src")).show().center();
 
 });
-$(document).on("tap",".looks_div .ron img ",function()
+$(document).on("tap",".looks_div .ronz img ",function()
 {
 
 
