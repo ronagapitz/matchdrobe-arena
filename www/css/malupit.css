@@ -135,6 +135,14 @@ margin: auto;
 display: block
 }
 /*8feeds**/
+
+.dummy
+{
+
+    padding-top: 200%;
+	background:  silver;
+
+}
 .feed_user
 {
 width: 15%;
@@ -166,6 +174,10 @@ margin: 2rem;
 float: left;
 
 }
+.opac
+{
+opacity: .4 !Important;
+}
 .feed_tab
 {
 
@@ -174,12 +186,20 @@ max-width: 700px;
 }
 .activity_item
 {
+position: relative;
 float: left;
 width: 33%;
+max-width: 33%;
+display: block;
+overflow: hidden;
 }
 .activity_item img
 {
 width: 100%;
+position: absolute;
+top:0;
+left:0
+  
 }
 .pink
 {
@@ -738,6 +758,9 @@ background: #b80941;
 
 .res_con
 {
+left: 0;
+right: 0;
+
 height:100vh;
 overflow: hidden;
 }
@@ -753,6 +776,7 @@ padding: .6%;
 
 .more
 {
+display: none;
 font-size : 2rem;
 font-style: italic
 }

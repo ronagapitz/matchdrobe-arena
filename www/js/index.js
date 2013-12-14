@@ -45,7 +45,21 @@ onScrollEnd: function () {
  });
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
     $('#wrapper_feeds').trigger('scroll');
-}
+	//alert(feedScroll.y);
+
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
+	{
+			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:20},function(e)
+			{
+			$('#wrapper_feeds .scroller .container').append(e);
+			$(".feed_div img.lazy").lazyload({
+    effect : "fadeIn"
+});
+			});
+
+	}
+	}
+
 
 });
 hofScroll = new iScroll('wrapper_hof', {hScrollbar: false, vScrollbar: false, lockDirection: true,
@@ -85,7 +99,7 @@ function updateLayout() {
 $(function()
 {
 
-localStorage.clear(); 
+//localStorage.clear(); 
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
 //feeds
@@ -190,25 +204,18 @@ function init()
 
 
 $("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+40,"margin-bottom":$(".feed_tab").height()+100});
-$("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
+$("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?offset=0&my_activity="+localStorage.user_id,function()
 {
 $("img.lazy").lazyload({
     effect : "fadeIn"
 });
 updateLayout();
+
+//lazy_feed = $("div.activity_item img.lazy");
+
+//lazy_feed.height(lazy_feed.width()*2.1);
 });
 
-$.post(arena_url,{count_follow:localStorage.user_id},function(e)
-{
-//alert(e.followers + ' ' + e.following );
-$(".followers span").text(e.followers);
-$(".following span").text(e.following);
-
-
-},"json");   //count followers
-	$(".profile_name").text(localStorage.full_name);
-				$(".profile_desc").text(localStorage.about);
-		$(".profile_pic img").attr("src", localStorage.dp);
 
 }
 init();
@@ -372,6 +379,7 @@ $("div.following span").text(e.following);
 
 					$(".login_div").hide();
 					$(".tribe_div").show("slide");
+
 					//	page3Scroll.refresh();
 						$("#wrapper").css("margin-top",$(".navbar_tribe").css("height"));
 
@@ -672,7 +680,7 @@ $("input#tag").focus().focus();
 	img_user: localStorage.dp},function(e)
 	{
 	//alert(e);
-	$("#profile_activity .container,.feed_div .").load("http://matchdrobe.com/app/arena/arena_functions.php?my_activity="+localStorage.user_id,function()
+	$("#profile_activity .container,.feed_div .").load("http://matchdrobe.com/app/arena/arena_functions.php?offset=0&my_activity="+localStorage.user_id,function()
 	{
 	updateLayout();
 	});
