@@ -139,8 +139,8 @@ display: block
 .dummy
 {
 
-    padding-top: 200%;
-	background:  silver;
+    padding-top: 205%;
+	background:  #303030;
 
 }
 .feed_user
@@ -198,7 +198,8 @@ overflow: hidden;
 width: 100%;
 position: absolute;
 top:0;
-left:0
+left:0;
+height: 100%;
   
 }
 .pink

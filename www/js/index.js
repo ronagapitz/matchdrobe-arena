@@ -46,15 +46,18 @@ onScrollEnd: function () {
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
     $('#wrapper_feeds').trigger('scroll');
 	//alert(feedScroll.y);
+	off= 20;
 
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
 	{
-			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:20},function(e)
+			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
 			{
 			$('#wrapper_feeds .scroller .container').append(e);
 			$(".feed_div img.lazy").lazyload({
     effect : "fadeIn"
 });
+
+off+=20;
 			});
 
 	}
