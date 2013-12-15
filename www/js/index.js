@@ -40,24 +40,37 @@ looksScroll.refresh();
 //	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true,
 onScrollEnd: function () {
-    $('#wrapper_looks').trigger('scroll');
+  //  $('#wrapper_looks').trigger('scroll');
 }
  });
-feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
-    $('#wrapper_feeds').trigger('scroll');
-	//alert(feedScroll.y);
-	off= 20;
+ 	off= 6;
 
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
+feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
+   // $('#wrapper_feeds').trigger('scroll');
+	//alert(feedScroll.y);
+
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
 	{
 			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
 			{
 			$('#wrapper_feeds .scroller .container').append(e);
-			$(".feed_div img.lazy").lazyload({
-    effect : "fadeIn"
-});
+			
+off+=6;
+			});
 
-off+=20;
+	}
+	}
+	,onScrollStart: function () {
+   // $('#wrapper_feeds').trigger('scroll');
+	//alert(feedScroll.y);
+
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
+	{
+			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
+			{
+			$('#wrapper_feeds .scroller .container').append(e);
+			
+off+=6;
 			});
 
 	}
@@ -209,9 +222,7 @@ function init()
 $("#wrapper_feeds,#wrapper_looks,#wrapper_hof,div.pair").css({"margin-top":$(".feed_tab").height()+40,"margin-bottom":$(".feed_tab").height()+100});
 $("#profile_activity .container, .feed_div .container").load("http://matchdrobe.com/app/arena/arena_functions.php?offset=0&my_activity="+localStorage.user_id,function()
 {
-$("img.lazy").lazyload({
-    effect : "fadeIn"
-});
+
 updateLayout();
 
 //lazy_feed = $("div.activity_item img.lazy");
@@ -296,7 +307,10 @@ $(".profile_setings,.main_profile").toggle();
 })
 $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
 {
+
 updateLayout();
+	$("a.arena_img img").delay( 1000 ).fadeIn();
+
 });
 
 
@@ -312,7 +326,9 @@ $("#profile_nav img").attr("src","img/profile_nav.jpg");
 
 
 $(".adjust_container").css({
-"padding-bottom": $("#f1").height()+40
+"padding-bottom": $("#f1").height()+40,
+"padding-top": $("#f1").height()
+
 
 });
 
@@ -462,6 +478,7 @@ $(".main_page, .register_div, .login_div").hide();
 $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
 {
 updateLayout();
+	$("a.arena_img img").delay( 1000 ).fadeIn();
 
 });
 
@@ -597,6 +614,7 @@ $(document).on("tap",".skip",function()
 	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
 	{
 	updateLayout();
+	$("a.arena_img img").delay( 1000 ).fadeIn();
 	});
 
 $(".tapper").hide();
@@ -717,7 +735,8 @@ array_tag = [];
 	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
 	{
 	updateLayout();
-	
+	$("a.arena_img img").delay( 1000 ).fadeIn();
+
 	});
 
 	});
@@ -830,9 +849,7 @@ $(".hof_pop").on("tap",function()
 
 $(".hof_div .ron").load("http://matchdrobe.com/app/arena/arena_functions.php",{hof: 1},function()
 {
-$(".hof_div img.lazy").lazyload({
-    effect : "fadeIn"
-});
+
 updateLayout();
 
 });
@@ -843,10 +860,6 @@ $(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/aren
 
 {
 
-$("div.ronz img.lazy").lazyload({
-    effect : "fadeIn",
-	
-});
 updateLayout();
 });
 jQuery.fn.center = function () {

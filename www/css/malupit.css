@@ -277,7 +277,10 @@ right: 0px;
 position: absolute;
 }
 
-
+.loader_page
+{
+padding-top: 20px;
+}
 /**********looks */
 
 .looks_div .big_img,.big_img2,#popup
@@ -477,7 +480,7 @@ width: 75%;
 a.arena_img img
 {
 width: 100%;
-
+display: none;
 
 }
 
