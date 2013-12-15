@@ -48,7 +48,7 @@ matchdrobe arena    </description>
        <param name="APP_ID" value="408729362586583" />
        <param name="APP_NAME" value="matchdrobe" />
     </gap:plugin> -->
-    <gap:plugin name="nl.x-services.plugins.socialsharing" version="3.0" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" version="3.5" />
   <access origin="*" />
     <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
 
