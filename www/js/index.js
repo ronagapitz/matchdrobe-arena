@@ -5,6 +5,14 @@ document.addEventListener("orientationchange", updateLayout);
 wrapperWidth = 0;
 var foot_select = 1;
 
+//sharer
+$("a#image_sharer").on("tap",function()
+{
+$src = $("img.big_img2").attr("src");
+window.plugins.socialsharing.share(null, null, $src, null);
+
+});
+
 
 var myScroll = new iScroll('pageWrapper', {
 onScrollEnd: function()

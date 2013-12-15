@@ -477,6 +477,12 @@ width: 75%;
 
 }
 
+#image_sharer img
+{
+width: 10%;
+position:absolute;
+right: 0;
+}
 a.arena_img img
 {
 width: 100%;
