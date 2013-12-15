@@ -2,13 +2,13 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.matchdrobe.arena"
-        versionCode = "71"
+        versionCode = "75"
         version     = "0.1.1">
  
     <name>matchdrobe arena</name>
  
     <description>
-matchdrobe arena    </descr1iption>
+matchdrobe arena    </description>
      <preference name="permissions"                value="none"/>
     <!-- Customize your app and platform with the preference element. -->
 	<preference name="DisallowOverscroll" value="true"/>
