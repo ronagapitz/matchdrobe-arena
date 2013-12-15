@@ -2,13 +2,13 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.matchdrobe.arena"
-        versionCode = "70"
+        versionCode = "71"
         version     = "0.1.1">
  
     <name>matchdrobe arena</name>
  
     <description>
-matchdrobe arena    </description>
+matchdrobe arena    </descr1iption>
      <preference name="permissions"                value="none"/>
     <!-- Customize your app and platform with the preference element. -->
 	<preference name="DisallowOverscroll" value="true"/>
@@ -48,7 +48,7 @@ matchdrobe arena    </description>
        <param name="APP_ID" value="408729362586583" />
        <param name="APP_NAME" value="matchdrobe" />
     </gap:plugin> -->
-	<gap:plugin name="nl.x-services.plugins.socialsharing" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" version="3.0" />
   <access origin="*" />
     <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
 
