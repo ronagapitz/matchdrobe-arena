@@ -48,21 +48,35 @@ looksScroll.refresh();
 //	page3Scroll = new iScroll('wrapper', {hScrollbar: false, vScrollbar: false, lockDirection: true });
 looksScroll = new iScroll('wrapper_looks', {hScrollbar: false, vScrollbar: false, lockDirection: true,
 onScrollEnd: function () {
-  //  $('#wrapper_looks').trigger('scroll');
-}
+   // $('#wrapper_feeds').trigger('scroll');
+	//alert(feedScroll.y);
+
+	if((looksScroll.y) * (-1) >= ( ($('#wrapper_looks .scroller').height() -700)))
+	{
+			$.post("http://matchdrobe.com/app/arena/arena_functions.php",{looks:localStorage.user_id,user_id: localStorage.user_id,offset:off_looks},function(e)
+			{
+			$('#wrapper_looks div.gender').append(e);
+			looksScroll.refresh();
+off_looks+=9;
+			});
+
+	}
+	}
+	
  });
  	off= 6;
+	off_looks = 9;
 
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
    // $('#wrapper_feeds').trigger('scroll');
 	//alert(feedScroll.y);
 
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
 	{
 			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
 			{
 			$('#wrapper_feeds .scroller .container').append(e);
-			
+			feedScroll.refresh();
 off+=6;
 			});
 
@@ -72,12 +86,13 @@ off+=6;
    // $('#wrapper_feeds').trigger('scroll');
 	//alert(feedScroll.y);
 
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -500)))
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
 	{
 			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
 			{
 			$('#wrapper_feeds .scroller .container').append(e);
-			
+						feedScroll.refresh();
+
 off+=6;
 			});
 
@@ -864,7 +879,7 @@ updateLayout();
 
 
 /*looks **********************************/
-$(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id},function()
+$(".looks_div .gender,.profile_div .looks").load("http://matchdrobe.com/app/arena/arena_functions.php",{looks: 1,user_id: localStorage.user_id,offset:0},function()
 
 {
 
