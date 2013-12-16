@@ -208,7 +208,9 @@ color: rgb(184, 9, 65) !important;
 }
 body
 {
-overflow: hidden
+overflow: hidden;
+padding: 0px;
+margin: 0px;
 }
 /*hof***:*/
 
@@ -814,7 +816,7 @@ paddding-bottom: 10px;
     float: left;
     -webkit-transform:translate3d(0,0,0);
     height: 100%;
-    padding: 20px;
+	width: 100vw !important;
 	 -webkit-transform: translateZ(0);
 }
 
@@ -829,6 +831,8 @@ paddding-bottom: 10px;
 	padding-bottom:20vh;
 }
 * {
+-webkit-transform: translate3d(0,0,0);
+transform: translate3d(0,0,0);
 text-shadow: none !important;
 -webkit-box-shadow: none !important;
 -webkit-border-radius:0 !important;
