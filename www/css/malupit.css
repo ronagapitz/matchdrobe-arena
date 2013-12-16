@@ -816,7 +816,6 @@ paddding-bottom: 10px;
     float: left;
     -webkit-transform:translate3d(0,0,0);
     height: 100%;
-	width: 100vw !important;
 	 -webkit-transform: translateZ(0);
 }
 
