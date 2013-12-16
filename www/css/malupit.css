@@ -208,6 +208,7 @@ color: rgb(184, 9, 65) !important;
 }
 body
 {
+width: 100vw !Important;
 overflow: hidden;
 padding: 0px;
 margin: 0px;
@@ -807,6 +808,7 @@ paddding-bottom: 10px;
     position:absolute;
     top:0px;
     right:0px;
+	width: 100vw !Important;
     bottom:0px;
     left:0px;
     
@@ -830,6 +832,7 @@ width: 100vw!important;
     bottom:0px;
     left:0px;
 	padding-bottom:20vh;
+	width: 100vw !Important;
 }
 * {
 
