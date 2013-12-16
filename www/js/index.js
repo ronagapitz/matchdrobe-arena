@@ -122,7 +122,7 @@ function updateLayout() {
     wrapperWidth = $('#pageWrapper').width();
 
     $('#pageScroller').css('width', wrapperWidth * 8);
-    $('.page').css('width', wrapperWidth - 40);
+    $('.page').css('width', wrapperWidth);
     myScroll.refresh();
     myScroll.scrollToPage(currentPage, 0, 0);
 	//page3Scroll.refresh();
