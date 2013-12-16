@@ -901,11 +901,11 @@ $(document).on("tap",".looks .img-ron",function()
 $(".img_looks2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).show().center();
 
 });
-$(document).on("tap",".looks_div .ronz img ",function()
+$(document).on("tap",".looks_div .ronz img, div.activity_item img ",function()
 {
 
 
-$(".big_img2").attr({"src",$(this).attr("src"),"data-url",$(this).attr("data-url")}).css('display', 'inline-block');
+$(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'inline-block');
 $("#pop").show();
 $("#popup").show();
 zoom = new iScroll('popup', { zoom:true,hScrollbar: false, vScrollbar: false });

@@ -817,6 +817,8 @@ paddding-bottom: 10px;
     -webkit-transform:translate3d(0,0,0);
     height: 100%;
 	 -webkit-transform: translateZ(0);
+	 
+width: 100vw!important;
 }
 
 #pageWrapper {
