@@ -8,7 +8,7 @@ var foot_select = 1;
 //sharer
 $("a#image_sharer").on("tap",function()
 {
-$src = $("img.big_img2").attr("src");
+$src = $("img.big_img2").attr("data-url");
 window.plugins.socialsharing.share(null, null, $src, null);
 
 });
@@ -834,7 +834,7 @@ $(document).on("tap",".hof_div .img-ron, .f_items img",function()
 {
 //alert($(this).attr("src"))
 
-$(".big_img2").attr("src",$(this).attr("src")).css('display', 'inline-block').center();
+$(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'inline-block').center();
 $("#pop").show();
 $("#popup").show().center();
 zoom = new iScroll('popup', { zoom:true });
@@ -883,7 +883,7 @@ jQuery.fn.center = function () {
 $(document).on("tap",".looks .img-ron",function()
 {
 //alert($(this).attr("src"))
-$(".img_looks2").attr("src",$(this).attr("src")).show().center();
+$(".img_looks2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).show().center();
 
 });
 $(document).on("tap",".looks_div .ronz img ",function()
