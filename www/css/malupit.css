@@ -831,8 +831,7 @@ paddding-bottom: 10px;
 	padding-bottom:20vh;
 }
 * {
--webkit-transform: translate3d(0,0,0);
-transform: translate3d(0,0,0);
+
 text-shadow: none !important;
 -webkit-box-shadow: none !important;
 -webkit-border-radius:0 !important;
