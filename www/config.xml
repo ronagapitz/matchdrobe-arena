@@ -55,6 +55,12 @@ matchdrobe arena    </description>
   <access origin="*" />
     <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
 
+	
+	
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <param name="APP_ID" value="408729362586583" />
+    <param name="APP_NAME" value="matchdrobe" />
+</gap:plugin>
  <gap:splash src="img/splash200.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="img/splash320.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="img/splash480.png"  gap:platform="android" gap:density="hdpi" />
