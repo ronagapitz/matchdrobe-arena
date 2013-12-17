@@ -489,6 +489,8 @@ var $img = '';
 
 if(localStorage.tribe =="full")
 {
+profile(localStorage.full_name);
+myScroll.scrollToPage(2, 0, 0);
 
 $(".main_page, .register_div, .login_div").hide();
  $("#f1 img").toggle();
