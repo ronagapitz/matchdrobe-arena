@@ -513,7 +513,7 @@ max-width: 312px;
 width: 40%;
 margin-top: 3%;
 right: 0px;
-bottom: 10%;
+bottom: 15%;
 }
 .points
 {
@@ -831,7 +831,7 @@ width: 100vw!important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:20vh;
+	padding-bottom:10vh;
 	width: 100vw !Important;
 }
 * {
