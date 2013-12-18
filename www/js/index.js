@@ -1,5 +1,4 @@
 
- <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
@@ -23,7 +22,7 @@
             /*function getSession() {
                 alert("session: " + JSON.stringify(FB.getSession()));
             }
-            */
+            
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
@@ -116,7 +115,7 @@
                                      };
                                         FB.ui(params, function(obj) { console.log(obj);});
                             }
-                        }
+                        } 
 document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {
