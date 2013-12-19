@@ -1,4 +1,5 @@
-
+/*
+ <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
@@ -116,6 +117,8 @@
                                         FB.ui(params, function(obj) { console.log(obj);});
                             }
                         } 
+						
+						 */
 document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {
@@ -126,6 +129,7 @@ document.addEventListener("orientationchange", updateLayout);
                                       alert(e);
                                       }
                                       }, false);
+									 
 
     var currentPage = 0;
 // The wrapperWidth before orientationChange. Used to identify the current page number in updateLayout();
