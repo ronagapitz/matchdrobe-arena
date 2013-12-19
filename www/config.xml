@@ -2,7 +2,7 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.matchdrobe.arena"
-        versionCode = "83"
+        versionCode = "84"
         version     = "0.1.1">
  
     <name>matchdrobe arena</name>
@@ -54,7 +54,7 @@ matchdrobe arena    </description>
     <gap:plugin name="nl.x-services.plugins.socialsharing" version="3.5" />
   <access origin="*" />
     <gap:splash src="img/splash720.png"         gap:platform="blackberry" />
-
+ <gap:plugin name="org.apache.cordova.core.camera" />
 	
 	
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">

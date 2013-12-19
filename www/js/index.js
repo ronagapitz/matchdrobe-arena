@@ -119,14 +119,15 @@
                         } 
 						
 						 */
+						 
 document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {
-                                      alert('Device is ready! Make sure you set your app_id below this alert.');
+                                     // alert('Device is ready! Make sure you set your app_id below this alert.');
                                       FB.init({ appId: 408729362586583, nativeInterface: CDV.FB, useCachedDialogs: false });
                                       document.getElementById('data').innerHTML = "";
                                       } catch (e) {
-                                      alert(e);
+                                     // alert(e);
                                       }
                                       }, false);
 									 
@@ -182,7 +183,7 @@ onScrollEnd: function () {
    // $('#wrapper_feeds').trigger('scroll');
 	//alert(feedScroll.y);
 
-	if((looksScroll.y) * (-1) >= ( ($('#wrapper_looks .scroller').height() -700)))
+	if((looksScroll.y) * (-1) >= ( ($('#wrapper_looks .scroller').height() -1500)))
 	{
 			$.post("http://matchdrobe.com/app/arena/arena_functions.php",{looks:localStorage.user_id,user_id: localStorage.user_id,offset:off_looks},function(e)
 			{
@@ -215,22 +216,7 @@ off+=6;
 			//add +=100;
 	}
 	}
-	,onScrollStart: function () {
-   // $('#wrapper_feeds').trigger('scroll');
-	//alert(feedScroll.y);
 
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
-	{
-			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
-			{
-			$('#wrapper_feeds .scroller .container').append(e);
-						feedScroll.refresh();
-
-off+=6;
-			});
-
-	}
-	}
 
 
 });
@@ -1033,15 +1019,19 @@ jQuery.fn.center = function () {
 
 $(document).on("tap",".looks_div .ronz img, div.activity_item img,.hof_div .img-ron",function()
 {
-$("#pop_con").load(arena_url,{single: $(this).attr('data-id')});
+zoom = new iScroll('popup', { zoom:true,hScrollbar: false, vScrollbar: false });
+
+$("#pop_con").load(arena_url,{single: $(this).attr('data-id')},function()
+{
+zoom.refresh();
+
+});
 
 $(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'block');
 $("#pop").show();
 $("#popup").show();
-zoom = new iScroll('popup', { zoom:true,hScrollbar: false, vScrollbar: false });
-//popscroll.refresh();
 
-})
+});
 
 $(".big_img2").on("tap", function()
 {
@@ -1079,3 +1069,11 @@ document.location.href = 'f_style_tribe.html';
 
 });
 
+
+   function takePicture()
+   {
+      navigator.camera.getPicture( function( imageURI ) {
+        alert( imageURI );
+      });
+	  
+	  }
