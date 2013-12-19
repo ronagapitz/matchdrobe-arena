@@ -11,7 +11,21 @@ src: url('calibri.ttf');
     
 }
 
+/*popupsss*/
+.pop_holder
+{
+-webkit-transform:translate3d(0,0,0);
+	 -webkit-transform: translateZ(0);
 
+	-webkit-backface-visibility: hidden;
+-webkit-transform-style: preserve-3d; 
+width: 80%;
+height: auto;
+overflow: hidden;
+padding:0;
+background: white;
+margin: auto;
+}
 
 
 /*******profile */
@@ -481,12 +495,52 @@ width: 75%;
 
 }
 
-#image_sharer img
+#p_p
 {
-width: 10%;
+margin-top:-2.5rem;
+width: 100%;
+
+}
+div#pop_con
+{
+padding-top: 2rem;
+position: relative;
+
+}
+.pop_userpic
+{
+float: left;
+display: block;
+width: 17%;
+padding: .7rem;
+}
+.pop_username
+{
+float: left;
+width: 70%;
+text-align: left;
+}
+.pop_content
+{
+overflow: hidden;
+width: 100%;
+text-align: center;
+padding-bottom: 2rem;
+}
+.pop_userpic .feed_user
+{
+margin-left:0px !Important;
+width: 50% !important;
+}
+#sharer
+{
+width: 17%;
+right:0px;
+top:0px;
+margin-right: 1rem;
+margin-top: 0;
 position:absolute;
-right: 0;
-padding:10px;
+z-index: 90000;
 }
 a.arena_img img
 {
@@ -847,11 +901,10 @@ text-shadow: none !important;
 }
 .big_img2
 {
-    -webkit-transform:translate3d(0,0,0);
-
-
-left: 0;
-right: 0;
+    
+position: relative !important;
+width: 100% !important;
+margin: auto !important;
 }
 #wrapper,#wrapper_looks,#wrapper_feeds ,#wrapper_hof,#wrapper_followers,#popup{
     position:absolute;
@@ -986,9 +1039,8 @@ border: 1px solid transparent;
 */
 z-index: 4000;
 height: 100% !important;
-width: auto !important;
-margin: 0 auto !important;
- 
+width: 100%;
+margin: 0px !important; 
   display: none;
   position: fixed
 }

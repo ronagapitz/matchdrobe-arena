@@ -137,7 +137,7 @@ wrapperWidth = 0;
 var foot_select = 1;
 
 //sharer
-$("a#image_sharer").on("tap",function()
+$("img#sharer").on("tap",function()
 {
 $src = $("img.big_img2").attr("data-url");
 window.plugins.socialsharing.share(null, null, $src, null);
@@ -197,20 +197,22 @@ off_looks+=9;
  });
  	off= 6;
 	off_looks = 9;
-
+add = 1500;
 feedScroll = new iScroll('wrapper_feeds', {hScrollbar: false, vScrollbar: false, lockDirection: true,onScrollEnd: function () {
    // $('#wrapper_feeds').trigger('scroll');
 	//alert(feedScroll.y);
-
-	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() -700)))
+//alert($('#wrapper_feeds .scroller').height());
+	if((feedScroll.y) * (-1) >= ( ($('#wrapper_feeds .scroller').height() - add)))
 	{
 			$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:off},function(e)
 			{
+			
 			$('#wrapper_feeds .scroller .container').append(e);
 			feedScroll.refresh();
 off+=6;
 			});
 
+			//add +=100;
 	}
 	}
 	,onScrollStart: function () {
@@ -854,7 +856,7 @@ $("input#tag").focus().focus();
 	//alert( + ' ' + $("#h2").val() + ' '+ $id  );
 	$.get("http://matchdrobe.com/app/arena/arena_functions.php",{img_1: $("#h1").attr("data-image"), img_3: sec,item_1 : $("#h1").val(), item_2: $("#h2").val(),
 	user_id : localStorage.user_id, item_like : $id, full_name : localStorage.full_name,img_liked : $img_liked,
-	img_user: localStorage.dp},function(e)
+	img_user: localStorage.dp,img1_id: $("#h1").val(),img2_id: $("#h3").val()},function(e)
 	{
 	//alert(e);
 	$("#profile_activity .container,.feed_div .").load("http://matchdrobe.com/app/arena/arena_functions.php?offset=0&my_activity="+localStorage.user_id,function()
@@ -978,7 +980,7 @@ $(this).hide();
 
 
 
-$(document).on("tap",".hof_div .img-ron, .f_items img",function()
+$(document).on("tap",".f_items img",function()
 {
 //alert($(this).attr("src"))
 
@@ -1028,17 +1030,12 @@ jQuery.fn.center = function () {
     return this;
 }
 
-$(document).on("tap",".looks .img-ron",function()
+
+$(document).on("tap",".looks_div .ronz img, div.activity_item img,.hof_div .img-ron",function()
 {
-//alert($(this).attr("src"))
-$(".img_looks2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).show().center();
+$("#pop_con").load(arena_url,{single: $(this).attr('data-id')});
 
-});
-$(document).on("tap",".looks_div .ronz img, div.activity_item img ",function()
-{
-
-
-$(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'inline-block');
+$(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'block');
 $("#pop").show();
 $("#popup").show();
 zoom = new iScroll('popup', { zoom:true,hScrollbar: false, vScrollbar: false });
