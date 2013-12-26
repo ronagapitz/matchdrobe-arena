@@ -1,5 +1,4 @@
-/*
- <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
+
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
@@ -27,6 +26,9 @@
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
+								  
+								  var uid = response.authResponse.userID;
+								  alert(uid);
                                   alert('logged in');
                                   } else {
                                   alert('not logged in');
@@ -71,6 +73,8 @@
             function login() {
                 FB.login(
                          function(response) {
+						 
+						 
                          if (response.session) {
                          alert('logged in');
                          } else {
@@ -124,7 +128,7 @@ document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {
                                      // alert('Device is ready! Make sure you set your app_id below this alert.');
-                                      FB.init({ appId: 408729362586583, nativeInterface: CDV.FB, useCachedDialogs: false });
+                                      FB.init({ appId: 493708454047333, nativeInterface: CDV.FB, useCachedDialogs: false });
                                       document.getElementById('data').innerHTML = "";
                                       } catch (e) {
                                      // alert(e);

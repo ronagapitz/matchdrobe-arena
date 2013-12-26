@@ -1,6 +1,7 @@
 .frame
 {
 visibility: hidden;
+z-index : 33;
 }
 
 
@@ -741,6 +742,10 @@ width: 63%;
 {
 display: none;
 
+}
+.tribe_div
+{
+z-index: 1;
 }
 .login_div,.register_div,.tribe_div,.arena_div,.looks_div
 {
