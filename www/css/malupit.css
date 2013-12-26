@@ -572,12 +572,16 @@ display: none;
 
 font-size: 1rem !important;
 }
+.tagg
+{
+font-size: 1.1rem !Important;
+}
 .skip
 {
    
    
  z-index:1; /*for some reason we need a z index */
-position: absolute;
+position: fixed;
 right: 0px;
 max-width: 312px;
 width: 40%;
@@ -621,7 +625,7 @@ float: right;
 position: relative;
 right: 0px;
 }
-
+textarea, input { outline: none; }
 .loader
 {
 position: absolute;
@@ -738,7 +742,7 @@ width: 63%;
 display: none;
 
 }
-.login_div,.register_div,.tribe_div,.arena_div,.looks_div
+.login_div,.register_div,.tribe_div,.arena_div,.looks_div, .feed_div
 {
 width: 100%;
 position: absolute;
@@ -912,6 +916,11 @@ text-shadow: none !important;
 -webkit-border-bottom-left-radius:0 !important;
 -webkit-border-bottom-right-radius:0 !important;
 -webkit-border-top-right-radius:0 !important;
+}
+.hidden
+{
+
+display: none;
 }
 .big_img2
 {
