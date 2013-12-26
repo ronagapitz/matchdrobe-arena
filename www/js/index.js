@@ -447,18 +447,13 @@ $(".setter").on("tap",function()
 
 $(".profile_setings,.main_profile").toggle();
 })
-$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
-{
 
-updateLayout();
-	$("a.arena_img img").delay( 1000 ).fadeIn();
-
-});
+load_arena();
 
 
 /* adjust header height */
 
-function adjust_arena()
+ $.adjust = function adjust_arena()
 {
 
 $("#profile_nav img").attr("src","img/profile_nav.jpg");
@@ -604,7 +599,6 @@ updateLayout();
 var $img = '';
 
 
- adjust_arena();
 
 if(localStorage.tribe =="full")
 {
@@ -617,14 +611,10 @@ $(".main_page, .register_div, .login_div").hide();
  $(".navbar-fixed-bottom").css("visibility","visible");
 
  $(".frame").css("visibility","visible");
- adjust_arena();
+ $.adjust();
 // $(".tribe_div,.main_page").hide();
-$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
-{
-updateLayout();
-	$("a.arena_img img").delay( 1000 ).fadeIn();
 
-});
+load_arena();
 
 }
 //$("body").css({'padding-top':$(".res_head").height(),'margin-top': '10px'});
@@ -755,11 +745,8 @@ $(".popup").hide("slide");
 });
 $(document).on("tap",".skip",function()
 {
-	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
-	{
-	updateLayout();
-	$("a.arena_img img").delay( 1000 ).fadeIn();
-	});
+	
+load_arena();
 
 $(".tapper").hide();
 }); 
@@ -876,12 +863,7 @@ $(".points").text(localStorage.pts);
 
 array_tag = [];
 
-	$(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
-	{
-	updateLayout();
-	$("a.arena_img img").delay( 1000 ).fadeIn();
-
-	});
+load_arena();
 
 	});
 
@@ -925,7 +907,7 @@ updateLayout();
 
  
 //$(url).show("slide");
- adjust_arena();
+$.adjust();
  if(url == '.hof_div')
 {
 
@@ -1027,7 +1009,7 @@ zoom.refresh();
 
 });
 
-$(".big_img2").attr({"src":$(this).attr("src"),"data-url":$(this).attr("data-url")}).css('display', 'block');
+$(".big_img2").attr({"src":$(this).attr("data-big"),"data-url":$(this).attr("data-url")}).css('display', 'block');
 $("#pop").show();
 $("#popup").show();
 
@@ -1075,5 +1057,19 @@ document.location.href = 'f_style_tribe.html';
       navigator.camera.getPicture( function( imageURI ) {
         alert( imageURI );
       });
+	  
+	  }
+	  
+	  
+	  
+	  function load_arena()
+	  {
+	  $(".pair .cont").empty().load("http://matchdrobe.com/app/arena/",function()
+	{
+	$("a.arena_img img").delay( 1000 ).fadeIn();
+	updateLayout();
+$.adjust();
+
+	});
 	  
 	  }

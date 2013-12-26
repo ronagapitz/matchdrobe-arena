@@ -297,7 +297,10 @@ position: absolute;
 
 .loader_page
 {
-padding-top: 20px;
+margin-top: 20vh;
+position: absolute;
+left:0;
+right:0;
 }
 /**********looks */
 
@@ -570,13 +573,13 @@ font-size: 1rem !important;
    
    
  z-index:1; /*for some reason we need a z index */
-position: absolute;
+position: fixed;
 right: 0px;
 max-width: 312px;
 width: 40%;
 margin-top: 3%;
 right: 0px;
-bottom: 15%;
+bottom: 0%;
 }
 .points
 {
@@ -894,7 +897,7 @@ width: 100vw!important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:7vh;
+	padding-bottom:0vh;
 	width: 100vw !Important;
 }
 * {
