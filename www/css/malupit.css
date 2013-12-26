@@ -742,7 +742,7 @@ width: 63%;
 display: none;
 
 }
-.login_div,.register_div,.tribe_div,.arena_div,.looks_div, .feed_div
+.login_div,.register_div,.tribe_div,.arena_div,.looks_div
 {
 width: 100%;
 position: absolute;
