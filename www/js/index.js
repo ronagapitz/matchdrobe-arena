@@ -809,6 +809,12 @@ $("input#tag").focus().focus();
 	
 	 $( document ).on('keypress','.tagg',function(event) {
         if ( event.keyCode == 32 || event.keyCode == 13 || event.keyCode == 188 || event.keyCode == 9 ) {
+		var str1 = $(this).val();
+var str2= "#";
+if(str1.indexOf(str2) == 1){
+    alert($(this).val());
+}
+		
 		if($(this).val() !== "")
 		{
 		           $('#add_tag').prepend('<div class="ctag">'+$('.tagg').val()+' <span>x</span></div>');
@@ -871,7 +877,7 @@ load_arena();
 	$(document).on('tap','.top_tags',function()
 	{
 	 array_tag.push( $(this).text() );
-	$(this).css({'background':'#b80941','color': 'white'});
+	//$(this).css({'background':'#b80941','color': 'white'});
 
 	
 	
