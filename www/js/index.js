@@ -1,4 +1,4 @@
-
+/*
  <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
@@ -117,7 +117,7 @@
                                         FB.ui(params, function(obj) { console.log(obj);});
                             }
                         } 
-						
+						  */
 					
 						 
 document.addEventListener("orientationchange", updateLayout);
@@ -455,7 +455,7 @@ load_arena();
 
  $.adjust = function adjust_arena()
 {
-$("#feed_div, .page").height($(window).height());
+$("#feed_div, .page,#pageWrapper").height($(window).height());
 
 $("#profile_nav img").attr("src","img/profile_nav.jpg");
  //$("#1").attr("src","img/profile_nav_h.jpg");
