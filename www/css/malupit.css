@@ -297,10 +297,7 @@ position: absolute;
 
 .loader_page
 {
-margin-top: 20vh;
-position: absolute;
-left:0;
-right:0;
+padding-top: 20px;
 }
 /**********looks */
 
@@ -377,6 +374,7 @@ float:left;
 }
 #add_tag
 {
+overflow: hidden;
 
 }
 #tag
@@ -426,14 +424,11 @@ width: 70%;
 	}
 	.ctag
 	{
-
+	background: #b80941 !important;
+	color: white !important;
 	
 	}
-	#tag_area
-	{
-	float: left;
-	}
-	.top_tags 
+	.top_tags ,.ctag
 	{
 	float: left;
 	background: #d3d3d3;
@@ -575,13 +570,13 @@ font-size: 1rem !important;
    
    
  z-index:1; /*for some reason we need a z index */
-position: fixed;
+position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
 margin-top: 3%;
 right: 0px;
-bottom: 0%;
+bottom: 15%;
 }
 .points
 {
@@ -647,9 +642,7 @@ margin: 0 auto !important;
  
 }
 
-input:focus {
-    outline:none;
-}
+
 /*****login + register */
 #reg_btn
 {
@@ -881,15 +874,15 @@ paddding-bottom: 10px;
 	width: 100vw !Important;
     bottom:0px;
     left:0px;
-	height: 100vh;
     
 }
 
 .page {
     float: left;
     -webkit-transform:translate3d(0,0,0);
+    height: 100%;
 	 -webkit-transform: translateZ(0);
-	 height: 100vh;
+	 
 width: 100vw!important;
 }
 
@@ -901,7 +894,7 @@ width: 100vw!important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:0vh;
+	padding-bottom:7vh;
 	width: 100vw !Important;
 }
 * {
@@ -929,19 +922,15 @@ margin: auto !important;
     left:0px;
     right:0px;
     overflow:auto;
-	height: 95vh;
-	width:100vw
+	height: 85vh;
 }
 
 .scroller {
-    -webkit-transform:translate3d(0,0,0);
-
  -webkit-transform: translateZ(0);
 	position:absolute; z-index:1;
-	height:95vh;
+	width:100%;
 	padding:0;
 	padding-bottom: 10vh;
-	width: 100vw;
 
 }
 .hof_thumb img
