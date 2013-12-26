@@ -424,11 +424,18 @@ width: 70%;
 	}
 	.ctag
 	{
-	background: #b80941 !important;
-	color: white !important;
+
 	
 	}
-	.top_tags ,.ctag
+	*
+{
+-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+	#tag_area
+	{
+	float: left;
+	}
+	.top_tags 
 	{
 	float: left;
 	background: #d3d3d3;
