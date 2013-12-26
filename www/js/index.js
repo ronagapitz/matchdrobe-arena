@@ -455,6 +455,7 @@ load_arena();
 
  $.adjust = function adjust_arena()
 {
+$(".page").height($(window).height());
 
 $("#profile_nav img").attr("src","img/profile_nav.jpg");
  //$("#1").attr("src","img/profile_nav_h.jpg");
