@@ -808,19 +808,30 @@ $("input#tag").focus().focus();
 	});
 	
 	 $( document ).on('keypress','.tagg',function(event) {
-        if ( event.keyCode == 32 || event.keyCode == 13 || event.keyCode == 188 || event.keyCode == 9 ) {
-		var str1 = $(this).val();
-var str2= "#";
-if(str1.indexOf(str2) == 1){
-    alert($(this).val());
-}
-		
+        if ( event.keyCode == 32 ) {
+		  //  alert($(this).val());
+	
 		if($(this).val() !== "")
 		{
-		           $('#add_tag').prepend('<div class="ctag">'+$('.tagg').val()+' <span>x</span></div>');
+			 		var str = $(this).val();
 
+if(str.indexOf("#") == 0)
+{
 		 array_tag.push( $('.tagg').val() );
-		$('.tagg').focus().val('');
+		 		         $('#tag_area').append('<span class="ctag pink" >'+$('.tagg').val()+' </span>');
+
+		 }
+		 else
+		 {
+		 		 		         $('#tag_area').append('<span>'+$('.tagg').val()+' </span>');
+
+						  
+		 }
+		 						$.trim($(this).val(""));
+								
+
+		
+		//$('.tagg').focus().val('');
 		}
 		
         }

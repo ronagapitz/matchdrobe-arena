@@ -377,7 +377,6 @@ float:left;
 }
 #add_tag
 {
-overflow: hidden;
 
 }
 #tag
@@ -427,11 +426,14 @@ width: 70%;
 	}
 	.ctag
 	{
-	background: #b80941 !important;
-	color: white !important;
+
 	
 	}
-	.top_tags ,.ctag
+	#tag_area
+	{
+	float: left;
+	}
+	.top_tags 
 	{
 	float: left;
 	background: #d3d3d3;
@@ -884,7 +886,7 @@ paddding-bottom: 10px;
 .page {
     float: left;
     -webkit-transform:translate3d(0,0,0);
-    height: 100vh;
+    height: 90vh;
 	 -webkit-transform: translateZ(0);
 	 
 width: 100vw!important;
