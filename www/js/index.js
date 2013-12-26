@@ -26,9 +26,11 @@
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
-								  
+								  var accessToken = response.authResponse.accessToken;
 								  var uid = response.authResponse.userID;
 								  alert(uid);
+								  alert(accessToken);
+								  alert(response.status);
                                   alert('logged in');
                                   } else {
                                   alert('not logged in');
@@ -77,6 +79,9 @@
 						 
                          if (response.session) {
                          alert('logged in');
+						 
+						   var uid = response.authResponse.userID;
+								  alert(uid);
                          } else {
                          alert('not logged in');
                          }
