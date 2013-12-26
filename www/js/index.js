@@ -815,7 +815,7 @@ $("input#tag").focus().focus();
 		{
 			 		var str = $(this).val();
 
-if(str.indexOf("#") == 0)
+if(str.indexOf("#") == 0 || str.indexOf("#") == 1)
 {
 		 array_tag.push( $('.tagg').val() );
 		 		         $('#tag_area').append('<span class="ctag pink" >'+$('.tagg').val()+' </span>');
@@ -823,17 +823,18 @@ if(str.indexOf("#") == 0)
 		 }
 		 else
 		 {
-		 		 		         $('#tag_area').append('<span>'+$('.tagg').val()+' </span>');
+		 		         $('#tag_area').append('<span class="ctag" >'+$('.tagg').val()+' </span>');
 
 						  
 		 }
-		 						$.trim($(this).val(""));
+		 						;
 								
 
 		
 		//$('.tagg').focus().val('');
 		}
-		
+	$(this).val("");
+
         }
     });
 
@@ -889,6 +890,7 @@ load_arena();
 	{
 	 array_tag.push( $(this).text() );
 	//$(this).css({'background':'#b80941','color': 'white'});
+		 		         $('#tag_area').append('<span class="ctag pink" >'+$(this).text()+' </span>');
 
 	
 	
