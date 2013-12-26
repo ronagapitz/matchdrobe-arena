@@ -121,7 +121,7 @@
                                         FB.ui(params, function(obj) { console.log(obj);});
                             }
                         } 
-						  */
+						  
 					
 						 
 document.addEventListener("orientationchange", updateLayout);
