@@ -261,6 +261,15 @@ function updateLayout() {
 $(function()
 {
 
+
+  $("#logout").click(function() {
+            FB.logout(
+              function (response) {
+                window.location.reload();
+              }
+              );
+            return false;
+          });
 //localStorage.clear(); 
 
 arena_url = "http://matchdrobe.com/app/arena/arena_functions.php";
@@ -646,7 +655,7 @@ localStorage.tribe ="full";
  $(".frame").css("visibility","visible");
  updateLayout();
 adjust_arena();
- $(".tribe_div").hide();
+ $(".tribe_div").css("display","none");
 }
 return false;
 });
