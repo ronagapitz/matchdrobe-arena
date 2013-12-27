@@ -582,13 +582,13 @@ font-size: 1.1rem !Important;
    
    
  z-index:1; /*for some reason we need a z index */
-position: fixed;
+position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
 margin-top: 3%;
 right: 0px;
-bottom: 15%;
+bottom: 5%;
 }
 .points
 {
@@ -861,6 +861,10 @@ overflow: hidden;
 {
 width: 100%;
 
+}
+.hideme
+{
+display: none !important;
 }
 .tribe
 {

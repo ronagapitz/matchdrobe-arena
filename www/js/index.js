@@ -702,7 +702,7 @@ localStorage.tribe ="full";
  $(".frame").css("visibility","visible");
  updateLayout();
 adjust_arena();
- $(".tribe_div").attr("style","display: none !important");
+ $(".tribe_div").addClass("hideme");
 }
 return false;
 });
