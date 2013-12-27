@@ -31,6 +31,7 @@
 								  alert(uid);
 								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
 								  alert(accessToken);
+								  alert(localStorage.dp);
 								  alert(response.status);
                                   alert('logged in');
                                   } else {
