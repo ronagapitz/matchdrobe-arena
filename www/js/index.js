@@ -37,7 +37,6 @@
   alert(response.name);
   
   localStorage.full_name = response.name;
-  $.get("")
   
 });
 
@@ -93,9 +92,28 @@ $("#dp").attr("src", localStorage.dp);
                          function(response) {
 						 
 						 
-                         if (response.session) {
+                          if (response.authResponse) {
+						   FB.api('/me', function(response) {
+						   
+						    var accessToken = response.authResponse.accessToken;
+								 var uid = response.authResponse.userID || response.authResponse.userId;
+								  alert(uid);
+								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
+								  alert(accessToken);
+								  localStorage.fbid = uid;
+  alert(response.name);
+  	$(".login_div").show();
+	$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
+	$(".submit").effect('slide', { direction: 'left', mode: 'show' });
+		$(".main_page").hide();
+
+	return false;
+  localStorage.full_name = response.name;
+  
+});
+						 
                          alert('logged in');
-						 getLoginStatus();
+						
                          } else {
                          alert('not logged in');
                          }
@@ -525,12 +543,7 @@ $(".login_div, .register_div").css( { "padding-bottom":($("div.email").width() *
 	//alert();
 	
 
-	$(".login_div").show();
-	$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
-	$(".submit").effect('slide', { direction: 'left', mode: 'show' });
-		$(".main_page").hide();
 
-	return false;
 	});
 	
 	$("#log-in").on('tap', function()
