@@ -4,23 +4,23 @@
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
             
             FB.Event.subscribe('auth.login', function(response) {
-                               alert('auth.login event');
+                              // alert('auth.login event');
                                });
             
             FB.Event.subscribe('auth.logout', function(response) {
-                               alert('auth.logout event');
+                              // alert('auth.logout event');
                                });
             
             FB.Event.subscribe('auth.sessionChange', function(response) {
-                               alert('auth.sessionChange event');
+                             //  alert('auth.sessionChange event');
                                });
             
             FB.Event.subscribe('auth.statusChange', function(response) {
-                               alert('auth.statusChange event');
+                             //  alert('auth.statusChange event');
                                });
             
            function getSession() {
-                alert("session: " + JSON.stringify(FB.getSession()));
+              //  alert("session: " + JSON.stringify(FB.getSession()));
             }
             
             function getLoginStatus() {
@@ -98,14 +98,27 @@ $("#dp").attr("src", localStorage.dp);
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
 	 					   
-						   
+			 var accessToken = response.authResponse.accessToken;
+								 var uid = response.authResponse.userID || response.authResponse.userId;
+								  alert(uid);
+								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
+								  alert(accessToken);
+								  localStorage.fbid = uid;		
+
+
+$("#dp").attr("src", localStorage.dp);
+		$(".profile_pic img").attr("src", localStorage.dp);
+
+		$(".profile_name").text(localStorage.full_name);
+								  alert(localStorage.dp);
+								  alert(response.status);								  
   alert(response.name);
-  	$(".login_div").show();
-	$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
-	$(".submit").effect('slide', { direction: 'left', mode: 'show' });
+  	//$(".login_div").show();
+	//$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
+	//$(".submit").effect('slide', { direction: 'left', mode: 'show' });
 		$(".main_page").hide();
 
-	return false;
+		$(".tribe_div").show("slide")
   localStorage.full_name = response.name;
       alert('Good to see you, ' + response.name + '.');
 	   alert('logged in');
