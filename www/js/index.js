@@ -97,21 +97,19 @@ $("#dp").attr("src", localStorage.dp);
 
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
-	 					   
-			 var accessToken = response.authResponse.accessToken;
-								 var uid = response.authResponse.userID || response.authResponse.userId;
-								  alert(uid);
-								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
-								  alert(accessToken);
-								  localStorage.fbid = uid;		
+	 					       alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
 
+			 localStorage.dp = 'https://graph.facebook.com/'+response.id+'/picture?type=large&return_ssl_results=1';
+								 
+								  localStorage.fbid = response.id;		
+localStorage.full_name = response.name;
 
 $("#dp").attr("src", localStorage.dp);
 		$(".profile_pic img").attr("src", localStorage.dp);
 
 		$(".profile_name").text(localStorage.full_name);
 								  alert(localStorage.dp);
-								  alert(response.status);								  
+								 							  
   alert(response.name);
   	//$(".login_div").show();
 	//$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
@@ -119,7 +117,6 @@ $("#dp").attr("src", localStorage.dp);
 		$(".main_page").hide();
 
 		$(".tribe_div").show("slide")
-  localStorage.full_name = response.name;
       alert('Good to see you, ' + response.name + '.');
 	   alert('logged in');
      });		 
@@ -705,7 +702,7 @@ localStorage.tribe ="full";
  $(".frame").css("visibility","visible");
  updateLayout();
 adjust_arena();
- $(".tribe_div").css("visibility","hidden");
+ $(".tribe_div").attr("style","display: none !important");
 }
 return false;
 });
