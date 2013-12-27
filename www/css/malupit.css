@@ -865,6 +865,7 @@ width: 100%;
 .hideme
 {
 display: none !important;
+visibility:hidden;
 }
 .tribe
 {
