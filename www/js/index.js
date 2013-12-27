@@ -27,8 +27,9 @@
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
 								  var accessToken = response.authResponse.accessToken;
-								  var uid = response.authResponse.userID;
+								 var uid = response.authResponse.userID || response.authResponse.userId;
 								  alert(uid);
+								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
 								  alert(accessToken);
 								  alert(response.status);
                                   alert('logged in');
