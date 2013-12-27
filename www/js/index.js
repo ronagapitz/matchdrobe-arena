@@ -37,6 +37,7 @@
   alert(response.name);
   
   localStorage.full_name = response.name;
+  $.get("")
   
 });
 
@@ -94,9 +95,7 @@ $("#dp").attr("src", localStorage.dp);
 						 
                          if (response.session) {
                          alert('logged in');
-						 
-						   var uid = response.authResponse.userID;
-								  alert(uid);
+						 getLoginStatus();
                          } else {
                          alert('not logged in');
                          }
@@ -161,6 +160,13 @@ document.addEventListener("orientationchange", updateLayout);
 wrapperWidth = 0;
 var foot_select = 1;
 
+
+//login
+
+$("img.login_start").on("tap", function()
+{
+login();
+});
 //sharer
 $("img#sharer").on("tap",function()
 {
@@ -675,7 +681,7 @@ localStorage.tribe ="full";
  $(".frame").css("visibility","visible");
  updateLayout();
 adjust_arena();
- $(".tribe_div").css("display","none");
+ $(".tribe_div").css("visibility","hidden");
 }
 return false;
 });
