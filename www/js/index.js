@@ -37,6 +37,7 @@
   alert(response.name);
   
   localStorage.full_name = response.name;
+  $.get("")
   
 });
 
@@ -88,19 +89,16 @@ $("#dp").attr("src", localStorage.dp);
             }
             
             function login() {
-                FB.login(
-                         function(response) {
+			
+			     FB.login(function(response) {
 						 
 						 
                           if (response.authResponse) {
-						   FB.api('/me', function(response) {
+
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+	 					   
 						   
-						    var accessToken = response.authResponse.accessToken;
-								 var uid = response.authResponse.userID || response.authResponse.userId;
-								  alert(uid);
-								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
-								  alert(accessToken);
-								  localStorage.fbid = uid;
   alert(response.name);
   	$(".login_div").show();
 	$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
@@ -109,17 +107,17 @@ $("#dp").attr("src", localStorage.dp);
 
 	return false;
   localStorage.full_name = response.name;
-  
-});
-						 
-                         alert('logged in');
+      alert('Good to see you, ' + response.name + '.');
+	   alert('logged in');
+     });		 
+                        
 						
                          } else {
                          alert('not logged in');
                          }
                          },
-                         { scope: "email" }
-                         );
+                         { scope: "email" });
+           
             }
                         
                         
