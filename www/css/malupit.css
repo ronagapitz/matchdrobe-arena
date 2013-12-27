@@ -2,6 +2,7 @@
 {
 visibility: hidden;
 z-index : 33;
+background: white;
 }
 
 
@@ -588,7 +589,7 @@ max-width: 312px;
 width: 40%;
 margin-top: 3%;
 right: 0px;
-bottom: 5%;
+bottom: -5%;
 }
 .points
 {
