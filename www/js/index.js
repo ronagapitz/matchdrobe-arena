@@ -31,6 +31,19 @@
 								  alert(uid);
 								 localStorage.dp = 'https://graph.facebook.com/'+uid+'/picture?type=large&return_ssl_results=1';
 								  alert(accessToken);
+								  localStorage.fbid = uid;
+
+								  FB.api('/me', function(response) {
+  alert(response.name);
+  
+  localStorage.full_name = response.name;
+  
+});
+
+$("#dp").attr("src", localStorage.dp);
+		$(".profile_pic img").attr("src", localStorage.dp);
+
+		$(".profile_name").text(localStorage.full_name);
 								  alert(localStorage.dp);
 								  alert(response.status);
                                   alert('logged in');
