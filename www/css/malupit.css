@@ -588,7 +588,7 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top: 3%;
+margin-top: 70%;
 right: 0px;
 bottom: -5%;
 }
@@ -932,6 +932,10 @@ text-shadow: none !important;
 {
 
 display: none;
+}
+.gender
+{
+width: 100%;
 }
 .big_img2
 {
