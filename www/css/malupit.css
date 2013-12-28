@@ -754,7 +754,6 @@ width: 100%;
 position: absolute;
 top:0;
 left: 0;
-padding-bottom: 10vh;
 height: 100vh;
 }
 .hov:active {
@@ -915,7 +914,7 @@ width: 100vw!important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:7vh;
+	padding-bottom:0;
 	width: 100vw !Important;
 }
 * {

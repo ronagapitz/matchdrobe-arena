@@ -520,7 +520,7 @@ load_arena();
 
  $.adjust = function adjust_arena()
 {
-$("#feed_div, .page,#pageWrapper").height($(window).height());
+$(".page").css('min-height',"100%");
 
 $("#profile_nav img").attr("src","img/profile_nav.jpg");
  //$("#1").attr("src","img/profile_nav_h.jpg");
