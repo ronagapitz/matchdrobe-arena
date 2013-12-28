@@ -749,9 +749,9 @@ display: none;
 {
 z-index: 1;
 }
-.login_div,.register_div,.tribe_div,.arena_div,.looks_div
+.login_div,.register_div,.tribe_div,.arena_div
 {
-width: 100vw;
+width: 100%;
 position: absolute;
 top:0;
 left: 0;
