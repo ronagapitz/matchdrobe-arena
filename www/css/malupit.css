@@ -162,7 +162,8 @@ display: block
 }
 .feed_user
 {
-width: 15%;
+width: 12vw;
+height: 12vw;
 max-width: 200px;
 border-radius: 100% !important;
 margin-left:1rem;
@@ -588,9 +589,9 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top: 70%;
+top: 82vh;
 right: 0px;
-bottom: -5%;
+
 }
 .points
 {
@@ -933,9 +934,9 @@ text-shadow: none !important;
 
 display: none;
 }
-.gender
+.gender ,.gender .ron
 {
-width: 100%;
+width: 100vw;
 }
 .big_img2
 {
