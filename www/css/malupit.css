@@ -956,9 +956,9 @@ margin: auto !important;
 
  -webkit-transform: translateZ(0);
 	position:absolute; z-index:1;
-	height:95vh;
+	height:100vh;
 	padding:0;
-	padding-bottom: 10vh;
+	
 	width: 100vw;
 
 }
