@@ -285,9 +285,10 @@ margin-left: 1%;
 background-size: 100% 100%;
 margin-bottom:-2px;
 }
-.hof_div
+.hof_div,.feed_div
 {
 height: 100% !important;
+padding-bottom: 5%;
 }
 .hof_toggle
 {
@@ -750,7 +751,7 @@ z-index: 1;
 }
 .login_div,.register_div,.tribe_div,.arena_div,.looks_div
 {
-width: 100%;
+width: 100vw;
 position: absolute;
 top:0;
 left: 0;

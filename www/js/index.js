@@ -108,16 +108,16 @@ $("#dp").attr("src", localStorage.dp);
 		$(".profile_pic img").attr("src", localStorage.dp);
 
 		$(".profile_name").text(localStorage.full_name);
-								  alert(localStorage.dp);
+								//  alert(localStorage.dp);
 								 							  
-  alert(response.name);
+  //alert(response.name);
   	//$(".login_div").show();
 	//$(".login_div .container").css({"margin-top": $(".nav_log").height()+20});
 	//$(".submit").effect('slide', { direction: 'left', mode: 'show' });
 		$(".main_page").hide();
 
 		$(".tribe_div").show("slide")
-      alert('Good to see you, ' + response.name + '.');
+      alert('welcome, ' + response.name + '.');
 	   alert('logged in');
      });		 
                         
