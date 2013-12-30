@@ -588,7 +588,7 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-top: 82vh;
+top: 72%;
 right: 0px;
 
 }
@@ -935,7 +935,7 @@ display: none;
 }
 .gender ,.gender .ron
 {
-width: 100vw;
+width: 100%;
 }
 .big_img2
 {
@@ -995,13 +995,14 @@ width: 30%;
 text-align: center;
 color: #b80941;
 float: left;
-font-size: 2rem;
+font-size: 1rem;
 }
 .hof_wins
 {
-margin-left: 10%;
+font-size: 1rem;
 color: white;
-float: left;
+text-align: center;
+
 }
 .hof_percent
 {
@@ -1009,7 +1010,7 @@ float: left;
 background: #b80941;
 width: 70%;
 margin-left: 0%;
-font-size: 1.6rem;
+font-size: 1rem;
 text-align: center;
 color: white;
 }
