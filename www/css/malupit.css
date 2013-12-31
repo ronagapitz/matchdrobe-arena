@@ -1,6 +1,6 @@
 .frame
 {
-visibility: visible;
+visibility: hidden;
 z-index : 33;
 background: white;
 }
@@ -587,7 +587,7 @@ right: 0px;
 max-width: 312px;
 width: 40%;
 right: 0px;
-top: 72rem;
+top: 52rem;
 }
 .points
 {
