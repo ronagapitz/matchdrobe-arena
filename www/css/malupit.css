@@ -751,7 +751,7 @@ z-index: 1;
 }
 .login_div,.register_div,.tribe_div,.arena_div
 {
-width: 100%;
+width: 100vw;
 position: absolute;
 top:0;
 left: 0;
@@ -935,7 +935,7 @@ display: none;
 }
 .gender ,.gender .ron
 {
-width: 100%;
+width: 100vw;
 }
 .big_img2
 {
