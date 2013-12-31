@@ -167,8 +167,7 @@ $("#dp").attr("src", localStorage.dp);
                             }
                         } 
 						  
-					
-						*/
+					*/
 document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {

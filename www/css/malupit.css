@@ -898,7 +898,7 @@ height: 100%;
    float: left;
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform: translateZ(0);
-width: 14.1% !important;
+width: 14.2% !important;
 height: 100% !important;
 min-height: 400px !Important;
 }
@@ -971,6 +971,7 @@ overflow: hidden;
 .hof_pic
 {
 float: left;
+width: 20%;
 }
 .hof_details
 {
@@ -989,7 +990,7 @@ font-size: 1rem;
 }
 .hof_wins
 {
-font-size: 1rem;
+font-size: .8rem;
 color: white;
 text-align: center;
 
@@ -1000,7 +1001,7 @@ float: left;
 background: #b80941;
 width: 70%;
 margin-left: 0%;
-font-size: 1rem;
+font-size: .8rem;
 text-align: center;
 color: white;
 }
@@ -1031,7 +1032,7 @@ float: left;
 float: left;
 text-align: center;
 margin-left: 1rem;
-font-size: 1.2rem !important;
+font-size: .9rem !important;
 }
 #popup .scroller
 {
