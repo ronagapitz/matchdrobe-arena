@@ -892,13 +892,14 @@ paddding-bottom: 10px;
 #pageScroller
 {
 width: 700% !Important;
+height: 100%;
 }
 .page {
    float: left;
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform: translateZ(0);
 width: 14.1% !important;
-height: 100vw!important;
+height: 100% !important;
 min-height: 400px !Important;
 }
 
@@ -910,7 +911,7 @@ min-height: 400px !Important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:7vh;
+height: 100%;
 	width: 100vw !Important;
 }
 * {
@@ -929,6 +930,10 @@ text-shadow: none !important;
 position: relative !important;
 width: 100% !important;
 margin: auto !important;
+}
+.feed_div
+{
+height: 100%;
 }
 #wrapper,#wrapper_looks,#wrapper_feeds ,#wrapper_hof,#wrapper_followers,#popup{
     position:absolute;
