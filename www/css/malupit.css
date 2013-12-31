@@ -23,6 +23,7 @@ src: url('calibri.ttf');
 -webkit-transform-style: preserve-3d; 
 width: 80%;
 height: auto;
+min-width: 80%;
 overflow: hidden;
 padding:0;
 background: white;
@@ -388,13 +389,14 @@ margin-top: 2rem;
 font-size: 1.2rem !Important;
 
 }
+
 .fb_photo
 {
   border-radius: 100% !important;
 
-width: 80% !important;
-min-width: 50px;
-max-width: 150px;
+width: 2.2rem !important;
+height: 2.2rem !important;
+
 
 }
 .col-xs-3
@@ -584,9 +586,8 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top: 3%;
 right: 0px;
-bottom: 15%;
+top: 72rem;
 }
 .points
 {
@@ -905,7 +906,7 @@ width: 7%;
    float: left;
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform: translateZ(0);
-width: 14.285% !important;
+width: 14.29% !important;
 height: 100% !important;
 min-height: 400px !Important;
 }

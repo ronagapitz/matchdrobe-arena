@@ -311,7 +311,18 @@ function updateLayout() {
 
 $(function()
 {
+$("#ref_feed").on("tap",function()
+{
+	$.get("http://matchdrobe.com/app/arena/arena_functions.php",{my_activity:1,offset:0},function(e)
+			{
+			
+			$('#wrapper_feeds .scroller .container').append(e);
+			feedScroll.refresh();
+off+=6;
+			});
 
+
+});
 
   $("#logout").click(function() {
             FB.logout(
