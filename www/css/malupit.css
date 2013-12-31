@@ -1,8 +1,6 @@
 .frame
 {
 visibility: hidden;
-z-index : 33;
-background: white;
 }
 
 
@@ -162,8 +160,8 @@ display: block
 }
 .feed_user
 {
-width: 5vw;
-height: 5vw;
+width: 15%;
+max-width: 200px;
 border-radius: 100% !important;
 margin-left:1rem;
 
@@ -285,10 +283,9 @@ margin-left: 1%;
 background-size: 100% 100%;
 margin-bottom:-2px;
 }
-.hof_div,.feed_div
+.hof_div
 {
 height: 100% !important;
-padding-bottom: 5%;
 }
 .hof_toggle
 {
@@ -575,10 +572,6 @@ display: none;
 
 font-size: 1rem !important;
 }
-.tagg
-{
-font-size: 1.1rem !Important;
-}
 .skip
 {
    
@@ -588,9 +581,9 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-top: 72%;
+margin-top: 3%;
 right: 0px;
-
+bottom: 15%;
 }
 .points
 {
@@ -628,7 +621,7 @@ float: right;
 position: relative;
 right: 0px;
 }
-textarea, input { outline: none; }
+
 .loader
 {
 position: absolute;
@@ -745,16 +738,13 @@ width: 63%;
 display: none;
 
 }
-.tribe_div
+.login_div,.register_div,.tribe_div,.arena_div,.looks_div
 {
-z-index: 1;
-}
-.login_div,.register_div,.tribe_div,.arena_div
-{
-width: 100vw;
+width: 100%;
 position: absolute;
 top:0;
 left: 0;
+padding-bottom: 10vh;
 height: 100vh;
 }
 .hov:active {
@@ -863,11 +853,6 @@ overflow: hidden;
 width: 100%;
 
 }
-.hideme
-{
-display: none !important;
-visibility:hidden;
-}
 .tribe
 {
 padding: .6%;
@@ -915,7 +900,7 @@ width: 100vw!important;
     right:0px;
     bottom:0px;
     left:0px;
-	padding-bottom:0;
+	padding-bottom:7vh;
 	width: 100vw !Important;
 }
 * {
@@ -927,15 +912,6 @@ text-shadow: none !important;
 -webkit-border-bottom-left-radius:0 !important;
 -webkit-border-bottom-right-radius:0 !important;
 -webkit-border-top-right-radius:0 !important;
-}
-.hidden
-{
-
-display: none;
-}
-.gender ,.gender .ron
-{
-width: 100vw;
 }
 .big_img2
 {
@@ -952,8 +928,7 @@ margin: auto !important;
     left:0px;
     right:0px;
     overflow:auto;
-	padding-bottom: 10vh;
-	height: 100vh;
+	height: 85vh;
 }
 
 .scroller {
@@ -961,9 +936,9 @@ margin: auto !important;
 
  -webkit-transform: translateZ(0);
 	position:absolute; z-index:1;
-	height:100vh;
+	height:95vh;
 	padding:0;
-	
+	padding-bottom: 10vh;
 	width: 100vw;
 
 }
@@ -973,8 +948,8 @@ width: 100%;
 }
 .hof_thumb
 {
-
-width: 100%;
+float: left;
+width: 40%;
 overflow: hidden;
 }
 /*****hof only */
@@ -991,28 +966,30 @@ padding-left: 5%;
 .hof_count
 {
 background: #d7d7d7;
-width: 30%;
+padding: .3rem;
+width: 10%;
+margin-left: 10%;
 text-align: center;
 color: #b80941;
 float: left;
-font-size: 1rem;
 }
 .hof_wins
 {
-font-size: 1rem;
-color: white;
-text-align: center;
+margin-left: 10%;
 
+float: left;
 }
 .hof_percent
 {
+
 float: left;
-background: #b80941;
-width: 70%;
+background:  #b80941;
+padding: .3rem;
+width: 20%;
 margin-left: 0%;
-font-size: 1rem;
 text-align: center;
 color: white;
+font-weight: bold;
 }
 .hof_percent:after {
     content: '';
@@ -1031,10 +1008,8 @@ color: white;
 {
 margin-bottom: 1rem;
 overflow: hidden;
-width: 28%;
-margin: 2%;
-background: #d7d7d7;
-float: left;
+width: 85%;
+margin-left: 2%
 }
 .hof_user
 {
