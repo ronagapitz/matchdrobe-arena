@@ -1,6 +1,6 @@
 .frame
 {
-visibility: hidden;
+visibility: visible;
 z-index : 33;
 background: white;
 }
@@ -883,20 +883,23 @@ paddding-bottom: 10px;
     position:absolute;
     top:0px;
     right:0px;
-	width: 100vw !Important;
+	width: 100% !Important;
     bottom:0px;
     left:0px;
     
 }
 
+#pageScroller
+{
+width: 700% !Important;
+}
 .page {
-    float: left;
-    -webkit-transform:translate3d(0,0,0);
-	 -webkit-transform: translateZ(0);
-	 
-width: 100vw!important;
+   float: left;
+-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+width: 14.1% !important;
 height: 100vw!important;
-min-height: 400px;
+min-height: 400px !Important;
 }
 
 #pageWrapper {
