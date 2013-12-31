@@ -18,7 +18,9 @@ src: url('calibri.ttf');
 {
 -webkit-transform:translate3d(0,0,0);
 	 -webkit-transform: translateZ(0);
-
+-webkit-transform: translate3d(0,0,0) !important;
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
 	-webkit-backface-visibility: hidden;
 -webkit-transform-style: preserve-3d; 
 width: 80%;
@@ -256,6 +258,9 @@ width: 40vw;
 
  -webkit-transform: translateZ(0);
 margin-top: 5vw;
+-webkit-transform: translate3d(0,0,0) !important;
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
 width: 100vw;
 	
 	float:left;
@@ -329,11 +334,12 @@ margin: 0 auto !important;
   display: none;
   position: absolute;
 }
+
 img.lazy
 {
 -webkit-transform: translate3d(0,0,0) !important;
--webkit-backface-visibility: hidden !important;
--webkit-transform-style: preserve-3d !important; 
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
 
 }
 .looks_tab
@@ -591,6 +597,7 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
+margin-top:-2rem;
 right: 0px;
 }
 .points
@@ -911,6 +918,8 @@ width: 7%;
    float: left;
 -webkit-transform: translate3d(0,0,0);
 -webkit-transform: translateZ(0);
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
 width: 14.29% !important;
 height: 100% !important;
 min-height: 400px !Important;
@@ -960,7 +969,8 @@ height: 100%;
 
 .scroller {
     -webkit-transform:translate3d(0,0,0);
-
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
  -webkit-transform: translateZ(0);
 	position:absolute; z-index:1;
 	height:95vh;
@@ -1052,6 +1062,8 @@ font-size: .9rem !important;
 height: auto !important;
  -webkit-transform: translateZ(0);
      -webkit-transform:translate3d(0,0,0);
+	 -webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
 
 }
 
@@ -1192,7 +1204,9 @@ background: white;
 {
 width: 100%;
 bottom: -0.5rem;
+min-width: 100%;
 position: relative;
+max-width: 100%;
 }
 	.row
 	{
