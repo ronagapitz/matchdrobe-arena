@@ -1,6 +1,8 @@
 .frame
 {
 visibility: hidden;
+z-index : 33;
+background: white;
 }
 
 
@@ -593,7 +595,10 @@ line-height: 1;
 margin-right: 3%;
 
 }
-
+.tribe_div
+{
+z-index: 1;
+}
 .fleft
 {
 float: left;
@@ -890,6 +895,8 @@ paddding-bottom: 10px;
 	 -webkit-transform: translateZ(0);
 	 
 width: 100vw!important;
+height: 100vw!important;
+min-height: 400px;
 }
 
 #pageWrapper {
@@ -948,8 +955,8 @@ width: 100%;
 }
 .hof_thumb
 {
-float: left;
-width: 40%;
+
+width: 100%;
 overflow: hidden;
 }
 /*****hof only */
@@ -966,30 +973,28 @@ padding-left: 5%;
 .hof_count
 {
 background: #d7d7d7;
-padding: .3rem;
-width: 10%;
-margin-left: 10%;
+width: 30%;
 text-align: center;
 color: #b80941;
 float: left;
+font-size: 1rem;
 }
 .hof_wins
 {
-margin-left: 10%;
+font-size: 1rem;
+color: white;
+text-align: center;
 
-float: left;
 }
 .hof_percent
 {
-
 float: left;
-background:  #b80941;
-padding: .3rem;
-width: 20%;
+background: #b80941;
+width: 70%;
 margin-left: 0%;
+font-size: 1rem;
 text-align: center;
 color: white;
-font-weight: bold;
 }
 .hof_percent:after {
     content: '';
@@ -1008,15 +1013,18 @@ font-weight: bold;
 {
 margin-bottom: 1rem;
 overflow: hidden;
-width: 85%;
-margin-left: 2%
+width: 28%;
+margin: 2%;
+background: #d7d7d7;
+float: left;
 }
 .hof_user
 {
 float: left;
 text-align: center;
+margin-left: 1rem;
+font-size: 1.2rem !important;
 }
-
 #popup .scroller
 {
 height: auto !important;
@@ -1161,7 +1169,8 @@ background: white;
 .navbar-fixed-bottom div img
 {
 width: 100%;
-
+bottom: -0.5rem;
+position: relative;
 }
 	.row
 	{
