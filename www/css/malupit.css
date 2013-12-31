@@ -587,7 +587,6 @@ right: 0px;
 max-width: 312px;
 width: 40%;
 right: 0px;
-top: 42rem;
 }
 .points
 {
@@ -986,6 +985,7 @@ width: 20%;
 overflow: hidden;
 padding-top: 10%;
 padding-left: 5%;
+padding-bottom: 10%;
 }
 .hof_count
 {
@@ -1052,7 +1052,7 @@ height: auto !important;
 
 div.pair
 {
-position: absolute;
+position: relative;
 }
 /*****popups **********/
 
