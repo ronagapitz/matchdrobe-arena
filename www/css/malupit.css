@@ -301,8 +301,13 @@ position: absolute;
 
 .loader_page
 {
-padding-top: 20px;
-}
+margin: auto;
+position: absolute;
+left: 0;
+height: 100%;
+text-align: center;
+right: 0;
+min-height: 100%;}
 /**********looks */
 
 .looks_div .big_img,.big_img2,#popup
