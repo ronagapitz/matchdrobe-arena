@@ -1,4 +1,4 @@
-/* */
+/* 
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
@@ -97,7 +97,7 @@ $("#dp").attr("src", localStorage.dp);
 
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
-	 					       alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
+	 	  alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id + "EMAIL: "+ response.email);
 
 			 localStorage.dp = 'https://graph.facebook.com/'+response.id+'/picture?type=large&return_ssl_results=1';
 								 
@@ -167,7 +167,7 @@ $("#dp").attr("src", localStorage.dp);
                             }
                         } 
 						  
-				/*	*/
+				*/
 document.addEventListener("orientationchange", updateLayout);
   document.addEventListener('deviceready', function() {
                                       try {
