@@ -5,7 +5,15 @@ z-index : 33;
 background: white;
 }
 
-
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select:html;
+    -khtml-user-select:html;
+    -moz-user-select:html;
+    -ms-user-select:html;
+    user-select:html;
+}
 @font-face
 {
 font-family: calibri;
@@ -596,7 +604,7 @@ position: absolute;
 right: 0px;
 max-width: 312px;
 width: 40%;
-margin-top:-2rem;
+bottom: 20%;
 right: 0px;
 }
 .points
