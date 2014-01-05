@@ -9,6 +9,18 @@
     <link rel="stylesheet" type="text/css" href="css/malupit.css">
 </head>
 <body>
+
+
+<!-- uoload popup -->
+<div class="popup uppop">
+<p>Pick a Source</p>
+<img src="img/gallery.png" /> 
+<img src="img/camera.png" /> 
+  <img id="preview"  />
+  
+  <input type="file" name="image_file" id="image_file" onchange="fileSelectHandler()" />
+
+</div>
 		<!-- popup tags -->
 		<!-- begin pop up tags -->
  <div class="popup tag_pop like_modal col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -433,6 +445,9 @@
 
 <img src="img/looks_tab.png"  class="looks_tab"/>
 
+
+<span id="uplink"> + Upload a look</span>
+
 		</div>
 		
 		
@@ -617,6 +632,7 @@ height: 100%;">
 <script src="js/jquery.tap.min.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/enhance.js"></script>
+<script src="js/crop.js"></script>
 
 <script src="js/index.js"></script>
 
